@@ -6,7 +6,7 @@
 #    By: ychufist <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/09 13:39:53 by ychufist          #+#    #+#              #
-#    Updated: 2018/08/18 17:57:50 by ychufist         ###   ########.fr        #
+#    Updated: 2018/08/29 18:18:45 by ychufist         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCPRNTF = ./ft_printf.c \
 	./ft_putchar.c \
 	./ft_putstr.c \
 	./ft_putnbr.c \
-	./ft_strnew.c
+	./ft_strnew.c \
+	./ft_strcmp.c
 
 OUTP = $(SRCPRNTF:.c=.o)
 

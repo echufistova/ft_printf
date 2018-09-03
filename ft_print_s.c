@@ -5,11 +5,12 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-char *ft_print_s(va_list ap, t_flagsntype flntp, char *res)
+char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
 {
     char *str;
     int i;
 	int j;
+
     str = ft_strdup(va_arg(ap, char*));
     //printf("%s\n", str);
     i = 0;
@@ -29,7 +30,7 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res)
         while (i++ < flntp.number - j)//flntp.sizenoll)
             res = ft_add_char(res, ' ');
         // printf("res posle  %s", res);
-        return (res);
+        //return (res);
      }
     if (flntp.noll == 1)
     {
@@ -50,11 +51,29 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res)
         while (i++ < flntp.number - flntp.sizenoll) //> (int)ft_strlen(str) ? flntp.sizenoll : (int)ft_strlen(str)))
             res = ft_add_char(res, ' ');
         i = 0;
-        while (i < flntp.sizenoll)
-            res = ft_add_char(res, str[i++]);
-        return (res);
+        if (flntp.minus == 0)
+        {
+            while (i < flntp.sizenoll)
+                res = ft_add_char(res, str[i++]);
+        }
+
+      //  return (res);
 
     }
-	 res = ft_strjoin(res, str);
+    if (!str && !*str)//str == 0)
+    {
+        res = ft_strjoin(res, "(null)");
+        ft_putstr(res);
+        //(*len) += 6;
+    }
+        //else if (ft_strlen(str) == 0
+    else
+    {
+        if (flntp.dot == 1 || flntp.noll == 1 || flntp.minus == 1 || (flntp.number > 0 && (flntp.dot == 1  || flntp.noll == 1)))
+            ft_bzero(str, ft_strlen(str));
+        res = ft_strjoin(res, str);
+        //ft_putstr(ft_strjoin(res, str));
+        ft_putstr(res);
+    }
     return (res);
 }

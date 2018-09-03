@@ -6,6 +6,14 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+int checkparam(char c)
+{
+    if (c == '#' || c == '0' || c == '-' ||
+            c == '+' || c == ' ' || c == '.' || (c >= '0' && c <= '9'))
+        return (1);
+    return (0);
+}
+
 t_flagsntype	ft_new_flntp()
 {
     t_flagsntype flagstype;
@@ -58,25 +66,17 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
 {
     t_flagsntype flagstype;
     unsigned int j;
-    unsigned int k;
     char *n;
 
     flagstype = ft_new_flntp();
     n = (char*)ft_memalloc(sizeof(char));
-    while (format[*i] != '\0' && (fl_tp[*i] == '#' || fl_tp[*i] == '0' || fl_tp[*i] == '-' ||
-            fl_tp[*i] == '+' || fl_tp[*i] == ' ' || fl_tp[*i] == '.' || (fl_tp[*i] >= '0' && fl_tp[*i] <= '9')))
+    while (format[*i] != '\0' && checkparam(fl_tp[*i]))//(fl_tp[*i] == '#' || fl_tp[*i] == '0' || fl_tp[*i] == '-' ||
+            //fl_tp[*i] == '+' || fl_tp[*i] == ' ' || fl_tp[*i] == '.' || (fl_tp[*i] >= '0' && fl_tp[*i] <= '9')))
     {
         if (fl_tp[*i] == '#')
             flagstype.oct = 1;
         else if (fl_tp[*i] == '0')
-        {
-         //   j = *i;
             flagstype.noll = 1;
-         //   while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
-         //       (*i)++;
-          //  flagstype.sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
-          //  (*i)--;
-        }
         else if (fl_tp[*i] == '-')
             flagstype.minus = 1;
         else if (fl_tp[*i] == '+')

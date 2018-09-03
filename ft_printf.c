@@ -6,7 +6,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-char *what_to_print(char *res, t_flagsntype flntp, va_list ap)
+char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
 {
     if (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')
         res = ft_print_int(ap, flntp, res);
@@ -17,19 +17,19 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap)
     else if (flntp.type == 'x' || flntp.type == 'X')
         res = ft_print_x(ap, flntp, res);
     else if (flntp.type == 's')
-        res = ft_print_s(ap, flntp, res);
+        res = ft_print_s(ap, flntp, res, len);
     else if (flntp.type == 'c')
-        res = ft_print_c(ap, flntp, res);
+        res = ft_print_c(ap, flntp, res, len);
     else if (flntp.type == 'p')
         res = ft_print_p(ap, flntp, res);
     return (res);
 }
 
-int is_type(const char *format, int i)
+int is_type(char c)
 {
-    if (format[i] == 's' || format[i] == 'S' || format[i] == 'p' || format[i] == 'd' || format[i] == 'D' || format[i] == 'i' ||
-        format[i] == 'o' || format[i] == 'O' || format[i] == 'u' || format[i] == 'U' || format[i] == 'x' || format[i] == 'X' ||
-        format[i] == 'c' || format[i] == 'C')
+    if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i' ||
+        c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' ||
+        c == 'c' || c == 'C')
         return (1);
     return (0);
 }
@@ -53,21 +53,39 @@ void show_structure(t_flagsntype flntp)
     printf("flntp.type = %c\n", flntp.type);
 }
 
+char *no_params(char *res, t_flagsntype flntp, unsigned int *i)
+{
+    int j;
+
+    j = 0;
+    (*i)--;
+    if (flntp.minus == 0)
+        res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
+    res = ft_add_char(res, flntp.type);
+    if (flntp.minus == 1)
+    {
+        while (j++ < flntp.number - 1)
+            res = ft_add_char(res, ' ');
+    }
+    return (res);
+}
+
 int ft_printf(const char *restrict format, ...)
 {
     unsigned int i;
     unsigned int j;
+    int len;
     t_flagsntype flntp;
     va_list ap;
     char *res;
 
     i = 0;
+    len = 0;
     res = ft_strnew(1);
     va_start(ap, format);
 
     while (format[i] != '\0')
     {
-
         j = i;
         while (format[i] != '\0' && format[i] != '%')
             i++;
@@ -80,9 +98,28 @@ int ft_printf(const char *restrict format, ...)
         if (format[i] != '\0' && format[i] != '%' && format[i - 1] == '%')
         {
             flntp = ft_get_flntp(format, &i, format);
+            if (!is_type(flntp.type) ) {
+                res= no_params(res, flntp, &i);
+//                i--;
+//                if (flntp.minus == 0)
+//                    res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
+//                res = ft_add_char(res, format[i]);
+//                if (flntp.minus == 1)
+//                {
+//                    while (i++ < flntp.number - j)
+//                        res = ft_add_char(res, ' ');
+//                }
+                continue;
+            }
+
 //            show_structure(flntp);
 //            ft_putchar('\n');
-            res = what_to_print(res, flntp, ap);
+            res = what_to_print(res, flntp, ap, &len);
+            //printf("len do%d\n", len);
+            len += (flntp.type == 'c' || flntp.type == 's' ? ft_strlen(res) : 0);
+            //printf("len posle %d\n", len);
+            if (flntp.type == 'c' || flntp.type == 's')
+                ft_bzero(res, ft_strlen(res));
         }
         else if (format[i] != '\0' && format[i] == '%' && format[i - 1] == '%')
         {
@@ -93,31 +130,31 @@ int ft_printf(const char *restrict format, ...)
             ft_putstr(res);
     }
     va_end(ap);
-    return ((int)ft_strlen(res));
+    return ((int)(ft_strlen(res) + len));//(int)ft_strlen(res));
 }
 
-//int main (void)
-//{
-////    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//    #define PRINTF  "%-5.2s is a string\n", ""
-//    //unsigned int i = -4294967295;
-//    //short int i = 3237;
-////    int i = -963987432;
-//    //short short int i = 1;
-////    char *str = "Здравствуй, если не шутишь!";
-////    char c = -45;
-////    int a = 10;
-////    int *b = &a;
-////    printf("%p\n",b);
-////    ft_printf("%p\n",b);
-//    //printf("%d\n", ft_intlength(543));
-////    printf("   printf: hello %s haha %%s tut\n", str);
-////    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
-//    //printf("   pr %s $\n", "this is a string");
-//    //ft_printf("ft_pr %s $\n", "this is a string");
+/*int main (void)
+{
+//    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
+    #define PRINTF "%.0%"
+    //unsigned int i = -4294967295;
+    //short int i = 3237;
+//    int i = -963987432;
+    //short short int i = 1;
+//    char *str = "Здравствуй, если не шутишь!";
+//    char c = -45;
+//    int a = 10;
+//    int *b = &a;
+//    printf("%p\n",b);
+//    ft_printf("%p\n",b);
+    //printf("%d\n", ft_intlength(543));
+//    printf("   printf: hello %s haha %%s tut\n", str);
+//    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
+    //printf("   pr %s $\n", "this is a string");
+    //ft_printf("ft_pr %s $\n", "this is a string");
 //    printf(PRINTF);
 //    ft_printf(PRINTF);
-////    printf("%d\n", printf(PRINTF));
-////    printf("%d\n", ft_printf(PRINTF));
-//    return (0);
-//}
+    printf("%d\n", printf(PRINTF));
+    printf("%d\n", ft_printf(PRINTF));
+    return (0);
+}*/

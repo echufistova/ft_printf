@@ -42,6 +42,7 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
 char            *ft_add_char(char *str, char c);
 char			*ft_itoa_unsigned(intmax_t n);
 int ft_intlength(intmax_t n);
+int is_type(char c);
 
 char *ft_itoa_base(intmax_t value, int base, t_flagsntype flntp);
 char *ft_itoa_base_uns(uintmax_t value, int base, t_flagsntype flntp);
@@ -50,8 +51,8 @@ char            *ft_print_int(va_list ap, t_flagsntype flntp, char *res);
 char            *ft_print_u(va_list ap, t_flagsntype flntp, char *res);
 char            *ft_print_o(va_list ap, t_flagsntype flntp, char *res);
 char            *ft_print_x(va_list ap, t_flagsntype flntp, char *res);
-char            *ft_print_s(va_list ap, t_flagsntype flntp, char *res);
-char            *ft_print_c(va_list ap, t_flagsntype flntp, char *res);
+char            *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len);
+char            *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len);
 char *ft_print_p(va_list ap, t_flagsntype flntp, char *res);
 char            *ft_presflags(char *res, t_flagsntype flntp, intmax_t n);
 char            *ft_octflag(char *res, t_flagsntype flntp, intmax_t n);

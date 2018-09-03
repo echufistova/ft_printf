@@ -5,7 +5,15 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-char *ft_print_c(va_list ap, t_flagsntype flntp, char *res)
+void ft_printnull(char *res, t_flagsntype flntp, char c)
+{
+    //if (c == '\0')
+    ft_putstr(res);
+    if (flntp.minus == 0)
+        ft_putchar(c);
+}
+
+char *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
 {
     char p;
     char c;
@@ -21,15 +29,12 @@ char *ft_print_c(va_list ap, t_flagsntype flntp, char *res)
             p = '0';
         else if (flntp.noll == 0)
             p = ' ';
-        // printf("flntp.number %d\n", flntp.number);
-        // printf("flntp.number - ft_intlength((uintmax_t)(nb)) %d\n", flntp.number - ft_intlength((uintmax_t)(nb)));
         if (flntp.minus == 1)
         {
             i = 1;
             res = ft_add_char(res, c);
             while (i++ < flntp.number)
                 res = ft_add_char(res, ' ');
-            i = 0;
         }
         else
         {
@@ -38,13 +43,15 @@ char *ft_print_c(va_list ap, t_flagsntype flntp, char *res)
         }
         i = 0;
     }
-    else
-        res = ft_add_char(res, c);
-//    if (flntp.minus == 1)
-//    {
-//        i = 1;
-//        while (i++ < flntp.number)
-//            res = ft_add_char(res, ' ');
-//    }
-    return (flag_space(res, flntp, (int)c));
+    //else if (c != '\0')
+   // {
+        //res = ft_add_char(flag_space(res, flntp, (int)c), c);
+        //ft_putchar('\0');
+     //   *len += ((c == '\0') ? 1 : 0);
+     //   printf("\nlen : %d\n", *len);
+        //return (ft_itoa_unsigned(len));
+    //}
+    ft_printnull(res, flntp, c);
+    (flntp.minus == 0) ? (*len)++ : (*len); //+ ((c == '\0') ? 1 : 0);
+    return (res);
 }
