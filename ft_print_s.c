@@ -60,7 +60,7 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
       //  return (res);
 
     }
-    if (!str && !*str)//str == 0)
+    if (ft_strcmp(str, "(null)") == 0)//(!str && !*str)//str == 0)
     {
         res = ft_strjoin(res, "(null)");
         ft_putstr(res);
@@ -69,9 +69,11 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
         //else if (ft_strlen(str) == 0
     else
     {
-        if (flntp.dot == 1 || flntp.noll == 1 || flntp.minus == 1 || (flntp.number > 0 && (flntp.dot == 1  || flntp.noll == 1)))
-            ft_bzero(str, ft_strlen(str));
-        res = ft_strjoin(res, str);
+		if (flntp.dot == 0 && flntp.noll == 0 && flntp.minus == 0)
+            res = ft_strjoin(res, str);
+       // if (flntp.dot == 1 || flntp.noll == 1 || flntp.minus == 1 || (flntp.number > 0 && (flntp.dot == 1  || flntp.noll == 1)))
+         //   ft_bzero(str, ft_strlen(str));
+        //res = ft_strjoin(res, str);
         //ft_putstr(ft_strjoin(res, str));
         ft_putstr(res);
     }

@@ -20,8 +20,6 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
         n = (unsigned char)va_arg(ap, int);
     else if (flntp.hljz.j == 1)
         n = va_arg(ap, uintmax_t);
-	else if (flntp.hljz.z == 1)
-        n = va_arg(ap, size_t);
     else
         n = va_arg(ap, unsigned int);
 //    printf("hello %ju\n", n );
