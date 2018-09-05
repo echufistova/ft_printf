@@ -40,8 +40,10 @@ typedef struct		s_flagsntype
 t_flagsntype	ft_new_flntp();
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format);
 char            *ft_add_char(char *str, char c);
-char			*ft_itoa_unsigned(intmax_t n);
+char			*ft_itoa_unsigned(uintmax_t n);
+char			*ft_itoa_signed(intmax_t n);
 int ft_intlength(intmax_t n);
+int ft_intlength_uns(uintmax_t n);
 int is_type(char c);
 
 char *ft_itoa_base(intmax_t value, int base, t_flagsntype flntp);
@@ -71,5 +73,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t		ft_strlen(const char *str);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char *flag_space(char *res, t_flagsntype flntp, intmax_t n);
+char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n);
 
 #endif //PRINTF_FT_PRINTF_H

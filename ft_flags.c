@@ -57,3 +57,41 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
 //    }
     return (res);
 }
+
+char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n)
+{
+    int i;
+    int j;
+
+    i = 0;
+    j = ((flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O') ? n : ft_intlength(n));
+    if (flntp.plus == 1 && (flntp.type == 'i' ||
+                                      flntp.type == 'd' ||flntp.type == 'D'))
+        flntp.number--;
+    if (flntp.oct == 1)
+        return (ft_octflag(res, flntp, n));
+    if (flntp.dot == 1)
+        return(ft_presflags(res, flntp, n));
+//    if (flntp.oct == 1)
+//        return (ft_octflag(res, flntp, *n));
+    if (flntp.noll == 1 && flntp.minus == 0)
+    {
+        while (i++ < flntp.number - j)
+            res = ft_add_char(res, '0');
+        i = 0;
+    }
+    if (flntp.noll == 0 && flntp.number != 0 && flntp.minus == 0)
+    {
+        // printf("flntp.number %d\n", flntp.number);
+        // printf("flntp.number - ft_intlength((uintmax_t)(nb)) %d\n", flntp.number - ft_intlength((uintmax_t)(nb)));
+        while (i++ < flntp.number - j)
+            res = ft_add_char(res, ' ');
+        i = 0;
+    }
+//    if (*n == 0)
+//    {
+//        *n = 0;
+//        return (ft_add_char(res, '0'));
+//    }
+    return (res);
+}

@@ -99,7 +99,7 @@ int ft_printf(const char *restrict format, ...)
         {
             flntp = ft_get_flntp(format, &i, format);
             if (!is_type(flntp.type) ) {
-                res= no_params(res, flntp, &i);
+                res = no_params(res, flntp, &i);
 //                i--;
 //                if (flntp.minus == 0)
 //                    res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
@@ -136,7 +136,7 @@ int ft_printf(const char *restrict format, ...)
 /*int main (void)
 {
 //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-    #define PRINTF "%.0%"
+    #define PRINTF "%lu", -42
     //unsigned int i = -4294967295;
     //short int i = 3237;
 //    int i = -963987432;
@@ -154,7 +154,10 @@ int ft_printf(const char *restrict format, ...)
     //ft_printf("ft_pr %s $\n", "this is a string");
 //    printf(PRINTF);
 //    ft_printf(PRINTF);
-    printf("%d\n", printf(PRINTF));
-    printf("%d\n", ft_printf(PRINTF));
+    //printf("%d\n", printf(PRINTF));
+   // printf("%d\n", ft_printf(PRINTF));
+    unsigned long l = -42;
+    ft_printf("ft: %lu\n", l);
+    printf("pr: %lu\n", l);
     return (0);
 }*/

@@ -43,7 +43,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 ////        printf("%d\n", flntp.sizenoll - i);
 //        while (i++ < flntp.sizenoll - i)
 //            res = ft_add_char(res, '0');
-        res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_unsigned(n));
+        res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
         i = 0;
         //printf("i: %d\n", i);
         if (flntp.plus == 1 && n > 0)
@@ -61,6 +61,6 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
             return (ft_add_char(flag_space(res, flntp, n), '0'));
     }
     else
-        return (ft_strjoin(flag_space(res,flntp, n), ft_itoa_unsigned(n)));
+        return (ft_strjoin(flag_space(res,flntp, n), ft_itoa_signed(n)));
     return (res);
 }

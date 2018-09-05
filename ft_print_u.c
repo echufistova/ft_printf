@@ -7,13 +7,13 @@
 
 char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 {
-    unsigned long long int n;
+    uintmax_t n;
     int i;
 
     if (flntp.hljz.l == 1 || flntp.type == 'U')
-        n = va_arg(ap, unsigned long int);
+        n = va_arg(ap, unsigned long);
     else if (flntp.hljz.ll == 1)
-        n = va_arg(ap, unsigned long long int);
+        n = va_arg(ap, unsigned long long);
     else if (flntp.hljz.h == 1)
         n = (unsigned short)va_arg(ap, int);
     else if (flntp.hljz.hh == 1)
@@ -22,6 +22,7 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
         n = va_arg(ap, uintmax_t);
     else
         n = va_arg(ap, unsigned int);
+//    printf("hello %ju\n", n );
 //    if (flntp.plus == 1 && n > 0)
 //    {
 //        res = ft_add_char(res, '+');
@@ -32,10 +33,10 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 //        while (i++ < flntp.sizenoll - ft_intlength(n))
 //            res = ft_add_char(res, '0');
 //    }
-    res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_unsigned(n));
+    res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
     if (flntp.minus == 1)
     {
-        i = ft_intlength(n);
+        i = ft_intlength_uns(n);
         while (i++ < flntp.number)
             res = ft_add_char(res, ' ');
     }
