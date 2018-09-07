@@ -45,6 +45,7 @@ char			*ft_itoa_signed(intmax_t n);
 int ft_intlength(intmax_t n);
 int ft_intlength_uns(uintmax_t n);
 int is_type(char c);
+int checkflags(char c);
 
 char *ft_itoa_base(intmax_t value, int base, t_flagsntype flntp);
 char *ft_itoa_base_uns(uintmax_t value, int base, t_flagsntype flntp);
@@ -66,7 +67,7 @@ int				ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 char			*ft_itoa(long long int n);
 void	*ft_memalloc(size_t size);
-void	ft_putchar(char c);
+void	ft_putchar(int c);
 void	ft_putnbr(int nbr);
 void	ft_putstr(char const *s);
 char	*ft_strjoin(char const *s1, char const *s2);

@@ -32,10 +32,11 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
         // printf("res posle  %s", res);
         //return (res);
      }
-    if (flntp.noll == 1)
+    if (flntp.noll == 1 && ft_strcmp(str, "(null)") != 0)
     {
         while (i++ < flntp.number - ft_strlen(str))
             res = ft_add_char(res, '0');
+		res = ft_strjoin(res, str);
         i = 0;
     }
     if (flntp.number != 0 && flntp.dot == 0)

@@ -53,7 +53,7 @@ void show_structure(t_flagsntype flntp)
     printf("flntp.type = %c\n", flntp.type);
 }
 
-char *no_params(char *res, t_flagsntype flntp, unsigned int *i)
+char *no_params(char *res, t_flagsntype flntp, unsigned int *i, const char *format)
 {
     int j;
 
@@ -61,12 +61,14 @@ char *no_params(char *res, t_flagsntype flntp, unsigned int *i)
     (*i)--;
     if (flntp.minus == 0)
         res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
-    res = ft_add_char(res, flntp.type);
+    //if (format[(*i) + 2] != '\0')
+        res = ft_add_char(res, flntp.type);
     if (flntp.minus == 1)
     {
         while (j++ < flntp.number - 1)
             res = ft_add_char(res, ' ');
     }
+    (*i)++;
     return (res);
 }
 
@@ -99,7 +101,7 @@ int ft_printf(const char *restrict format, ...)
         {
             flntp = ft_get_flntp(format, &i, format);
             if (!is_type(flntp.type) ) {
-                res = no_params(res, flntp, &i);
+                res = no_params(res, flntp, &i, format);
 //                i--;
 //                if (flntp.minus == 0)
 //                    res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
@@ -126,9 +128,11 @@ int ft_printf(const char *restrict format, ...)
             res = ft_strjoin(res, ft_strsub(format, i, 1));
             res = procent(ap, format, &i, res);
         }
-        if (format[i] == '\0')
-            ft_putstr(res);
+        //if (format[i] == '\0')
+          //  ft_putstr(res);
     }
+    if (format[i] == '\0')
+        ft_putstr(res);
     va_end(ap);
     return ((int)(ft_strlen(res) + len));//(int)ft_strlen(res));
 }
@@ -136,7 +140,7 @@ int ft_printf(const char *restrict format, ...)
 /*int main (void)
 {
 //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-    #define PRINTF "%lu", -42
+    #define PRINTF "%-+10.5d", 42425
     //unsigned int i = -4294967295;
     //short int i = 3237;
 //    int i = -963987432;
@@ -154,10 +158,10 @@ int ft_printf(const char *restrict format, ...)
     //ft_printf("ft_pr %s $\n", "this is a string");
 //    printf(PRINTF);
 //    ft_printf(PRINTF);
-    //printf("%d\n", printf(PRINTF));
-   // printf("%d\n", ft_printf(PRINTF));
-    unsigned long l = -42;
-    ft_printf("ft: %lu\n", l);
-    printf("pr: %lu\n", l);
+    printf(" %d\n", printf(PRINTF));
+    printf(" %d\n", ft_printf(PRINTF));
+ //   unsigned long l = -42;
+ //   ft_printf("ft: %lu\n", l);
+  //  printf("pr: %lu\n", l);
     return (0);
 }*/
