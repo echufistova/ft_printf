@@ -18,7 +18,7 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
         res = ft_print_x(ap, flntp, res);
     else if (flntp.type == 's')
         res = ft_print_s(ap, flntp, res, len);
-    else if (flntp.type == 'c')
+    else if (flntp.type == 'c' || flntp.type == 'S' || flntp.type == 'C')
         res = ft_print_c(ap, flntp, res, len);
     else if (flntp.type == 'p')
         res = ft_print_p(ap, flntp, res);
