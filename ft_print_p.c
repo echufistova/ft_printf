@@ -11,9 +11,11 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 
     n = (unsigned long)va_arg(ap, void *);
 
-    s = ft_itoa_base_uns(n, 16, flntp);
-    res = (flag_space(res, flntp, n));
-
+	if (n != 0)
+	    s = ft_itoa_base_uns(n, 16, flntp);
+	else
+		s = "0x0";
+	res = (flag_space(res, flntp, n));
     res = ft_strjoin(insertoct(res, flntp, n), s);
     return (res);
 }
