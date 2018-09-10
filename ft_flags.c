@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/07 15:28:17 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/07 15:33:56 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/10 10:41:39 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ char	*flag_space(char *res, t_flagsntype flntp, intmax_t n)
 		res = ft_add_char(res, '+');
     else if (flntp.space == 1 && flntp.plus == 0 && n > 0 && (flntp.type == 'd' ||
             flntp.type == 'D' || flntp.type == 'i'))
-		res = ft_add_char(res, ' ');
+	{
+        res = ft_add_char(res, ' ');
+        flntp.number = (flntp.number > 0) ? (flntp.number - 1) : 0;
+    }
 	if (flntp.noll == 1 && flntp.minus == 0)
 	{
 		if (n < 0)
