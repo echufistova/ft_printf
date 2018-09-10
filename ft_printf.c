@@ -137,7 +137,7 @@ int ft_printf(const char *restrict format, ...)
     return ((int)(ft_strlen(res) + len));//(int)ft_strlen(res));
 }
 
-int main (void)
+/*int main (void)
 {
     setlocale(LC_ALL, "");
 //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
@@ -165,7 +165,7 @@ int main (void)
  //   ft_printf("ft: %lu\n", l);
   //  printf("pr: %lu\n", l);
     return (0);
-}
+}*/
 
 /*int		main(void)
 {
