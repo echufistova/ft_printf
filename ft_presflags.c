@@ -19,6 +19,8 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, '-');
         if (flntp.plus == 1 && n > 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
+		if (flntp.space == 1)
+            res = ft_add_char(res, ' ');
        // printf("hello1");
         while (i++ < flntp.sizenoll - j)
         {
