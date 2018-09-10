@@ -5,7 +5,7 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-void ft_printnull(char *res, t_flagsntype flntp, char c)
+void ft_printnull(char *res, t_flagsntype flntp, int c)
 {
     //if (c == '\0')
     ft_putstr(res);
@@ -16,11 +16,11 @@ void ft_printnull(char *res, t_flagsntype flntp, char c)
 char *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
 {
     char p;
-    char c;
+    int c;
     int i;
 
     i = 0;
-    c = (char)(va_arg(ap, int));
+    c = (va_arg(ap, int));
     //printf("c: %c\n", c);
     p = 0;
     if (flntp.noll == 1 || flntp.number != 0)
@@ -32,7 +32,7 @@ char *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
         if (flntp.minus == 1)
         {
             i = 1;
-            res = ft_add_char(res, c);
+            res = ft_add_char(res, (char)c);
             while (i++ < flntp.number)
                 res = ft_add_char(res, ' ');
         }

@@ -21,7 +21,7 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
                 res = ft_add_char(res, str[i++]);
         if (ft_strlen(str) == 0)
             flntp.sizenoll = 0;
-		if (flntp.dot == 0)
+		if (flntp.dot == 0 && ft_strcmp(str, "(null)") != 0)
        		 res = ft_strjoin(res, str);
         //printf("res do %s\n", res);
         //i = (int)ft_strlen(str);
@@ -31,17 +31,18 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
             res = ft_add_char(res, ' ');
         // printf("res posle  %s", res);
         //return (res);
+
      }
     if (flntp.noll == 1 && ft_strcmp(str, "(null)") != 0)
     {
-        while (i++ < flntp.number - ft_strlen(str))
+        while (i++ < (int)(flntp.number - ft_strlen(str)))
             res = ft_add_char(res, '0');
-		res = ft_strjoin(res, str);
+        res = ft_strjoin(res, str);
         i = 0;
     }
-    if (flntp.number != 0 && flntp.dot == 0)
+    if (flntp.number != 0 && flntp.dot == 0 && flntp.noll == 0)
     {
-        while (i++ < flntp.number - ft_strlen(str))
+        while (i++ < (int)(flntp.number - ft_strlen(str)))
             res = ft_add_char(res, ' ');
         i = 0;
     }

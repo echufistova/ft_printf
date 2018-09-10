@@ -12,6 +12,8 @@
 # include <ctype.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <locale.h>
+# include <wchar.h>
 
 typedef struct      s_hljz
 {
@@ -39,6 +41,8 @@ typedef struct		s_flagsntype
 
 t_flagsntype	ft_new_flntp();
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format);
+char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len);
+char *no_params(char *res, t_flagsntype flntp, unsigned int *i);
 char            *ft_add_char(char *str, char c);
 char			*ft_itoa_unsigned(uintmax_t n);
 char			*ft_itoa_signed(intmax_t n);
@@ -67,7 +71,7 @@ int				ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 char			*ft_itoa(long long int n);
 void	*ft_memalloc(size_t size);
-void	ft_putchar(int c);
+void	ft_putchar(unsigned int c);
 void	ft_putnbr(int nbr);
 void	ft_putstr(char const *s);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -75,5 +79,7 @@ size_t		ft_strlen(const char *str);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char *flag_space(char *res, t_flagsntype flntp, intmax_t n);
 char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n);
+
+int ft_printf(const char *restrict format, ...);
 
 #endif //PRINTF_FT_PRINTF_H

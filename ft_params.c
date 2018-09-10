@@ -1,41 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_params.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/07 16:00:45 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/07 16:02:30 by ychufist         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+//
+// Created by echufy on 08.08.18.
+//
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int		ft_intlength(intmax_t n)
+int ft_intlength(intmax_t n)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (n != 0)
-	{
-	   	n /= 10;
-		i++;
-	}
-	return (i);
+    i = 0;
+        while (n != 0)
+        {
+            n /= 10;
+            i++;
+        }
+        //printf("intlength %d\n", i);
+    return (i);
 }
 
-int		ft_intlength_uns(uintmax_t n)
+int ft_intlength_uns(uintmax_t n)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+    i = 0;
+    while (n != 0)
+    {
+        n /= 10;
+        i++;
+    }
+    //printf("intlength %d\n", i);
+    return (i);
 }
-
