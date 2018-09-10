@@ -120,7 +120,7 @@ int ft_printf(const char *restrict format, ...)
             //printf("len do%d\n", len);
             len += (flntp.type == 'c' || flntp.type == 's' ? ft_strlen(res) : 0);
             //printf("len posle %d\n", len);
-            if (flntp.type == 'c' || flntp.type == 's')
+            if (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')
                 ft_bzero(res, ft_strlen(res));
         }
         else if (format[i] != '\0' && format[i] == '%' && format[i - 1] == '%')
