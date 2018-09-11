@@ -35,6 +35,8 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 //        while (i++ < flntp.sizenoll - ft_intlength(n))
 //            res = ft_add_char(res, '0');
 //    }
+    if (n == 0)
+        flntp.number--;
     res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
     if (flntp.minus == 1)
     {

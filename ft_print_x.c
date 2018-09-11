@@ -28,7 +28,10 @@ char    *ft_print_x(va_list ap, t_flagsntype flntp, char *res)
         if (flntp.dot == 1)
             return (flag_space(res, flntp, n));
         else
+        {
+            flntp.number--;
             return (ft_add_char(flag_space(res, flntp, n), '0'));
+        }
     }
     s = ft_strlen(ft_itoa_base_uns((intmax_t)n, 16, flntp));
 	if (flntp.oct == 1 && flntp.sizenoll < flntp.number)

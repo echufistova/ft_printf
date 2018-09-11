@@ -63,7 +63,10 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         if (flntp.oct == 1 || flntp.dot == 1)
             return (flag_space(res, flntp, n));
         else
+        {
+            flntp.number--;
             return (ft_add_char(flag_space(res, flntp, n), '0'));
+        }
     }
     else
         return (ft_strjoin(flag_space(res,flntp, n), ft_itoa_signed(n)));
