@@ -86,6 +86,7 @@ char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n)
     }
     if (flntp.noll == 0 && flntp.number != 0 && flntp.minus == 0)
     {
+        j = (n == 0) ? 1 : j;
         // printf("flntp.number %d\n", flntp.number);
         // printf("flntp.number - ft_intlength((uintmax_t)(nb)) %d\n", flntp.number - ft_intlength((uintmax_t)(nb)));
         while (i++ < flntp.number - j)

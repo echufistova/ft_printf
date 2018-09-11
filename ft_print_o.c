@@ -25,7 +25,7 @@ char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
         n = va_arg(ap, unsigned int);
     if (n == 0)
     {
-        if ((flntp.oct == 0 && flntp.dot != 0) || (flntp.number != 0 || flntp.sizenoll != 0))
+        if ((flntp.oct == 0 && flntp.dot != 0) || flntp.sizenoll != 0)
             return (flag_space(res, flntp, n));
         else
             return (ft_add_char(flag_space(res, flntp, n), '0'));
