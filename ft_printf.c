@@ -137,35 +137,35 @@ int ft_printf(const char *restrict format, ...)
     return ((int)(ft_strlen(res) + len));//(int)ft_strlen(res));
 }
 
-/*int main (void)
-{
-    setlocale(LC_ALL, "");
-//    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-    #define PRINTF "%lc\n", 6543//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
-    //unsigned int i = -4294967295;
-    //short int i = 3237;
-//    int i = -963987432;
-    //short short int i = 1;
-//    char *str = "Здравствуй, если не шутишь!";
-//    char c = -45;
-//    int a = 10;
-//    int *b = &a;
-//    printf("%p\n",b);
-//    ft_printf("%p\n",b);
-    //printf("%d\n", ft_intlength(543));
-//    printf("   printf: hello %s haha %%s tut\n", str);
-//    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
-    //printf("   pr %s $\n", "this is a string");
-    //ft_printf("ft_pr %s $\n", "this is a string");
-    //printf("%lc\n", (wint_t) 6543);
-   		ft_printf("%lc\n", 6543);
-//    printf(" %d\n", printf(PRINTF));
-//    printf(" %d\n", ft_printf(PRINTF));
- //   unsigned long l = -42;
- //   ft_printf("ft: %lu\n", l);
-  //  printf("pr: %lu\n", l);
-    return (0);
-}*/
+// int main (void)
+// {
+//     setlocale(LC_ALL, "");
+// //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
+//     #define PRINTF "%lc\n", 6543//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
+//     //unsigned int i = -4294967295;
+//     //short int i = 3237;
+// //    int i = -963987432;
+//     //short short int i = 1;
+// //    char *str = "Здравствуй, если не шутишь!";
+// //    char c = -45;
+// //    int a = 10;
+// //    int *b = &a;
+// //    printf("%p\n",b);
+// //    ft_printf("%p\n",b);
+//     //printf("%d\n", ft_intlength(543));
+// //    printf("   printf: hello %s haha %%s tut\n", str);
+// //    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
+//     //printf("   pr %s $\n", "this is a string");
+//     //ft_printf("ft_pr %s $\n", "this is a string");
+//     printf("|% +.0jd|", 0);
+//    		ft_printf("|% +.0jd|", 0);
+// //    printf(" %d\n", printf(PRINTF));
+// //    printf(" %d\n", ft_printf(PRINTF));
+//  //   unsigned long l = -42;
+//  //   ft_printf("ft: %lu\n", l);
+//   //  printf("pr: %lu\n", l);
+//     return (0);
+// }
 
 /*int		main(void)
 {

@@ -17,9 +17,9 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
     {
 		if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        if (flntp.plus == 1 && n > 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
-		if (flntp.space == 1)
+		else if (flntp.space == 1)
             res = ft_add_char(res, ' ');
        // printf("hello1");
         while (i++ < flntp.sizenoll - j)
@@ -27,7 +27,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, '0');
         }
     }
-	else if (flntp.minus == 0)
+	else if (flntp.minus == 0 && n != 0)
 	{
 //        if (flntp.type == 'x' || flntp.type == 'X')
 //            j = ft_strlen(ft_itoa_base_uns(n, 16, flntp));
@@ -35,11 +35,16 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 //            j = ft_strlen(ft_itoa_base_uns(n, 8, flntp));
 //        else
 //            j = ft_intlength(n);
+             if (flntp.space == 1)
+        {
+            res = ft_add_char(res, ' ');
+            flntp.number--;
+        }
         while (i++ < flntp.number - (flntp.sizenoll > j ? flntp.sizenoll : j))
             res = ft_add_char(res, ' ');
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        if (flntp.plus == 1 && n > 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
         while (i++ <= flntp.number - j)
             res = ft_add_char(res, '0');
@@ -48,7 +53,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
     {
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        if (flntp.plus == 1 && n > 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
         //printf("herre %d\n", flntp.sizenoll > j ? flntp.sizenoll : j);
         while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
