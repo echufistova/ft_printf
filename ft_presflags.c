@@ -19,7 +19,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, '-');
         else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
-		else if (flntp.space == 1)
+		else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, ' ');
        // printf("hello1");
         while (i++ < flntp.sizenoll - j)
