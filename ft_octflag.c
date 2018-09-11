@@ -84,6 +84,8 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
     {
         if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
+        else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            res = ft_add_char(res, ' ');
 		if (flntp.sizenoll > flntp.number)
         {
             while (i++ < (flntp.sizenoll > flntp.number ? flntp.sizenoll : flntp.number) - j)
