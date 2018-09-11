@@ -55,6 +55,8 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, '-');
         if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
+        else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            res = ft_add_char(res, ' ');
         //printf("herre %d\n", flntp.sizenoll > j ? flntp.sizenoll : j);
         while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
             res = ft_add_char(res, '0');
