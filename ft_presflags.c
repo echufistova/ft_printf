@@ -27,7 +27,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, '0');
         }
     }
-	else if (flntp.minus == 0 && n != 0)
+	else if (flntp.minus == 0 && n != 0 && is_type(flntp.type))
 	{
 //        if (flntp.type == 'x' || flntp.type == 'X')
 //            j = ft_strlen(ft_itoa_base_uns(n, 16, flntp));
