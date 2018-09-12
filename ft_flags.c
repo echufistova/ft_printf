@@ -27,7 +27,7 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
         flntp.type == 'D' || flntp.type == 'i') )
         res = ft_add_char(res, '+');
 
-    else if (flntp.space == 1 && flntp.plus == 0 && n >= 0 && (flntp.type == 'd' ||
+    else if (flntp.space == 1 && flntp.plus == 0 && flntp.noll == 0 && n >= 0 && (flntp.type == 'd' ||
             flntp.type == 'D' || flntp.type == 'i'))
     {
         res = ft_add_char(res, ' ');
