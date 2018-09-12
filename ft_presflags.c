@@ -12,7 +12,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 
     i = 0;
 
-    j = ((flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O') ? n : ft_intlength(n));
+    j = ((flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O' || flntp.type == 'p') ? n : ft_intlength(n));
     if (flntp.sizenoll > flntp.number)
     {
 		if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))

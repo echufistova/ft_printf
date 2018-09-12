@@ -29,7 +29,7 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 
     i = 0;
     nb = (uintmax_t )(n < 0 ? (-(n)) : n);
-    j = ((flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O') ? n : ft_intlength(nb));
+    j = ((flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O' || flntp.type == 'p') ? n : ft_intlength(nb));
     if (flntp.oct == 1 && n != 0)
     {
         if ((flntp.noll == 1 || flntp.sizenoll > flntp.number) && flntp.minus == 0 )
