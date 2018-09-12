@@ -53,10 +53,25 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
     {
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd'
+            || flntp.type == 'D'))
             res = ft_add_char(res, '+');
-        else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd'
+            || flntp.type == 'D'))
             res = ft_add_char(res, ' ');
+        if (!is_type(flntp.type))
+        {
+            if (flntp.noll == 1 && flntp.number > flntp.sizenoll)
+            {
+                while (i++ < flntp.number - 1)
+                    res = ft_add_char(res, '0');
+            }
+            else
+            {
+                while (i++ < flntp.number - 1)
+                    res = ft_add_char(res, ' ');
+            }
+        }
         //printf("herre %d\n", flntp.sizenoll > j ? flntp.sizenoll : j);
         while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
             res = ft_add_char(res, '0');
