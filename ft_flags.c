@@ -39,6 +39,11 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
     {
         if (n < 0)
             res = ft_add_char(res, '-');
+        else if (flntp.space == 1 && flntp.plus == 0 && (flntp.type == 'd' || flntp.type == 'D' || flntp.type == 'i'))
+        {
+            res = ft_add_char(res, ' ');
+            flntp.number--;
+        }
         while (i++ < flntp.number - j)
             res = ft_add_char(res, '0');
         i = 0;
