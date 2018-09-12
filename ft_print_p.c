@@ -30,6 +30,7 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 		res = ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
 	else
 	{
+		flntp.oct = 0;
 		//res = (flag_space(res, flntp, n));
 		res = ft_strjoin(flag_space(res, flntp, ft_strlen(s)), s);
 	}
