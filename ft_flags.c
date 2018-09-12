@@ -29,7 +29,7 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
         res = ft_add_char(res, '+');
         //flntp.number--;
     }
-    else if (flntp.space == 1 && flntp.plus == 0 && n > 0 && (flntp.type == 'd' ||
+    else if (flntp.space == 1 && flntp.plus == 0 && n >= 0 && (flntp.type == 'd' ||
             flntp.type == 'D' || flntp.type == 'i'))
     {
         res = ft_add_char(res, ' ');
@@ -51,8 +51,6 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
     if (flntp.noll == 0 && flntp.number != 0 && flntp.minus == 0)
     {
         j = (n == 0) ? 1 : j;
-       // printf("flntp.number %d\n", flntp.number);
-       // printf("flntp.number - ft_intlength((uintmax_t)(nb)) %d\n", flntp.number - ft_intlength((uintmax_t)(nb)));
         while (i++ < flntp.number - j)
             res = ft_add_char(res, ' ');
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))

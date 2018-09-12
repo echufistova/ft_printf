@@ -16,7 +16,7 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
         res = ft_print_o(ap, flntp, res);
     else if (flntp.type == 'x' || flntp.type == 'X')
         res = ft_print_x(ap, flntp, res);
-    else if (flntp.type == 's')
+    else if (flntp.type == 's' )
         res = ft_print_s(ap, flntp, res, len);
     else if (flntp.type == 'c' || flntp.type == 'C' || flntp.type == 'S')
         res = ft_print_c(ap, flntp, res, len);
@@ -105,18 +105,8 @@ int ft_printf(const char *restrict format, ...)
                 return (0);
             if (!is_type(flntp.type) ) {
                 res = no_params(res, flntp, &i);
-//                i--;
-//                if (flntp.minus == 0)
-//                    res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
-//                res = ft_add_char(res, format[i]);
-//                if (flntp.minus == 1)
-//                {
-//                    while (i++ < flntp.number - j)
-//                        res = ft_add_char(res, ' ');
-//                }
                 continue;
             }
-
 //            show_structure(flntp);
 //            ft_putchar('\n');
             res = what_to_print(res, flntp, ap, &len);
@@ -131,8 +121,6 @@ int ft_printf(const char *restrict format, ...)
             res = ft_strjoin(res, ft_strsub(format, i, 1));
             res = procent(ap, format, &i, res);
         }
-        //if (format[i] == '\0')
-          //  ft_putstr(res);
     }
     if (format[i] == '\0')
         ft_putstr(res);
