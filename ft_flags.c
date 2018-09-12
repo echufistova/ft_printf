@@ -25,10 +25,8 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
 //        return (ft_octflag(res, flntp, *n));
     if (flntp.plus == 1 && n >= 0 && (flntp.type == 'd' ||
         flntp.type == 'D' || flntp.type == 'i') )
-    {
         res = ft_add_char(res, '+');
-        //flntp.number--;
-    }
+
     else if (flntp.space == 1 && flntp.plus == 0 && n >= 0 && (flntp.type == 'd' ||
             flntp.type == 'D' || flntp.type == 'i'))
     {
@@ -55,13 +53,8 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, ' ');
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        i = 0;
     }
-//    if (*n == 0)
-//    {
-//        *n = 0;
-//        return (ft_add_char(res, '0'));
-//    }
+
     return (res);
 }
 

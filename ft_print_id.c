@@ -62,6 +62,14 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     {
         if (flntp.oct == 1 || flntp.dot == 1)
             return (flag_space(res, flntp, n));
+        else if (flntp.minus == 1)
+        {
+
+            res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
+            i  = 1;
+            while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))
+                res = ft_add_char(res, ' ');
+        }
         else
         {
             flntp.number = (flntp.noll == 1) ? flntp.number - 1 : flntp.number;
