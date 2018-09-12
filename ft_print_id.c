@@ -60,7 +60,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     //res = (n == 0 ? ft_add_char(flag_space(res,flntp, &n), '0') : ft_strjoin(flag_space(res,flntp, &n), ft_itoa_unsigned(n)));
 	 if (n == 0)
     {
-        if (flntp.oct == 1 || flntp.dot == 1)
+        if (flntp.dot == 1)
             return (flag_space(res, flntp, n));
         else if (flntp.minus == 1)
         {
