@@ -51,6 +51,8 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 //            res = ft_add_char(res, '0');
         res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
         i = 0;
+        if (flntp.space == 1)
+            flntp.number--;
         if (flntp.dot == 1 && n == 0)//(n == 0 || res[ft_strlen(res) - 1] == '0'))
             res[ft_strlen(res) - 1] = '\0';
         //printf("i: %d\n", i);
