@@ -38,6 +38,7 @@ char    *ft_print_x(va_list ap, t_flagsntype flntp, char *res)
         flntp.number = flntp.number - 2;
     res = (flntp.oct == 1) ? ft_octflag(res, flntp, s) : flag_space(res, flntp, s);
     j = (int)ft_strlen(ft_itoa_base_uns((intmax_t)n, 16, flntp));
+    j = (j > flntp.sizenoll) ? j : flntp.sizenoll;
     res = ft_strjoin(res, ft_itoa_base_uns((intmax_t)n, 16, flntp));
     if (flntp.minus == 1)
     {
