@@ -61,10 +61,10 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 	 if (n == 0)
     {
         //flntp.number = (flntp.minus == 1 || flntp.noll) ? flntp.number - 1 : flntp.number;
-        if (flntp.plus == 1 && flntp.noll == 0 && n >= 0)
-            flntp.number--;
+        // if (flntp.plus == 1 && flntp.noll == 0 && n >= 0)
+        //     flntp.number--;
         if (flntp.dot == 1)
-            return (flag_space(res, flntp, n));
+            return (ft_presflags(res, flntp, n));//flag_space(res, flntp, n));
         else if (flntp.minus == 1)
         {
             flntp.number = (flntp.space == 1 || flntp.noll == 1) ? flntp.number - 1 : flntp.number;

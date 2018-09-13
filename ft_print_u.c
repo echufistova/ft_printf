@@ -24,23 +24,12 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
         n = va_arg(ap, size_t);
     else
         n = va_arg(ap, unsigned int);
-//    printf("hello %ju\n", n );
-//    if (flntp.plus == 1 && n > 0)
-//    {
-//        res = ft_add_char(res, '+');
-//        flntp.sizenoll--;
-//    }
-//    if (flntp.noll == 1)
-//    {
-//        while (i++ < flntp.sizenoll - ft_intlength(n))
-//            res = ft_add_char(res, '0');
-//    }
     if (n == 0)
         flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
     res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
     if (flntp.minus == 1)
     {
-        i = ft_intlength_uns(n);
+        i = (ft_intlength_uns(n) > flntp.sizenoll) ? ft_intlength_uns(n) : flntp.sizenoll;
         while (i++ < flntp.number)
             res = ft_add_char(res, ' ');
     }
