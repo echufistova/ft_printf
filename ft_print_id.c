@@ -68,7 +68,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
             return (flag_space(res, flntp, n));
         else if (flntp.minus == 1)
         {
-            flntp.number--;
+            //flntp.number--;
             // if (flntp.space == 1 && flntp.noll == 1)
             //     res = ft_add_char(res, ' ');
             res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
