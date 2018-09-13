@@ -133,7 +133,7 @@ int ft_printf(const char *restrict format, ...)
 //     setlocale(LC_ALL, "");
 //  int p;
 //  //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "|% #20p|\n", &p//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
+//      #define PRINTF "|% 0-5ld|\n", 0//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
 //     //unsigned int i = -4294967295;
 //     //short int i = 3237;
 // //    int i = -963987432;

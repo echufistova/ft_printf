@@ -70,8 +70,8 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         {
             flntp.number = (flntp.space == 1) ? flntp.number - 1 : flntp.number;
             // flntp.number--;
-            // if (flntp.space == 1 && flntp.noll == 1)
-            //     res = ft_add_char(res, ' ');
+            if (flntp.space == 1 && flntp.noll == 1 && flntp.plus == 0)
+                res = ft_add_char(res, ' ');
             res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
             i  = 1;
             while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))

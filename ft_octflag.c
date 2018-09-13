@@ -74,7 +74,7 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 //            printf("flntp number %d\n", flntp.number);
 //            printf("flntp number %d\n", ft_intlength(n));
             while (i++ < flntp.number -  j + ((flntp.type == 'x' ||
-                    flntp.type == 'X') ? 1 : 0))
+                    flntp.type == 'X' || (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')) ? 1 : 0))
                 res = ft_add_char(res, '0');
         }
         else
