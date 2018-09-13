@@ -35,7 +35,8 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     {
         if (n < 0)
         {
-            res = ft_add_char(res, '-');
+            if (flntp.dot == 0)
+                res = ft_add_char(res, '-');
             flntp.number--;
         }
         if (flntp.plus == 1 && n >= 0)
