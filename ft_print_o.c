@@ -48,6 +48,7 @@ char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
         }
     }
     s = ft_strlen((ft_itoa_base_uns((intmax_t)n, 8, flntp)));
+    //j = (j > flntp.sizenoll) ? j : flntp.sizenoll;
     if (flntp.oct == 1 && flntp.sizenoll < flntp.number)
         flntp.number--;
     res = (flntp.oct == 1) ? ft_octflag(res, flntp, s) : flag_space(res, flntp, s);
@@ -55,7 +56,7 @@ char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
     j = 0;
     if (flntp.minus == 1)
     {
-        while (j++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))
+        while (j++ < flntp.number - (flntp.sizenoll > s ? flntp.sizenoll : s))
             res = ft_add_char(res, ' ');
     }
     return (res);
