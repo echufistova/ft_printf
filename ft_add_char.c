@@ -21,5 +21,7 @@ char *ft_add_char(char *str, char c)
         }
     }
     res[i] = c;
+    if (str)
+        free(str);
     return (res);
 }
