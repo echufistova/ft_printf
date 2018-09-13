@@ -95,7 +95,7 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
             while (i++ < (flntp.sizenoll > flntp.number ? flntp.sizenoll : flntp.number) - j)
                 res = ft_add_char(res, '0');
         }
-        else if (flntp.number != 0 && flntp.noll == 0)
+        else if (flntp.number != 0 && flntp.noll == 0 && flntp.minus == 0)
         {
             while (i++ < flntp.number)
                 res = ft_add_char(res, ' ');
