@@ -35,7 +35,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 //            j = ft_strlen(ft_itoa_base_uns(n, 8, flntp));
 //        else
 //            j = ft_intlength(n);
-             if (flntp.space == 1)
+             if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
         {
             res = ft_add_char(res, ' ');
             flntp.number--;
