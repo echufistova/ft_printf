@@ -53,9 +53,6 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         i = 0;
         if (flntp.space == 1)
             flntp.number--;
-        if (flntp.dot == 1 && n == 0)//(n == 0 || res[ft_strlen(res) - 1] == '0'))
-            res[ft_strlen(res) - 1] = '\0';
-        //printf("i: %d\n", i);
         while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))
             res = ft_add_char(res, ' ');
         return (res);
@@ -70,7 +67,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
             return (flag_space(res, flntp, n));
         else if (flntp.minus == 1)
         {
-            flntp.number = (flntp.space == 1) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.space == 1 || flntp.noll == 1) ? flntp.number - 1 : flntp.number;
             // flntp.number--;
             if (flntp.space == 1 && flntp.noll == 1 && flntp.plus == 0)
                 res = ft_add_char(res, ' ');
@@ -81,7 +78,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         }
         else
         {
-            flntp.number = (flntp.noll == 1 && flntp.minus) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.noll == 1 || flntp.minus) ? flntp.number - 1 : flntp.number;
             return (ft_add_char(flag_space(res, flntp, n), '0'));
         }
     }
