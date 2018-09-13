@@ -61,13 +61,15 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     //res = (n == 0 ? ft_add_char(flag_space(res,flntp, &n), '0') : ft_strjoin(flag_space(res,flntp, &n), ft_itoa_unsigned(n)));
 	 if (n == 0)
     {
+        //flntp.number = (flntp.minus == 1 || flntp.noll) ? flntp.number - 1 : flntp.number;
         if (flntp.plus == 1 && flntp.noll == 0 && n >= 0)
             flntp.number--;
         if (flntp.dot == 1)
             return (flag_space(res, flntp, n));
         else if (flntp.minus == 1)
         {
-
+            // if (flntp.space == 1 && flntp.noll == 1)
+            //     res = ft_add_char(res, ' ');
             res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
             i  = 1;
             while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))

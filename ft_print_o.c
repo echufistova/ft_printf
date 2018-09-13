@@ -34,7 +34,7 @@ char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
         // }
         else 
         {
-            flntp.number = (flntp.minus == 1 || flntp.noll) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
             if (flntp.minus == 1)
             {
                 res = ft_add_char(res, '0');

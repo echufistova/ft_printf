@@ -36,7 +36,7 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 //            res = ft_add_char(res, '0');
 //    }
     if (n == 0)
-        flntp.number = (flntp.minus == 1 || flntp.noll) ? flntp.number - 1 : flntp.number;
+        flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
     res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
     if (flntp.minus == 1)
     {
