@@ -38,6 +38,8 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
                res = ft_add_char(res, '-');
             else if (flntp.plus == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
                 res = ft_add_char(res, '+');
+             else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+                res = ft_add_char(res, ' ');
             res = insertoct(res, flntp, n);
 //            printf("numr %d\n", flntp.number);
 //            printf("ft_intlength((uintmax_t)(nb) %d\n", ft_intlength((uintmax_t)(nb)));
