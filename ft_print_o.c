@@ -27,10 +27,24 @@ char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
     {
         if ((flntp.oct == 0 && flntp.dot != 0) || flntp.sizenoll != 0)
             return (flag_space(res, flntp, n));
-        else
+        // else
+        // {
+        //     flntp.number = (flntp.noll == 1) ? flntp.number - 1 : flntp.number;
+        //     return (ft_add_char(flag_space(res, flntp, n), '0'));
+        // }
+        else 
         {
             flntp.number = (flntp.noll == 1) ? flntp.number - 1 : flntp.number;
-            return (ft_add_char(flag_space(res, flntp, n), '0'));
+            if (flntp.minus == 1)
+            {
+                res = ft_add_char(res, '0');
+                flntp.number--;
+                while (j++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))
+                    res = ft_add_char(res, ' ');
+                return (flag_space(res, flntp, n));
+            }
+            else
+                return (ft_add_char(flag_space(res, flntp, n), '0'));
         }
     }
     s = ft_strlen((ft_itoa_base_uns((intmax_t)n, 8, flntp)));
