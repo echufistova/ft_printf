@@ -112,7 +112,7 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
             while (i++ < flntp.number)
                 res = ft_add_char(res, ' ');
         }
-        else //if (flntp.number != 0 && flntp.noll == 1 && flntp.minus == 0 && flntp.dot == 0)
+        else if (flntp.number != 0 && flntp.noll == 1 && flntp.minus == 0 && flntp.dot == 0)
         {
             flntp.number = (flntp.noll == 1) ? flntp.number + 1 : flntp.number;
             while (i++ < flntp.number)// - 1)
