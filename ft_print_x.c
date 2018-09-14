@@ -29,7 +29,14 @@ char    *ft_print_x(va_list ap, t_flagsntype flntp, char *res)
             return (flag_space(res, flntp, n));
         else
         {
-            flntp.number = (flntp.noll == 1) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.noll == 1 || flntp.minus) ? flntp.number - 1 : flntp.number;
+            if (flntp.minus == 1)
+            {
+                res = ft_add_char(res, '0');
+                while (j++ < flntp.number)
+                    res = ft_add_char(res, ' ');
+                return (res);
+            }
             return (ft_add_char(flag_space(res, flntp, n), '0'));
         }
     }
