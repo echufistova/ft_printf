@@ -39,7 +39,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
                 res = ft_add_char(res, '-');
             flntp.number--;
         }
-        if (flntp.plus == 1 && n >= 0)
+        if (flntp.plus == 1 && flntp.space == 0 && n >= 0)
         {
           //  res = ft_add_char(res, '+');
             flntp.number--;

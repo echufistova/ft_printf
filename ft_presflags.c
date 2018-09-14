@@ -61,7 +61,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, ' ');
         if (!is_type(flntp.type))
         {
-            if (flntp.noll == 1 && flntp.number > flntp.sizenoll)
+            if (flntp.noll2 == 3 && flntp.number > flntp.sizenoll)
             {
                 while (i++ < flntp.number - 1)
                     res = ft_add_char(res, '0');
