@@ -20,6 +20,7 @@ t_flagsntype	ft_new_flntp()
 
     flagstype.oct = 0;
     flagstype.noll = 0;
+    flagstype.noll2 = 0;
 	flagstype.sizenoll = 0;
     flagstype.minus = 0;
     flagstype.plus = 0;
@@ -92,7 +93,9 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
 			if (fl_tp[*i] == '.')
 			{
 				flagstype.dot = 1;
-				flagstype.noll = 0;
+                flagstype.noll = 0;
+				flagstype.noll2 = 3;
+
 				j = ++(*i);
 	            while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
     	            (*i)++;

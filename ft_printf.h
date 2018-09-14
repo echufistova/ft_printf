@@ -29,6 +29,7 @@ typedef struct		s_flagsntype
 {
     int             oct;
     int             noll;
+    int             noll2;
 	int				sizenoll;
     int             minus;
     int             plus;
