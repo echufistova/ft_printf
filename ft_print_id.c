@@ -24,13 +24,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     else if (flntp.hljz.z == 1)
         n = va_arg(ap, size_t);
     else
-        n = va_arg(ap, int);//res = ft_strjoin(res, ft_itoa(va_arg(ap, int)));
-    //else if (flntp.hljz.h == 1 && (flntp.type == 'i' || flntp.type == 'd'))
-    //  res = ft_strjoin(res, ft_itoa(va_arg(ap, short int)));
-    //else if (flntp.hljz.hh == 1 && (flntp.type == 'i' || flntp.type == 'd'))
-    //   res = ft_strjoin(res, ft_itoa(va_arg(ap, short short int)));
-    //  printf("n: %ji\n", n);
-    //res = flag_space(res,flntp, &n);
+        n = va_arg(ap, int);
     if (flntp.minus == 1 && n != 0)
     {
         if (n < 0)
@@ -44,10 +38,6 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
           //  res = ft_add_char(res, '+');
             flntp.number--;
         }
-        i = ft_intlength(n);
-//        i--;
-////        printf("%d\n", flntp.sizenoll - i);
-//        while (i++ < flntp.sizenoll - i)
 //            res = ft_add_char(res, '0');
         res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
         i = 0;
@@ -60,9 +50,6 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     //res = (n == 0 ? ft_add_char(flag_space(res,flntp, &n), '0') : ft_strjoin(flag_space(res,flntp, &n), ft_itoa_unsigned(n)));
 	 if (n == 0)
     {
-        //flntp.number = (flntp.minus == 1 || flntp.noll) ? flntp.number - 1 : flntp.number;
-        // if (flntp.plus == 1 && flntp.noll == 0 && n >= 0)
-        //     flntp.number--;
         if (flntp.dot == 1)
             return (ft_presflags(res, flntp, n));//flag_space(res, flntp, n));
         else if (flntp.minus == 1)
@@ -78,7 +65,8 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         }
         else
         {
-            flntp.number = (flntp.noll == 1 || flntp.minus) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.space && flntp.plus && !flntp.noll && !flntp.oct) ? flntp.number + 1 : flntp.number;
+            flntp.number = (flntp.noll == 1 || flntp.minus || (flntp.space && !flntp.oct)) ? flntp.number - 1 : flntp.number;
             return (ft_add_char(flag_space(res, flntp, n), '0'));
         }
     }
