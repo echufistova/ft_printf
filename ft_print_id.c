@@ -57,7 +57,10 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
             flntp.number = (flntp.space == 1 || flntp.plus == 1 || (flntp.noll == 1 && flntp.minus == 0)) ? flntp.number - 1 : flntp.number;
             // flntp.number--;
             if (flntp.space == 1 && flntp.noll == 1 && flntp.plus == 0)
+            {
                 res = ft_add_char(res, ' ');
+                flntp.space = 0;
+            }
             res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
             i  = 1;
             while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))
@@ -66,7 +69,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         else
         {
             flntp.number = (flntp.space && flntp.plus && !flntp.noll && !flntp.oct) ? flntp.number + 1 : flntp.number;
-            flntp.number = (flntp.noll == 1 || flntp.minus || (flntp.space && !flntp.oct)) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.noll == 1 || flntp.minus || (flntp.space && !flntp.plus)) ? flntp.number - 1 : flntp.number;
             return (ft_add_char(flag_space(res, flntp, n), '0'));
         }
     }
