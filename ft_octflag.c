@@ -70,7 +70,7 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
             }
             if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
                 res = ft_add_char(res, '-');
-            else if (flntp.plus == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
                 res = ft_add_char(res, '+');
             res = insertoct(res, flntp, n);
 //            printf("flntp number %d\n", flntp.number);
@@ -81,7 +81,9 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
         }
         else
         {
-            if (flntp.plus == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+                res = ft_add_char(res, '-');
+            if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
                     res = ft_add_char(res, '+');
                 else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
                     res = ft_add_char(res, ' ');
