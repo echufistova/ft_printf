@@ -14,13 +14,16 @@
 
 void	ft_putchar(unsigned int c)
 {
+    write(1, &c, 1);//&uni[3], 1);
+}
+
+void ft_putchar_w(wchar_t c)
+{
 	unsigned char uni[4];
 	unsigned int i;
 
 	i = (unsigned int)c;
-	if (i  < 128)
-		write(1, &c, 1);
-	else if (i < 2048)
+	if (i < 2048)
 	{
 		uni[1] = 128 | (i & 63);
 		uni[0] = 192 | (i >> 6);
@@ -33,8 +36,7 @@ void	ft_putchar(unsigned int c)
 		uni[0] = 224 | (i >> 12);
 		write(1, &uni, 3);
 	}
-	else if (c < 1114112)
-	{
+	else if (i < 1114112) {
 		uni[3] = 128 | (i & 63);
 		uni[2] = 128 | ((i >> 6) & 63);
 		uni[1] = 128 | ((i >> 12) & 63);

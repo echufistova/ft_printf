@@ -73,6 +73,7 @@ void	ft_bzero(void *s, size_t n);
 char			*ft_itoa(long long int n);
 void	*ft_memalloc(size_t size);
 void	ft_putchar(unsigned int c);
+void    ft_putchar_w(wchar_t c);
 void	ft_putnbr(int nbr);
 void	ft_putstr(char const *s);
 char	*ft_strjoin(char const *s1, char const *s2);
