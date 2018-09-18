@@ -65,7 +65,7 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 //                                                   j) + ((flntp.type == 'x' || flntp.type == 'X') ? 1 : 0));
             if (is_type(flntp.type)) {
                 while (i++ < flntp.number - (flntp.sizenoll > j ? flntp.sizenoll :
-                                             j) + ((flntp.type == 'x' || flntp.type == 'X') ? 1 : 0))
+                                             j) )//+ ((flntp.type == 'x' || flntp.type == 'X') ? 1 : 0))
                     res = ft_add_char(res, ' ');
             }
             if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
