@@ -69,7 +69,7 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         else
         {
             flntp.number = (flntp.space && flntp.plus && !flntp.noll && !flntp.oct) ? flntp.number + 1 : flntp.number;
-            flntp.number = (flntp.noll == 1 || flntp.minus || (flntp.space && !flntp.plus)) ? flntp.number - 1 : flntp.number;
+            flntp.number = (flntp.noll == 1 || flntp.minus || flntp.plus || (flntp.space && !flntp.plus)) ? flntp.number - 1 : flntp.number;
             return (ft_add_char(flag_space(res, flntp, n), '0'));
         }
     }
