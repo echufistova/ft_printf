@@ -42,10 +42,13 @@ char *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
             else
                 {
                 ft_putstr(res);
-                    (*len)++;
+                //printf("do *len %d\n", *len);
+                    (*len) += ft_strlen(res);
+                 //   printf("posle *len %d\n", *len);
                 ft_bzero(res, ft_strlen(res));
                 ft_printnull(res, flntp, c, w);
-            }
+                    (*len)++;
+                }
             while (i++ < flntp.number)
                 res = ft_add_char(res, ' ');
            // if (flntp.type == 'c')
