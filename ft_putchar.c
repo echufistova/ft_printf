@@ -23,7 +23,9 @@ void ft_putchar_w(wchar_t c)
 	unsigned int i;
 
 	i = (unsigned int)c;
-	if (i < 2048)
+	if (i < 128)
+        write(1, &c, 1);
+	else if (i < 2048)
 	{
 		uni[1] = 128 | (i & 63);
 		uni[0] = 192 | (i >> 6);
