@@ -26,8 +26,15 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 //		if (flntp.noll == 1)
 //			flntp.number--;
 		res = ft_strjoin(insertoct(res, flntp, n), s);//ft_strjoin(insertoct(res, flntp, n), s);
-        while (i++ < flntp.number)
-            res = ft_add_char(res, '0');
+        if (flntp.noll == 1 && flntp.minus == 0) {
+            while (i++ < flntp.number)
+                res = ft_add_char(res, '0');
+        }
+        else if (flntp.minus == 1 && flntp.number != 0)
+        {
+            while (i++ < flntp.number)
+                res = ft_add_char(res, ' ');
+        }
 		//res = ft_strjoin(res, s);
 	}
 	else if (flntp.oct == 0 && n != 0)
