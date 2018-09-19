@@ -8,7 +8,9 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 {
     unsigned long n;
     char *s;
+    int i;
 
+    i = 0;
     n = (unsigned long)va_arg(ap, void *);
 
 	if (n != 0)
@@ -23,16 +25,21 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	{
 //		if (flntp.noll == 1)
 //			flntp.number--;
-		res = insertoct(res, flntp, n);//ft_strjoin(insertoct(res, flntp, n), s);
-		res = ft_strjoin(flag_space(res, flntp, ft_strlen(s)), s);
+		res = ft_strjoin(insertoct(res, flntp, n), s);//ft_strjoin(insertoct(res, flntp, n), s);
+        while (i++ < flntp.number)
+            res = ft_add_char(res, '0');
+		//res = ft_strjoin(res, s);
 	}
 	else if (flntp.oct == 0 && n != 0)
 		res = ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
 	else
 	{
 		flntp.oct = 0;
+		while (i++ < flntp.number)
+			res = ft_add_char(res, ' ');
+		res = ft_strjoin(res, s);
 		//res = (flag_space(res, flntp, n));
-		res = ft_strjoin(flag_space(res, flntp, ft_strlen(s)), s);
+		//res = ft_strjoin(flag_space(res, flntp, ft_strlen(s)), s);
 	}
     return (res);
 }
