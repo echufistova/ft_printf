@@ -8,6 +8,10 @@
 
 char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
 {
+    if (flntp.zirka1 == 1)
+        flntp.number = va_arg(ap, int);
+    if (flntp.zirka2 == 1)
+        flntp.sizenoll = va_arg(ap, int);
     if (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')
         res = ft_print_int(ap, flntp, res);
     else if (flntp.type == 'u' || flntp.type == 'U')
@@ -133,7 +137,7 @@ int ft_printf(const char *restrict format, ...)
 //     setlocale(LC_ALL, "");
 //  int p;
 //  //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "|% 0-5ld|\n", 0//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
+//      #define PRINTF "|%1.*d|\n",9, 5, 8//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
 //     //unsigned int i = -4294967295;
 //     //short int i = 3237;
 // //    int i = -963987432;

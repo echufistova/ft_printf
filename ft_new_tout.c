@@ -9,7 +9,7 @@
 int checkflags(char c)
 {
     if (c == '#' || c == '0' || c == '-' ||
-            c == '+' || c == ' ' || c == '.' || (c >= '0' && c <= '9'))
+            c == '+' || c == ' ' || c == '.' || c == '*' || (c >= '0' && c <= '9'))
         return (1);
     return (0);
 }
@@ -33,6 +33,8 @@ t_flagsntype	ft_new_flntp()
     flagstype.hljz.l = 0;
     flagstype.hljz.j = 0;
     flagstype.hljz.z = 0;
+    flagstype.zirka1 = 0;
+    flagstype.zirka2 = 0;
     flagstype.type = '0';
     return (flagstype);
 }
@@ -59,8 +61,6 @@ t_flagsntype    ft_hljz(t_flagsntype flagstype, const char *fl_tp, unsigned int 
         flagstype.hljz.z = 1;
     if (fl_tp[*i] == 'h' || fl_tp[*i] == 'l' || fl_tp[*i] == 'j' || fl_tp[*i] == 'z')
             (*i)++;
-   // while (!is_type(fl_tp[*i]))// && fl_tp[*i] >= 65 && fl_tp[*i] <= 48 && fl_tp[*i] >= 57)
-    //    (*i)++;
     flagstype.type = fl_tp[(*i)++];
     return (flagstype);
 }
@@ -73,8 +73,7 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
 
     flagstype = ft_new_flntp();
     n = (char*)ft_memalloc(sizeof(char));
-    while (format[*i] != '\0' && checkflags(fl_tp[*i]))//(fl_tp[*i] == '#' || fl_tp[*i] == '0' || fl_tp[*i] == '-' ||
-            //fl_tp[*i] == '+' || fl_tp[*i] == ' ' || fl_tp[*i] == '.' || (fl_tp[*i] >= '0' && fl_tp[*i] <= '9')))
+    while (format[*i] != '\0' && checkflags(fl_tp[*i]))
     {
         if (fl_tp[*i] == '#')
             flagstype.oct = 1;
@@ -86,16 +85,20 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
             flagstype.plus = 1;
         else if (fl_tp[*i] == ' ')
             flagstype.space = 1;
+        else if (fl_tp[*i] == '*')
+            flagstype.zirka1 = 1;
         else if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
         {
             while (fl_tp[*i] != '\0' && fl_tp[*i] >= '0' && fl_tp[*i] <= '9')
                 n = ft_add_char(n, fl_tp[(*i)++]);
 			if (fl_tp[*i] == '.')
-			{
+			{    
 				flagstype.dot = 1;
 				flagstype.noll2 = (flagstype.noll == 1) ? 3 : 0;
                 flagstype.noll = 0;
 				j = ++(*i);
+                if (fl_tp[(*i)++] == '*')
+                    flagstype.zirka2 = 1;
 	            while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
     	            (*i)++;
     	   	     flagstype.sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
