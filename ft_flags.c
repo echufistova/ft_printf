@@ -54,6 +54,9 @@ char *flag_space(char *res, t_flagsntype flntp, intmax_t n)
     }
     else if (flntp.noll == 0 && flntp.number != 0 && flntp.minus == 0)
     {
+        if ((flntp.plus || flntp.space || n < 0 ) && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D') 
+        && !flntp.minus && !flntp.oct && !flntp.noll)
+            flntp.number--;
         j = (n == 0) ? 1 : j;
         while (i++ < flntp.number - j)
             res = ft_add_char(res, ' ');
