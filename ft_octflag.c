@@ -83,11 +83,20 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
         else
         {
             if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            {
                 res = ft_add_char(res, '-');
-            if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-                    res = ft_add_char(res, '+');
-                else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-                    res = ft_add_char(res, ' ');
+                flntp.number--;
+            }
+            else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            {
+                res = ft_add_char(res, '+');
+                flntp.number--;
+            }
+            else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+            {
+                res = ft_add_char(res, ' ');
+                flntp.number--;
+            }
             res = insertoct(res, flntp, n);
            // if  (flntp.number >= flntp.sizenoll && flntp.sizenoll != 0 && flntp.noll2 == 3) {
            //          while (i++ < flntp.number - j)

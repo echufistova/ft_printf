@@ -206,6 +206,8 @@ char *ft_print_S(va_list ap, t_flagsntype flntp, char *res, int *len)
         if (flntp.dot == 0 && flntp.noll == 0 && flntp.minus == 0)
         {
             ft_putstr(res);
+            *len += ft_strlen(res);
+            ft_bzero(res, ft_strlen(res));
             ft_putstr_w(w_str);//res = ft_strjoin(res, w_str);
         }
         //ft_putstr(res);

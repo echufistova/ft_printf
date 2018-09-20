@@ -44,7 +44,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(res, ' ');
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '+');
         while (i++ <= flntp.number - j)
             res = ft_add_char(res, '0');
@@ -53,7 +53,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
     {
         if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
             res = ft_add_char(res, '-');
-        if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd'
+        else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd'
             || flntp.type == 'D'))
             res = ft_add_char(res, '+');
         else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd'
