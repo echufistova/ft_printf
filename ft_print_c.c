@@ -25,7 +25,7 @@ char *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
     i = 0;
     c = 0;
     w = 0;
-    if (flntp.type == 'c')
+    if (flntp.type == 'c' && flntp.hljz.l == 0)
         c = (unsigned int)(va_arg(ap, int));
     else if (flntp.type == 'C' || flntp.hljz.l == 1)
         w = va_arg(ap, wchar_t);

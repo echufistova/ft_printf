@@ -11,6 +11,7 @@ char    *ft_print_x(va_list ap, t_flagsntype flntp, char *res)
     intmax_t s;
     int j;
 
+j = 0;
     if (flntp.hljz.ll != 0 || flntp.hljz.l != 0)
         n = (flntp.hljz.ll == 1 ? va_arg(ap, unsigned long long int) : va_arg(ap, unsigned long int));
     else if (flntp.hljz.h == 1)
