@@ -5,6 +5,17 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+char *plminsp(char *res, t_flagsntype flntp, intmax_t n)
+{
+    if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        res = ft_add_char(res, '-');
+    else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+          res = ft_add_char(res, '+');
+    else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        res = ft_add_char(res, ' ');
+       return (res);
+}
+
 char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 {
     int i;
@@ -12,30 +23,16 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 
     i = 0;
 
-    j = ((flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O' || flntp.type == 'p') ? n : ft_intlength(n));
+    j = (flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' || flntp.type == 'O' || flntp.type == 'p') ? n : ft_intlength(n);
     if (flntp.sizenoll > flntp.number)
     {
-		if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-            res = ft_add_char(res, '-');
-        else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-            res = ft_add_char(res, '+');
-		else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-            res = ft_add_char(res, ' ');
-       // printf("hello1");
+        res = ft_strdup(plminsp(res, flntp, n));
         while (i++ < flntp.sizenoll - j)
-        {
             res = ft_add_char(res, '0');
-        }
     }
 	else if (flntp.minus == 0 && n != 0 && is_type(flntp.type))
 	{
-//        if (flntp.type == 'x' || flntp.type == 'X')
-//            j = ft_strlen(ft_itoa_base_uns(n, 16, flntp));
-//        else if ((flntp.type == 'o' || flntp.type == 'O'))
-//            j = ft_strlen(ft_itoa_base_uns(n, 8, flntp));
-//        else
-//            j = ft_intlength(n);
-             if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+        if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
         {
             res = ft_add_char(res, ' ');
             flntp.number--;
@@ -51,14 +48,16 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 	}
     else
     {
-        if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-            res = ft_add_char(res, '-');
-        else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd'
-            || flntp.type == 'D'))
-            res = ft_add_char(res, '+');
-        else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd'
-            || flntp.type == 'D'))
-            res = ft_add_char(res, ' ');
+        if (flntp.number > 0 && flntp.sizenoll == 0 && flntp.minus == 0 && flntp.oct == 0 && flntp.noll == 0)
+        {
+            if ((flntp.plus || flntp.space || n < 0 ) && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+                flntp.number--;
+            while (i++ < flntp.number - ft_intlength(n))
+                res = ft_add_char(res, ' ');
+            res = ft_strdup(plminsp(res, flntp, n));
+            return (res);
+        }
+        res = ft_strdup(plminsp(res, flntp, n));
         if (!is_type(flntp.type))
         {
             if (flntp.noll2 == 3 && flntp.number > flntp.sizenoll)

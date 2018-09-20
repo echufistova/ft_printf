@@ -29,6 +29,7 @@ char	*ft_strdup(const char *src)
 		str[i] = '\0';
 		return (str);
 	}
+	ft_bzero((char *)src, ft_strlen(src));
 	return ("(null)");
 }
 

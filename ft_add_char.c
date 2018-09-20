@@ -22,6 +22,6 @@ char *ft_add_char(char *str, char c)
     }
     res[i] = c;
     if (str)
-        free(str);
+        ft_bzero(str, ft_strlen(res));
     return (res);
 }

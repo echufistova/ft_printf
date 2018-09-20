@@ -69,6 +69,7 @@ char            *ft_presflags(char *res, t_flagsntype flntp, intmax_t n);
 char            *ft_octflag(char *res, t_flagsntype flntp, intmax_t n);
 char			*ft_minusflags(char *res, t_flagsntype flntp, intmax_t n);
 char            *procent(va_list ap, const char *format, unsigned int *i, char *res);
+char *plminsp(char *res, t_flagsntype flntp, intmax_t n);
 char *insertoct(char *res, t_flagsntype flntp, intmax_t n);
 
 int				ft_atoi(const char *str);
