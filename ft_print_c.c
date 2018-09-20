@@ -31,7 +31,7 @@ char *ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
         w = va_arg(ap, wchar_t);
     p = 0;
     if (flntp.noll == 1 || flntp.number != 0 || flntp.minus) {
-        if (flntp.noll == 1)
+        if (flntp.noll2 == 3)
             p = '0';
         else if (flntp.noll == 0)
             p = ' ';

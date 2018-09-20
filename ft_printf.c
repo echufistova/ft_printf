@@ -20,9 +20,11 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
         res = ft_print_o(ap, flntp, res);
     else if (flntp.type == 'x' || flntp.type == 'X')
         res = ft_print_x(ap, flntp, res);
-    else if (flntp.type == 's' )
+    else if (flntp.type == 's' && flntp.hljz.l == 0)
         res = ft_print_s(ap, flntp, res, len);
-    else if (flntp.type == 'c' || flntp.type == 'C' || flntp.type == 'S')
+    else if (flntp.type == 'S' || flntp.hljz.l == 1)
+        res = ft_print_S(ap, flntp, res, len);
+    else if (flntp.type == 'c' || flntp.type == 'C')
         res = ft_print_c(ap, flntp, res, len);
     else if (flntp.type == 'p')
         res = ft_print_p(ap, flntp, res);
@@ -115,7 +117,7 @@ int ft_printf(const char *restrict format, ...)
 //            ft_putchar('\n');
             res = what_to_print(res, flntp, ap, &len);
             //printf("len do%d\n", len);
-            len += (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C'? ft_strlen(res) : 0);
+            len += (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')? ft_strlen(res) : 0;
             //printf("len posle %d\n", len);
             if (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')
                 ft_bzero(res, ft_strlen(res));
@@ -137,7 +139,7 @@ int ft_printf(const char *restrict format, ...)
 //     setlocale(LC_ALL, "");
 //  int p;
 //  //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "|%1.*d|\n",9, 5, 8//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
+//      #define PRINTF "|% 0+.3lc|\n", NULL//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
 //     //unsigned int i = -4294967295;
 //     //short int i = 3237;
 // //    int i = -963987432;
@@ -153,8 +155,8 @@ int ft_printf(const char *restrict format, ...)
 // //    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
 //     //printf("   pr %s $\n", "this is a string");
 //     //ft_printf("ft_pr %s $\n", "this is a string");
-//     printf(PRINTF);
-//    		ft_printf(PRINTF);
+//     printf("|% 0+.3C|\n", NULL);
+//    		ft_printf("|% 0+.3C|\n", NULL);
 // //    printf(" %d\n", printf(PRINTF));
 // //    printf(" %d\n", ft_printf(PRINTF));
 //  //   unsigned long l = -42;
