@@ -97,8 +97,11 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
 				flagstype.noll2 = (flagstype.noll == 1) ? 3 : 0;
                 flagstype.noll = 0;
 				j = ++(*i);
-                if (fl_tp[(*i)++] == '*')
+                if (fl_tp[(*i)] == '*')
+                {
                     flagstype.zirka2 = 1;
+                    (*i)++;
+                }
 	            while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
     	            (*i)++;
     	   	     flagstype.sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
