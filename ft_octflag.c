@@ -102,6 +102,10 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
            //          while (i++ < flntp.number - j)
            //              res = ft_add_char(res, '0');
            //      }
+            if  ((flntp.number >= flntp.sizenoll && flntp.sizenoll != 0) || (flntp.sizenoll >= flntp.number)) {
+                     while (i++ < (flntp.number > flntp.sizenoll? flntp.number : flntp.sizenoll) - j)
+                         res = ft_add_char(res, '0');
+                 }
         }
     }
 	else
