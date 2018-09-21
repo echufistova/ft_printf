@@ -48,7 +48,7 @@ char *ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 	}
     else
     {
-        if (flntp.number > 0 && flntp.sizenoll == 0 && flntp.minus == 0 && flntp.oct == 0 && flntp.noll == 0)
+        if (flntp.number > 0 && flntp.sizenoll == 0 && flntp.minus == 0 && flntp.oct == 0 && flntp.noll2 == 0)
         {
             if ((flntp.plus || flntp.space || n < 0 ) && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
                 flntp.number--;
