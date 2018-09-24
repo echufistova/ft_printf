@@ -49,7 +49,14 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 		flntp.oct = 0;
 		while (i++ < flntp.number)
 			res = ft_add_char(res, ' ');
-		res = ft_strjoin(res, s);
+		if (flntp.sizenoll > flntp.number)
+		{
+			res = ft_strjoin(res, s);
+			while (i++ < flntp.sizenoll)
+				res = ft_add_char(res, '0');
+		}
+		else
+			res = ft_strjoin(res, s);
 		//res = (flag_space(res, flntp, n));
 		//res = ft_strjoin(flag_space(res, flntp, ft_strlen(s)), s);
 	}
