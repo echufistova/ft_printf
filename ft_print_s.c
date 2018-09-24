@@ -94,7 +94,7 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res, int *len)
     {
 		if (ft_strlen(str) == 0)
             flntp.sizenoll = 0;
-        while (i++ < flntp.number - flntp.sizenoll) //> (int)ft_strlen(str) ? flntp.sizenoll : (int)ft_strlen(str)))
+        while (i++ < flntp.number - (flntp.sizenoll < ft_strlen(str) ? flntp.sizenoll : (int)ft_strlen(str))) //> (int)ft_strlen(str) ? flntp.sizenoll : (int)ft_strlen(str)))
             res = ft_add_char(res, ' ');
         i = 0;
         if (flntp.minus == 0)

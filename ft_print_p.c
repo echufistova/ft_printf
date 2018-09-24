@@ -39,7 +39,7 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
         {
             if (flntp.number > 0 && flntp.number > ft_strlen(s))
             {
-            	while (i++ < flntp.number - ft_strlen(s))
+            	while (i++ < flntp.number - (flntp.sizenoll < ft_strlen(s) ? flntp.sizenoll : (int)ft_strlen(s)))
                 	res = ft_add_char(res, ' ');
             }
         }

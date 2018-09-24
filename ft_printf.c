@@ -143,7 +143,7 @@ int ft_printf(const char *restrict format, ...)
 //     setlocale(LC_ALL, "");
 //  int p;
 //  //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "|4i|\n", 42//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
+//      #define PRINTF "{%05.s}", 0//"*Kashim a %c histoires à raconterIl fait au moins %c\n", 945
 //     //unsigned int i = -4294967295;
 //     //short int i = 3237;
 // //    int i = -963987432;
@@ -159,8 +159,8 @@ int ft_printf(const char *restrict format, ...)
 // //    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
 //     //printf("   pr %s $\n", "this is a string");
 //     //ft_printf("ft_pr %s $\n", "this is a string");
-//     printf("|% 4i|\n", 42);
-//    		ft_printf("|% 4i|\n", 42);
+//     printf("%15.4s\n", "42");
+//    		ft_printf("%15.4s\n", "42");
 // //    printf(" %d\n", printf(PRINTF));
 // //    printf(" %d\n", ft_printf(PRINTF));
 //  //   unsigned long l = -42;
