@@ -212,7 +212,7 @@ char *ft_print_S(va_list ap, t_flagsntype flntp, char *res, int *len)
         }
         //ft_putstr(res);
     }
-    *len += i;
+    *len += ft_strlen_w(w_str);
     ft_putstr(res);
     return (res);
 }
