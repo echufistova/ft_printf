@@ -43,7 +43,9 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 		//res = ft_strjoin(res, s);
 	}
 	else if (flntp.oct == 0 && n != 0)
-		res = ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
+		res = (flntp.number > flntp.sizenoll)?
+			  ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s) :
+			  ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
 	else
 	{
 		flntp.oct = 0;
