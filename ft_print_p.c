@@ -15,6 +15,11 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 
 	if (n != 0)
 	    s = ft_itoa_base_uns(n, 16, flntp);
+	else if (flntp.dot && !flntp.sizenoll)
+	{
+		s = "0x";
+		//flntp.number--;
+	}
 	else
 	{
 		s = "0x0";
