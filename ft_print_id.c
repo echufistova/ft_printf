@@ -75,8 +75,8 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
         }
         else
         {
-            if (flntp.space && flntp.plus && !flntp.minus && !flntp.dot && !flntp.noll && !flntp.oct)
-                flntp.number--;
+            // if (flntp.space && flntp.plus && !flntp.minus && !flntp.dot && !flntp.noll && !flntp.oct)
+            //     flntp.number--;
             
                 flntp.number = ((flntp.space || flntp.plus) && !flntp.noll && !flntp.oct) ? flntp.number + 1
                                                                                         : flntp.number;
