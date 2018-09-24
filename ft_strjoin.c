@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:44:22 by ychufist          #+#    #+#             */
-/*   Updated: 2018/04/03 20:32:40 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/24 21:01:11 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			i++;
 		}
 		res[i] = '\0';
+		//ft_bzero(s1, ft_strlen(s1));
+		//ft_bzero(s2, ft_strlen(s2));
 		return (res);
 	}
+	//ft_bzero(s1, ft_strlen(s1));
+	//ft_bzero(s2, ft_strlen(s2));
 	return (NULL);
 }

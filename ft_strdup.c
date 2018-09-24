@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:25:16 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/03 14:47:51 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/24 21:02:25 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ char	*ft_strdup(const char *src)
 			i++;
 		}
 		str[i] = '\0';
+		//ft_bzero((char *)src, ft_strlen(src));
 		return (str);
 	}
-	ft_bzero((char *)src, ft_strlen(src));
+	//ft_bzero((char *)src, ft_strlen(src));
 	return ("(null)");
 }
 
