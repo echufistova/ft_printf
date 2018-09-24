@@ -12,7 +12,7 @@ char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
     int j;
 
     j = 0;
-    if (flntp.hljz.ll != 0 || flntp.hljz.l != 0)
+    if (flntp.type == 'O' || flntp.hljz.ll != 0 || flntp.hljz.l != 0)
         n = (flntp.hljz.ll == 1 ? va_arg(ap, unsigned long long int) : va_arg(ap, unsigned long int));
     else if (flntp.hljz.h == 1)
         n = (unsigned short)va_arg(ap, int);

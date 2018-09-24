@@ -37,8 +37,11 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
         }
         else if (flntp.minus == 1 && flntp.number != 0)
         {
-            while (i++ < flntp.number)
-                res = ft_add_char(res, ' ');
+            if (flntp.number > 0 && flntp.number > ft_strlen(s))
+            {
+            	while (i++ < flntp.number - ft_strlen(s))
+                	res = ft_add_char(res, ' ');
+            }
         }
 		//res = ft_strjoin(res, s);
 	}
