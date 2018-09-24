@@ -98,10 +98,6 @@ char *ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
                 flntp.number--;
             }
             res = insertoct(res, flntp, n);
-           // if  (flntp.number >= flntp.sizenoll && flntp.sizenoll != 0 && flntp.noll2 == 3) {
-           //          while (i++ < flntp.number - j)
-           //              res = ft_add_char(res, '0');
-           //      }
             if  ((flntp.number >= flntp.sizenoll && flntp.sizenoll != 0) || (flntp.sizenoll >= flntp.number)) {
                      while (i++ < (flntp.number > flntp.sizenoll? flntp.number : flntp.sizenoll) - j)
                          res = ft_add_char(res, '0');

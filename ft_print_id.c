@@ -53,8 +53,12 @@ char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
     //res = (n == 0 ? ft_add_char(flag_space(res,flntp, &n), '0') : ft_strjoin(flag_space(res,flntp, &n), ft_itoa_unsigned(n)));
 	 if (n == 0)
     {
-        if (flntp.dot == 1)
-            return (ft_presflags(res, flntp, n));//flag_space(res, flntp, n));
+        // if (flntp.dot == 1)
+        //     return (ft_add_char(ft_presflags(res, flntp, 1 ), '0'));//return (ft_presflags(res, flntp, n));//flag_space(res, flntp, n));
+        if (flntp.dot == 1 && flntp.sizenoll != 0)
+            return (ft_add_char(ft_presflags(res, flntp, 1 ), '0'));//flag_space(res, flntp, n));
+        else if (flntp.dot)
+            return ft_presflags(res, flntp, n);
         else if (flntp.minus == 1)
         {
             flntp.number = (flntp.space == 1 || flntp.plus == 1 || (flntp.noll == 1 && flntp.minus == 0)) ? flntp.number - 1 : flntp.number;
