@@ -65,6 +65,8 @@ char *no_params(char *res, t_flagsntype flntp, unsigned int *i)
 
     j = 0;
     (*i)--;
+    flntp.dot = (flntp.noll2 == 3) ? 1 : 0;
+    flntp.oct = 0;
     if (flntp.minus == 0)
         res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
     //if (format[(*i) + 2] != '\0')
