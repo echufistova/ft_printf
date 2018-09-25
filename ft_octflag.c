@@ -71,6 +71,34 @@ char *elseoct(char *res, t_flagsntype *flntp, intmax_t n, int j)
 	return (res);
 }
 
+char *ifoct1(char *res, t_flagsntype *flntp, intmax_t n, int j)
+{
+	int i;
+
+	i = 0;
+	if ((flntp->noll == 1 || flntp->sizenoll > flntp->number) &&
+				flntp->minus == 0)
+	{
+		res = plminsp(res, *flntp, n);
+		res = insertoct(res, *flntp, n);
+		while (i++ < (flntp->sizenoll > flntp->number ? flntp->sizenoll
+					: flntp->number) - j)
+			res = ft_add_char(res, '0');
+	}
+	else if (flntp->noll == 0 && flntp->sizenoll == 0 && flntp->minus == 0
+				&& flntp->noll2 == 0)
+	{
+		while (i++ < flntp->number - j)
+			res = ft_add_char(res, ' ');
+		if (n < 0 && id(*flntp))
+			res = ft_add_char(res, '-');
+		else if (flntp->plus == 1 && id(*flntp))
+			res = ft_add_char(res, '+');
+		res = insertoct(res, *flntp, n);
+	}
+	return (res);
+}
+
 char	*ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 {
 	uintmax_t nb;
@@ -97,9 +125,11 @@ char	*ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 		{
 			while (i++ < flntp.number - j)
 				res = ft_add_char(res, ' ');
-			if (n < 0 && id(flntp))
+			if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' ||
+						flntp.type == 'D'))
 				res = ft_add_char(res, '-');
-			else if (flntp.plus == 1 && id(flntp))
+			else if (flntp.plus == 1 && (flntp.type == 'i' || flntp.type == 'd'
+						|| flntp.type == 'D'))
 				res = ft_add_char(res, '+');
 			res = insertoct(res, flntp, n);
 		}
@@ -111,60 +141,43 @@ char	*ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 		flntp.sizenoll : j))
 					res = ft_add_char(res, ' ');
 			}
-			if (n < 0 && id(flntp))
+			if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
 				res = ft_add_char(res, '-');
-			else if (flntp.plus == 1 && n >= 0 && id(flntp))
+			else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
 				res = ft_add_char(res, '+');
 			res = insertoct(res, flntp, n);
-			while (i++ < flntp.number -  j + (flntp.type == 'x' ||
-	flntp.type == 'X' || flntp.type == 'U' || flntp.type == 'u' || id(flntp)) ? 1 : 0)
+			while (i++ < flntp.number -  j + ((flntp.type == 'x' ||
+	flntp.type == 'X' || (flntp.type == 'i' || flntp.type == 'd' ||
+		flntp.type == 'D' || flntp.type == 'U' || flntp.type == 'u')) ? 1 : 0))
 				res = ft_add_char(res, '0');
 		}
 		else
 		{
-			if (ft_strcmp(res, plminsp(res, flntp, n)) != 0)
+			if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
 			{
-				res = plminsp(res, flntp, n);
+				res = ft_add_char(res, '-');
+				flntp.number--;
+			}
+			else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+			{
+				res = ft_add_char(res, '+');
+				flntp.number--;
+			}
+			else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
+			{
+				res = ft_add_char(res, ' ');
 				flntp.number--;
 			}
 			res = insertoct(res, flntp, n);
 			if  ((flntp.number >= flntp.sizenoll && flntp.sizenoll != 0) ||
 					(flntp.sizenoll >= flntp.number))
 			{
-				while (i++ < (flntp.number > flntp.sizenoll? flntp.number :
-					flntp.sizenoll) - j)
+				while (i++ < (flntp.number > flntp.sizenoll? flntp.number : flntp.sizenoll) - j)
 					res = ft_add_char(res, '0');
 			}
 		}
 	}
 	else
-	{
 		return (elseoct(res, &flntp, n, j));
-		// flntp.number--;
-		// if (flntp.number > flntp.sizenoll && flntp.noll == 0 && flntp.minus == 0)
-		// {
-		// 	while (i++ < flntp.number)
-		// 		res = ft_add_char(res, ' ');
-		// }
-		// if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-		// 	res = ft_add_char(res, '+');
-		// else if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-		// {
-		// 	res = ft_add_char(res, ' ');
-		// 	flntp.number--;
-		// }
-		// if (flntp.sizenoll > flntp.number)
-		// {
-		// 	while (i++ < (flntp.sizenoll > flntp.number ? flntp.sizenoll : flntp.number) - j)
-		// 		res = ft_add_char(res, '0');
-		// }
-		// else if (flntp.number != 0 && flntp.noll == 1 && flntp.minus == 0 && flntp.dot == 0)
-		// {
-		// 	flntp.number = (flntp.noll == 1) ? flntp.number + 1 : flntp.number;
-		// 	while (i++ < flntp.number)
-		// 		res = ft_add_char(res, '0');
-		// }
-		// return (res);
-	}
 	return (res);
 }
