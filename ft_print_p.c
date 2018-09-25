@@ -66,40 +66,11 @@ char *ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	flntp.number-=2;
 	if (flntp.minus == 1 || flntp.noll == 1)
 		res = if1p(res, flntp, n, s);
-	// {
-	// 	res = ft_strjoin(insertoct(res, flntp, n), s);
- //        if (flntp.noll == 1 && flntp.minus == 0) {
- //            while (i++ < flntp.number)
- //                res = ft_add_char(res, '0');
- //        }
- //        else if (flntp.minus == 1 && flntp.number != 0)
- //        {
- //            if (flntp.number > 0)
- //            {
- //            	while (i++ < flntp.number - (flntp.sizenoll < ft_strlen(s)
- //            		? flntp.sizenoll : (int)ft_strlen(s)))
- //                	res = ft_add_char(res, ' ');
- //            }
- //        }
-	// }
 	else if (flntp.oct == 0 && n != 0)
 		res = (flntp.number > flntp.sizenoll)?
 ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s) :
 ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
 	else
-	{
 		res = if2p(res, flntp, n, s);
-		// flntp.oct = 0;
-		// while (i++ < flntp.number)
-		// 	res = ft_add_char(res, ' ');
-		// if (flntp.sizenoll > flntp.number)
-		// {
-		// 	res = ft_strjoin(res, s);
-		// 	while (i++ < flntp.sizenoll)
-		// 		res = ft_add_char(res, '0');
-		// }
-		// else
-		// 	res = ft_strjoin(res, s);
-	}
     return (res);
 }

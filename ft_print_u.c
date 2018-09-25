@@ -5,10 +5,24 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-// char *if1u(char *res, t_flagsntype flntp)
-// {
-    
-// }
+char *if1u(char *res, t_flagsntype flntp, uintmax_t n)
+{
+    int i;
+
+    i = 0;
+    if (n == 0)
+        flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
+    res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
+    if (flntp.minus == 1)
+    {
+        i = (ft_intlength_uns(n) > flntp.sizenoll) ? ft_intlength_uns(n) : flntp.sizenoll;
+        while (i++ < flntp.number)
+            res = ft_add_char(res, ' ');
+    }
+    if (flntp.dot == 1 && n == 0)//(n == 0 || res[ft_strlen(res) - 1] == '0'))
+        res[ft_strlen(res) - 1] = '\0';
+    return (res);
+}
 
 char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 {
@@ -29,16 +43,16 @@ char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
         n = va_arg(ap, size_t);
     else
         n = va_arg(ap, unsigned int);
-    if (n == 0)
-        flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
-    res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
-    if (flntp.minus == 1)
-    {
-        i = (ft_intlength_uns(n) > flntp.sizenoll) ? ft_intlength_uns(n) : flntp.sizenoll;
-        while (i++ < flntp.number)
-            res = ft_add_char(res, ' ');
-    }
-    if (flntp.dot == 1 && n == 0)//(n == 0 || res[ft_strlen(res) - 1] == '0'))
-        res[ft_strlen(res) - 1] = '\0';
-    return (res);
+    // if (n == 0)
+    //     flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
+    // res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
+    // if (flntp.minus == 1)
+    // {
+    //     i = (ft_intlength_uns(n) > flntp.sizenoll) ? ft_intlength_uns(n) : flntp.sizenoll;
+    //     while (i++ < flntp.number)
+    //         res = ft_add_char(res, ' ');
+    // }
+    // if (flntp.dot == 1 && n == 0)//(n == 0 || res[ft_strlen(res) - 1] == '0'))
+    //     res[ft_strlen(res) - 1] = '\0';
+    return (if1u(res, flntp, n));
 }
