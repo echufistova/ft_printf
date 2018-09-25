@@ -88,6 +88,13 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char *flag_space(char *res, t_flagsntype flntp, intmax_t n);
 char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n);
 
+typedef struct      s_char
+{
+    unsigned int c;
+    wchar_t w;
+    char p;
+}                   t_char;
+
 int ft_printf(const char *restrict format, ...);
 
 #endif //PRINTF_FT_PRINTF_H
