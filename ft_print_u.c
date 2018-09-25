@@ -5,6 +5,11 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+// char *if1u(char *res, t_flagsntype flntp)
+// {
+    
+// }
+
 char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 {
     uintmax_t n;
