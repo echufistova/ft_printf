@@ -52,6 +52,7 @@ char			*ft_itoa_signed(intmax_t n);
 int ft_intlength(intmax_t n);
 int ft_intlength_uns(uintmax_t n);
 int is_type(char c);
+int id(t_flagsntype flntp);
 int checkflags(char c);
 char *plminsp(char *res, t_flagsntype flntp, intmax_t n);
 

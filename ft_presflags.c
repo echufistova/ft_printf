@@ -24,6 +24,56 @@ char	*plminsp(char *res, t_flagsntype flntp, intmax_t n)
 	return (res);
 }
 
+char *elseif1(char *res, t_flagsntype *flntp, intmax_t n, int j)
+{
+	int i;
+
+	i = 0;
+	if (flntp->space == 1 && id(*flntp))
+	{
+		res = ft_add_char(res, ' ');
+		flntp->number--;
+	}
+	while (i++ < flntp->number - (flntp->sizenoll > j ? flntp->sizenoll : j))
+		res = ft_add_char(res, ' ');
+	if (n < 0 && id(*flntp))
+		res = ft_add_char(res, '-');
+	else if (flntp->plus == 1 && n >= 0 && id(*flntp))
+		res = ft_add_char(res, '+');
+	while (i++ <= flntp->number - j)
+		res = ft_add_char(res, '0');
+	return (res);
+}
+
+char *else2(char *res, t_flagsntype *flntp, intmax_t n, int *i)
+{
+	if (flntp->number > 0 && flntp->sizenoll == 0 && flntp->minus == 0
+				&& flntp->oct == 0 && flntp->noll2 == 0)
+		{
+			if ((flntp->plus || flntp->space || n < 0 ) && id(*flntp))
+				flntp->number--;
+			while ((*i)++ < flntp->number - ft_intlength(n))
+				res = ft_add_char(res, ' ');
+			res = ft_strdup(plminsp(res, *flntp, n));
+			return (res);
+		}
+		res = ft_strdup(plminsp(res, *flntp, n));
+		if (!is_type(flntp->type))
+        {
+			if (flntp->noll2 == 3 && flntp->number > flntp->sizenoll)
+			{
+				while ((*i)++ < flntp->number - 1)
+					res = ft_add_char(res, '0');
+			}
+			else
+			{
+				while ((*i)++ < flntp->number - 1)
+					res = ft_add_char(res, ' ');
+			}
+		}
+		return (res);
+}
+
 char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 {
 	int			i;
@@ -40,48 +90,10 @@ char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 			res = ft_add_char(res, '0');
 	}
 	else if (flntp.minus == 0 && n != 0 && is_type(flntp.type))
-	{
-		if (flntp.space == 1 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-		{
-			res = ft_add_char(res, ' ');
-			flntp.number--;
-		}
-		while (i++ < flntp.number - (flntp.sizenoll > j ? flntp.sizenoll : j))
-			res = ft_add_char(res, ' ');
-		if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-			res = ft_add_char(res, '-');
-		else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-			res = ft_add_char(res, '+');
-		while (i++ <= flntp.number - j)
-			res = ft_add_char(res, '0');
-	}
+		res = elseif1(res, &flntp, n, j);
 	else
 	{
-		if (flntp.number > 0 && flntp.sizenoll == 0 && flntp.minus == 0
-				&& flntp.oct == 0 && flntp.noll2 == 0)
-		{
-			if ((flntp.plus || flntp.space || n < 0 ) && (flntp.type == 'i'
-						|| flntp.type == 'd' || flntp.type == 'D'))
-				flntp.number--;
-			while (i++ < flntp.number - ft_intlength(n))
-				res = ft_add_char(res, ' ');
-			res = ft_strdup(plminsp(res, flntp, n));
-			return (res);
-		}
-		res = ft_strdup(plminsp(res, flntp, n));
-		if (!is_type(flntp.type))
-        {
-			if (flntp.noll2 == 3 && flntp.number > flntp.sizenoll)
-			{
-				while (i++ < flntp.number - 1)
-					res = ft_add_char(res, '0');
-			}
-			else
-			{
-				while (i++ < flntp.number - 1)
-					res = ft_add_char(res, ' ');
-			}
-		}
+		res = else2(res, &flntp, n, &i);
 		while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
 			res = ft_add_char(res, '0');
 	}
