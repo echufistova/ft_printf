@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:12:53 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/24 20:18:46 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/25 16:05:30 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,58 @@ t_flagsntype	ft_new_flntp()
 	return (flagstype);
 }
 
-t_flagsntype	ft_hljz(t_flagsntype flagstype, const char *fl_tp, unsigned int *i)
+t_flagsntype	ft_hljz(t_flagsntype fltp, const char *fl_tp, unsigned int *i)
 {
 	if (fl_tp[*i] == 'l' && fl_tp[*i + 1] != 'l')
-		flagstype.hljz.l = 1;
+		fltp.hljz.l = 1;
 	else if (fl_tp[*i] == 'l' && fl_tp[*i + 1] == 'l')
 	{
-		flagstype.hljz.ll = 1;
+		fltp.hljz.ll = 1;
 		(*i)++;
 	}
 	else if (fl_tp[*i] == 'h' && fl_tp[*i + 1] != 'h')
-		flagstype.hljz.h = 1;
+		fltp.hljz.h = 1;
 	else if (fl_tp[*i] == 'h' && fl_tp[*i + 1] == 'h')
 	{
-		flagstype.hljz.hh = 1;
+		fltp.hljz.hh = 1;
 		(*i)++;
 	}
 	else if (fl_tp[*i] == 'j')
-		flagstype.hljz.j = 1;
+		fltp.hljz.j = 1;
 	else if (fl_tp[*i] == 'z')
-		flagstype.hljz.z = 1;
+		fltp.hljz.z = 1;
 	if (fl_tp[*i] == 'h' || fl_tp[*i] == 'l' || fl_tp[*i] == 'j' || fl_tp[*i] == 'z')
 		(*i)++;
-	flagstype.type = fl_tp[(*i)++];
-	return (flagstype);
+	fltp.type = fl_tp[(*i)++];
+	return (fltp);
+}
+
+void flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i, char **n)
+{
+	int j;
+
+	j = 0;
+	if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
+	{
+		while (fl_tp[*i] != '\0' && fl_tp[*i] >= '0' && fl_tp[*i] <= '9')
+			*n = ft_add_char(*n, fl_tp[(*i)++]);
+		if (fl_tp[*i] == '.')
+		{
+			fltp->dot = 1;
+			fltp->noll2 = (fltp->noll == 1) ? 3 : 0;
+			fltp->noll = 0;
+			j = ++(*i);
+			if (fl_tp[(*i)] == '*')
+			{
+				fltp->zirka2 = 1;
+				(*i)++;
+			}
+			while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
+				(*i)++;
+			fltp->sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
+		}
+		(*i)--;
+    }
 }
 
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format)
@@ -94,27 +122,8 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format
 			flagstype.space = 1;
 		else if (fl_tp[*i] == '*')
 			flagstype.zirka1 = 1;
-		else if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
-		{
-			while (fl_tp[*i] != '\0' && fl_tp[*i] >= '0' && fl_tp[*i] <= '9')
-				n = ft_add_char(n, fl_tp[(*i)++]);
-			if (fl_tp[*i] == '.')
-			{
-				flagstype.dot = 1;
-				flagstype.noll2 = (flagstype.noll == 1) ? 3 : 0;
-				flagstype.noll = 0;
-				j = ++(*i);
-				if (fl_tp[(*i)] == '*')
-				{
-					flagstype.zirka2 = 1;
-					(*i)++;
-				}
-				while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
-					(*i)++;
-				flagstype.sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
-			}
-			(*i)--;
-		}
+		else
+			flntp_number(fl_tp, &flagstype, i, &n);
 		(*i)++;
 	}
 	flagstype.number = ft_atoi(n);

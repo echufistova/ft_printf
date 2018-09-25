@@ -44,15 +44,7 @@ char	*ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 		if ((flntp.noll == 1 || flntp.sizenoll > flntp.number) &&
 				flntp.minus == 0 )
 		{
-			if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' ||
-						flntp.type == 'D'))
-				res = ft_add_char(res, '-');
-			else if (flntp.plus == 1 && (flntp.type == 'i' || flntp.type == 'd'
-						|| flntp.type == 'D'))
-				res = ft_add_char(res, '+');
-			else if (flntp.space == 1 && (flntp.type == 'i' ||
-						flntp.type == 'd' || flntp.type == 'D'))
-				res = ft_add_char(res, ' ');
+			res = plminsp(res, flntp, n);
 			res = insertoct(res, flntp, n);
 			while (i++ < (flntp.sizenoll > flntp.number ? flntp.sizenoll
 						: flntp.number) - j)

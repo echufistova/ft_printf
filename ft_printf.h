@@ -53,6 +53,7 @@ int ft_intlength(intmax_t n);
 int ft_intlength_uns(uintmax_t n);
 int is_type(char c);
 int checkflags(char c);
+char *plminsp(char *res, t_flagsntype flntp, intmax_t n);
 
 char *ft_itoa_base(intmax_t value, int base, t_flagsntype flntp);
 char *ft_itoa_base_uns(uintmax_t value, int base, t_flagsntype flntp);
