@@ -17,7 +17,7 @@ char *if1u(char *res, t_flagsntype flntp, uintmax_t n)
     {
         i = (ft_intlength_uns(n) > flntp.sizenoll) ? ft_intlength_uns(n) : flntp.sizenoll;
         while (i++ < flntp.number)
-            res = ft_add_char(res, ' ');
+            res = ft_add_char(&res, ' ');
     }
     if (flntp.dot == 1 && n == 0)//(n == 0 || res[ft_strlen(res) - 1] == '0'))
         res[ft_strlen(res) - 1] = '\0';

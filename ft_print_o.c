@@ -8,22 +8,28 @@
 char *if1o(char *res, t_flagsntype flntp, uintmax_t n)
 {
     int j;
+    char *res1;
 
     j = 0;
     if ((flntp.oct == 0 && flntp.dot != 0) || flntp.sizenoll != 0)
-            return (flag_space(res, flntp, n));
+    {
+        return (flag_space(res, flntp, n));
+    }
     else 
     {
         flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
         if (flntp.minus == 1)
         {
-            res = ft_add_char(res, '0');
+            res = ft_add_char(&res, '0');
             while (j++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ? flntp.sizenoll : ft_intlength(n)))
-                res = ft_add_char(res, ' ');
+                res = ft_add_char(&res, ' ');
             return (flag_space(res, flntp, n));
         }
         else
-            return (ft_add_char(flag_space(res, flntp, n), '0'));
+        {
+            res1 = flag_space(res, flntp, n);
+            return (ft_add_char(&res1, '0'));
+        }      
     }
 }
 
@@ -46,7 +52,7 @@ char *if2o(char *res, t_flagsntype flntp, uintmax_t n)
     if (flntp.minus == 1)
     {
         while (j++ < flntp.number - (flntp.sizenoll > s ? flntp.sizenoll : s))
-            res = ft_add_char(res, ' ');
+            res = ft_add_char(&res, ' ');
     }
     return (res);
 }

@@ -8,6 +8,7 @@
 char *ifx1(char *res, t_flagsntype flntp, unsigned long int n)
 {
     int j;
+    char *res1;
 
     j = 0;
     if (flntp.dot == 1)
@@ -17,12 +18,13 @@ char *ifx1(char *res, t_flagsntype flntp, unsigned long int n)
         flntp.number = (flntp.noll == 1 || flntp.minus) ? flntp.number - 1 : flntp.number;
         if (flntp.minus == 1)
         {
-            res = ft_add_char(res, '0');
+            res = ft_add_char(&res, '0');
             while (j++ < flntp.number)
-                res = ft_add_char(res, ' ');
+                res = ft_add_char(&res, ' ');
             return (res);
         }
-        return (ft_add_char(flag_space(res, flntp, n), '0'));
+        res1 = flag_space(res, flntp, n);
+        return (ft_add_char(&res1, '0'));
     }
 }
 
@@ -30,6 +32,7 @@ char *ifx2(char *res, t_flagsntype flntp, unsigned long int n)
 {
     int j;
     int s;
+    char *res1;
 
     s = ft_strlen(ft_itoa_base_uns((intmax_t)n, 16, flntp));
     if (flntp.oct == 1 && flntp.sizenoll < flntp.number)
@@ -37,11 +40,12 @@ char *ifx2(char *res, t_flagsntype flntp, unsigned long int n)
     res = (flntp.oct == 1) ? ft_octflag(res, flntp, s) : flag_space(res, flntp, s);
     j = (int)ft_strlen(ft_itoa_base_uns((intmax_t)n, 16, flntp));
     j = (j > flntp.sizenoll) ? j : flntp.sizenoll;
-    res = ft_strjoin(res, ft_itoa_base_uns((intmax_t)n, 16, flntp));
+    res1 = ft_itoa_base_uns((intmax_t)n, 16, flntp);
+    res = ft_strjoin_free(&res, &res1);
     if (flntp.minus == 1)
     {
         while (j++ < flntp.number)
-            res = ft_add_char(res, ' ');
+            res = ft_add_char(&res, ' ');
     }
     return (res);
 }

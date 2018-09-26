@@ -13,23 +13,22 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-char	*ft_add_char(char *str, char c)
+char	*ft_add_char(char **str, char c)
 {
 	int i;
 	char *res;
 
 	i = 0;
-	res = (char *) ft_memalloc(sizeof(char) * (ft_strlen(str) + 2));
-	if (str != NULL)
+	res = (char *) ft_memalloc(sizeof(char) * (ft_strlen(*str) + 2));
+	if (str != NULL && *str)
 	{
-		while (str[i] != '\0')
+		while ((*str)[i] != '\0')
 		{
-			res[i] = str[i];
+			res[i] = (*str)[i];
 			i++;
 		}
+		ft_strdel(str);
 	}
 	res[i] = c;
-	if (str)
-		ft_bzero(str, ft_strlen(res));
     return (res);
 }

@@ -13,7 +13,7 @@ char *if1(char *res, t_flagsntype flntp, intmax_t n)
     if (n < 0)
     {
         if (flntp.dot == 0)
-            res = ft_add_char(res, '-');
+            res = ft_add_char(&res, '-');
         flntp.number--;
     }
     if (flntp.plus == 1 && flntp.space == 0 && n >= 0)
@@ -23,14 +23,20 @@ char *if1(char *res, t_flagsntype flntp, intmax_t n)
         flntp.number--;
     while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ?
         flntp.sizenoll : ft_intlength(n)))
-        res = ft_add_char(res, ' ');
+        res = ft_add_char(&res, ' ');
     return (res);
 }
 
 char  *if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 {
+    char *res1;
+    char *res2;
+
     if (flntp.dot == 1 && flntp.sizenoll != 0)
-        return (ft_add_char(ft_presflags(res, flntp, 1 ), '0'));
+    {
+        res1 = ft_presflags(res, flntp, 1 );
+        return (ft_add_char(&res1, '0'));
+    }
     else if (flntp.dot)
         return ft_presflags(res, flntp, n);
     else if (flntp.minus == 1)
@@ -39,13 +45,15 @@ char  *if2(char *res, t_flagsntype flntp, intmax_t n, int i)
             && flntp.minus == 0)) ? flntp.number - 1 : flntp.number;
         if (flntp.space == 1 && flntp.noll == 1 && flntp.plus == 0)
         {
-            res = ft_add_char(res, ' ');
+            res = ft_add_char(&res, ' ');
             flntp.space = 0;
         }
-        res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
+        res1 = flag_space(res, flntp, n);
+        res2 = ft_itoa_signed(n);
+        res = ft_strjoin_free(&res1, &res2);
         while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n)
             ? flntp.sizenoll : ft_intlength(n)))
-            res = ft_add_char(res, ' ');
+            res = ft_add_char(&res, ' ');
     }
     else
     {
@@ -53,7 +61,8 @@ char  *if2(char *res, t_flagsntype flntp, intmax_t n, int i)
         flntp.number + 1 : flntp.number;
         flntp.number = (flntp.noll == 1 || flntp.minus || (flntp.space &&
             !flntp.plus)) ? flntp.number - 1 : flntp.number;
-        return (ft_add_char(flag_space(res, flntp, n), '0'));
+        res1 = flag_space(res, flntp, n);
+        return (ft_add_char(&res1, '0'));
     }
     return (res);
 }

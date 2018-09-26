@@ -12,7 +12,7 @@ char *if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 		res = ft_strjoin(insertoct(res, flntp, n), s);
         if (flntp.noll == 1 && flntp.minus == 0) {
             while (i++ < flntp.number)
-                res = ft_add_char(res, '0');
+                res = ft_add_char(&res, '0');
         }
         else if (flntp.minus == 1 && flntp.number != 0)
         {
@@ -20,7 +20,7 @@ char *if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
             {
             	while (i++ < flntp.number - (flntp.sizenoll < (int)ft_strlen(s)
             		? flntp.sizenoll : (int)ft_strlen(s)))
-                	res = ft_add_char(res, ' ');
+                	res = ft_add_char(&res, ' ');
             }
        }
 	return (res);
@@ -33,12 +33,12 @@ char *if2p(char *res, t_flagsntype flntp, char *s)
 	i = 0;
 	flntp.oct = 0;
 		while (i++ < flntp.number)
-			res = ft_add_char(res, ' ');
+			res = ft_add_char(&res, ' ');
 		if (flntp.sizenoll > flntp.number)
 		{
 			res = ft_strjoin(res, s);
 			while (i++ < flntp.sizenoll)
-				res = ft_add_char(res, '0');
+				res = ft_add_char(&res, '0');
 		}
 		else
 			res = ft_strjoin(res, s);

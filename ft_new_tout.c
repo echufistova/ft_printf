@@ -80,7 +80,7 @@ void flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i, char *
 	if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
 	{
 		while (fl_tp[*i] != '\0' && fl_tp[*i] >= '0' && fl_tp[*i] <= '9')
-			*n = ft_add_char(*n, fl_tp[(*i)++]);
+			*n = ft_add_char(n, fl_tp[(*i)++]);
 		if (fl_tp[*i] == '.')
 		{
 			fltp->dot = 1;

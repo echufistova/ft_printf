@@ -32,11 +32,11 @@ char	*no_params(char *res, t_flagsntype flntp, unsigned int *i)
 	flntp.oct = 0;
 	if (flntp.minus == 0)
 		res = flag_space(res, flntp, 1);
-	res = ft_add_char(res, flntp.type);
+	res = ft_add_char(&res, flntp.type);
 	if (flntp.minus == 1)
 	{
 		while (j++ < flntp.number - 1)
-			res = ft_add_char(res, ' ');
+			res = ft_add_char(&res, ' ');
 	}
 	(*i)++;
 	return (res);

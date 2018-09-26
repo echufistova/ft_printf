@@ -46,7 +46,7 @@ t_flagsntype	ft_new_flntp();
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format);
 char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len);
 char *no_params(char *res, t_flagsntype flntp, unsigned int *i);
-char            *ft_add_char(char *str, char c);
+char            *ft_add_char(char **str, char c);
 char			*ft_itoa_unsigned(uintmax_t n);
 char			*ft_itoa_signed(intmax_t n);
 int ft_intlength(intmax_t n);

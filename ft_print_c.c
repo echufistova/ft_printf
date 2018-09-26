@@ -32,7 +32,7 @@ char *elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 	{
 		i = 1;
 		if (flntp.type == 'c')
-			res = ft_add_char(res, (char) l.c);
+			res = ft_add_char(&res, (char) l.c);
 		else
 		{
 			ft_putstr(res);
@@ -42,13 +42,13 @@ char *elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 			(*len)++;
 		}
 		while (i++ < flntp.number)
-			res = ft_add_char(res, ' ');
+			res = ft_add_char(&res, ' ');
 		ft_putstr(res);
 	}
 	else
 	{
 		while (i++ < flntp.number - 1)
-			res = ft_add_char(res, l.p);
+			res = ft_add_char(&res, l.p);
 	}
 	return (res);
 }
