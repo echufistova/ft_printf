@@ -31,10 +31,10 @@ SRCPRNTF = ./ft_printf.c \
 	./ft_octflag.c\
 \
 	./ft_bzero.c \
-	./ft_memalloc.c\
 	./ft_strdup.c \
 	./ft_strlen.c \
 	./ft_strsub.c \
+	./ft_memalloc.c\
 	./ft_strjoin.c \
 	./ft_atoi.c \
 	./ft_itoa.c \
