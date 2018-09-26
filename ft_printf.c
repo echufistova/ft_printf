@@ -33,55 +33,6 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
     return (res);
 }
 
-int is_type(char c)
-{
-    if (c == 's' || c == 'S' || c == 'p' || c == 'd' || c == 'D' || c == 'i' ||
-        c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' ||
-        c == 'c' || c == 'C')
-        return (1);
-    return (0);
-}
-
-void show_structure(t_flagsntype flntp)
-{
-    printf("flntp.oct = %d\n", flntp.oct);
-    printf("flntp.noll = %d\n", flntp.noll);
-	printf("flntp.sizenoll = %d\n", flntp.sizenoll);
-    printf("flntp.minus = %d\n", flntp.minus);
-    printf("flntp.plus = %d\n", flntp.plus);
-    printf("flntp.space = %d\n", flntp.space);
-    printf("flnt.number %d\n", flntp.number);
-	printf("flntp.dot = %d\n", flntp.dot);
-    printf("flntp.hljz.ll = %d\n", flntp.hljz.ll);
-    printf("flntp.hljz.l = %d\n", flntp.hljz.l);
-    printf("flntp.hljz.hh = %d\n", flntp.hljz.hh);
-    printf("flntp.hljz.h = %d\n", flntp.hljz.h);
-    printf("flntp.hljz.j = %d\n", flntp.hljz.j);
-    printf("flntp.hljz.z = %d\n", flntp.hljz.z);
-    printf("flntp.type = %c\n", flntp.type);
-}
-
-char *no_params(char *res, t_flagsntype flntp, unsigned int *i)
-{
-    int j;
-
-    j = 0;
-    (*i)--;
-    flntp.dot = (flntp.noll2 == 3) ? 1 : 0;
-    flntp.oct = 0;
-    if (flntp.minus == 0)
-        res = flag_space(res, flntp, 1);//ft_add_char(flag_space(res, flntp, 0), format[i]);
-    //if (format[(*i) + 2] != '\0')
-        res = ft_add_char(res, flntp.type);
-    if (flntp.minus == 1)
-    {
-        while (j++ < flntp.number - 1)
-            res = ft_add_char(res, ' ');
-    }
-    (*i)++;
-    return (res);
-}
-
 int ft_printf(const char *restrict format, ...)
 {
     unsigned int i;
@@ -101,9 +52,6 @@ int ft_printf(const char *restrict format, ...)
         j = i;
         while (format[i] != '\0' && format[i] != '%')
             i++;
-        // if (!res)
-        //     res = ft_strsub(format, j, i - j);
-        // else
             res = ft_strjoin(res, ft_strsub(format, j, i - j));
         if (format[i] != '\0')
 			i++;
@@ -117,12 +65,8 @@ int ft_printf(const char *restrict format, ...)
                 res = no_params(res, flntp, &i);
                 continue;
             }
-//            show_structure(flntp);
-//            ft_putchar('\n');
             res = what_to_print(res, flntp, ap, &len);
-            //printf("len do%d\n", len);
             len += (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')? ft_strlen(res) : 0;
-            //printf("len posle %d\n", len);
             if (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')
                 ft_bzero(res, ft_strlen(res));
         }
@@ -159,12 +103,13 @@ int ft_printf(const char *restrict format, ...)
 // //    ft_printf("ft_printf: hello %s haha %%s tut\n", str);
 //     //printf("   pr %s $\n", "this is a string");
 //     //ft_printf("ft_pr %s $\n", "this is a string");
-//     printf("%15.4s\n", "42");
-//    		ft_printf("%15.4s\n", "42");
+//     printf("%x\n", 5);
+//    		ft_printf("%x\n", 5);
 // //    printf(" %d\n", printf(PRINTF));
 // //    printf(" %d\n", ft_printf(PRINTF));
 //  //   unsigned long l = -42;
 //  //   ft_printf("ft: %lu\n", l);
 //   //  printf("pr: %lu\n", l);
+//         system("leaks a.out");
 //     return (0);
 // }
