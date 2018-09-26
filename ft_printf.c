@@ -6,17 +6,6 @@
 #include "libft.h"
 #include "ft_printf.h"
 
-char *free_leaks(char **res)
-{
-    char *res1;
-
-    res1 = ft_strdup(*res);
-    free(*res);
-    *res = ft_strdup(res1);
-    free(res1);
-    return (*res);
-}
-
 char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
 {
     if (flntp.zirka1 == 1)
@@ -30,7 +19,7 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
     else if (flntp.type == 'o' || flntp.type == 'O')
         res = ft_print_o(ap, flntp, res);
     else if (flntp.type == 'x' || flntp.type == 'X')
-        res = (ft_print_x(ap, flntp, free_leaks(&res)));
+        res = (ft_print_x(ap, flntp, res));
     else if (flntp.type == 'c' || flntp.type == 'C')
         res = ft_print_c(ap, flntp, res, len);
     else if (flntp.type == 'p')
@@ -62,9 +51,9 @@ int ft_printf(const char *restrict format, ...)
         j = i;
         while (format[i] != '\0' && format[i] != '%')
             i++;
-        res1 = ft_strdup(res);
-        res = ft_strjoin(res1, ft_strsub(format, j, i - j));
-        free(res1);
+        res1 = ft_strsub(format, j, i - j);
+        res = ft_strjoin_free(&res, &res1);
+        //free(res1);
         if (format[i] != '\0')
 			i++;
         if (format[i] != '\0' && format[i] != '%' && format[i - 1] == '%')
@@ -77,15 +66,15 @@ int ft_printf(const char *restrict format, ...)
                 res = no_params(res, flntp, &i);
                 continue;
             }
-            res = what_to_print(free_leaks(&res), flntp, ap, &len);
+            res = what_to_print(res, flntp, ap, &len);
             len += (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')? ft_strlen(res) : 0;
             if (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')
                 ft_bzero(res, ft_strlen(res));
         }
         else if (format[i] != '\0' && format[i] == '%' && format[i - 1] == '%')
         {
-            res1 = ft_strdup(res);
-            res = ft_strjoin(res, ft_strsub(format, i, 1));
+            res1 = ft_strsub(format, i, 1);
+            res = ft_strjoin_free(&res, &res1);
             res = procent(ap, format, &i, res);
         }
     }

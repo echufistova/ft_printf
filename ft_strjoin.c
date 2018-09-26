@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char		*res;
 
 	i = 0;
-	if (s1 && s2)
+	if (s1 || s2)
 	{
 		len = ft_strlen(s1) + ft_strlen(s2) + 1;
 		res = (char*)malloc(sizeof(char) * len);
@@ -42,5 +42,69 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	//ft_bzero(s1, ft_strlen(s1));
 	//ft_bzero(s2, ft_strlen(s2));
+	return (NULL);
+}
+
+char	*ft_strjoin_free(char **s1, char **s2)
+{
+	int			i;
+	int			len;
+	char		*res;
+
+	i = 0;
+	if (s1 && s2 && (*s1 || *s2))
+	{
+		len = ft_strlen(*s1) + ft_strlen(*s2) + 1;
+		res = (char*)malloc(sizeof(char) * len);
+		if (res == NULL)
+			return (NULL);
+		while ((*s1)[i] != '\0')
+		{
+			res[i] = (*s1)[i];
+			i++;
+		}
+		while ((*s2)[i - ft_strlen((*s1))] != '\0')
+		{
+			res[i] = (*s2)[i - ft_strlen((*s1))];
+			i++;
+		}
+		res[i] = '\0';
+		ft_strdel(s1);
+		ft_strdel(s2);
+		return (res);
+	}
+	
+	return (NULL);
+}
+
+char	*ft_strjoin_free_one(char **s1, char *s2)
+{
+	int			i;
+	int			len;
+	char		*res;
+
+	i = 0;
+	if (s1 && (s2 || *s1))
+	{
+		len = ft_strlen(*s1) + ft_strlen(s2) + 1;
+		res = (char*)malloc(sizeof(char) * len);
+		if (res == NULL)
+			return (NULL);
+		while ((*s1)[i] != '\0')
+		{
+			res[i] = (*s1)[i];
+			i++;
+		}
+		while (s2[i - ft_strlen((*s1))] != '\0')
+		{
+			res[i] = s2[i - ft_strlen((*s1))];
+			i++;
+		}
+
+		res[i] = '\0';
+		free((void *)s1);
+		// free((void *)s2);
+		return (res);
+	}
 	return (NULL);
 }

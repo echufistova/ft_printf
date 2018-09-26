@@ -83,10 +83,13 @@ void    ft_putchar_w(wchar_t c);
 void	ft_putnbr(int nbr);
 void	ft_putstr(char const *s);
 char	*ft_strjoin(char const *s1, char const *s2);
+char    *ft_strjoin_free(char **s1, char **s2);
+char    *ft_strjoin_free_one(char **s1, char **s2);
 size_t		ft_strlen(const char *str);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char *flag_space(char *res, t_flagsntype flntp, intmax_t n);
 char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n);
+void    ft_strdel(char **as);
 
 typedef struct      s_char
 {
