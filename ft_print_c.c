@@ -27,6 +27,7 @@ char *elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 {
 	int i;
 
+	i = 0;
 	if (flntp.minus == 1)
 	{
 		i = 1;

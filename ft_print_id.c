@@ -61,7 +61,6 @@ char  *if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 char    *ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 {
     intmax_t n;
-    int i;
 
     if (flntp.hljz.l == 1 || flntp.type == 'D')
         n = va_arg(ap, long int);

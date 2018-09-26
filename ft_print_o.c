@@ -52,7 +52,6 @@ char *if2o(char *res, t_flagsntype flntp, uintmax_t n)
 char    *ft_print_o(va_list ap, t_flagsntype flntp, char *res)
 {
     uintmax_t n;
-    intmax_t s;
     int j;
 
     j = 0;

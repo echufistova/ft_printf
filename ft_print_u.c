@@ -27,7 +27,6 @@ char *if1u(char *res, t_flagsntype flntp, uintmax_t n)
 char    *ft_print_u(va_list ap, t_flagsntype flntp, char *res)
 {
     uintmax_t n;
-    int i;
 
     if (flntp.hljz.l == 1 || flntp.type == 'U')
         n = va_arg(ap, unsigned long);

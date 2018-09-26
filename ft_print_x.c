@@ -49,7 +49,6 @@ char *ifx2(char *res, t_flagsntype flntp, unsigned long int n)
 char    *ft_print_x(va_list ap, t_flagsntype flntp, char *res)
 {
     unsigned long int n;
-    intmax_t s;
     int j;
 
     j = 0;

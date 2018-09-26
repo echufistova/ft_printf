@@ -103,7 +103,6 @@ void flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i, char *
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format)
 {
 	t_flagsntype	flagstype;
-	unsigned int	j;
 	char			*n;
 
 	flagstype = ft_new_flntp();
