@@ -74,6 +74,29 @@ char *elseoct(char *res, t_flagsntype *flntp, intmax_t n, int j)
 	return (res);
 }
 
+char *ifoct2(char **res, t_flagsntype flntp, intmax_t n, int j)
+{
+	int i;
+
+	i = 0;
+	if (is_type(flntp.type))
+	{
+		while (i++ < flntp.number - (flntp.sizenoll > j ?
+	flntp.sizenoll : j))
+			*res = ft_add_char(res, ' ');
+	}
+	if (n < 0 && id(flntp))
+		*res = ft_add_char(res, '-');
+	else if (flntp.plus == 1 && n >= 0 && id(flntp))
+		*res = ft_add_char(res, '+');
+	*res = insertoct(*res, flntp, n);
+	while (i++ < flntp.number -  j + ((flntp.type == 'x' ||
+	flntp.type == 'X' || id(flntp) || flntp.type == 'U' ||
+	flntp.type == 'u')) ? 1 : 0)
+		*res = ft_add_char(res, '0');
+	return (*res);
+}
+
 char *ifoct1(char **res, t_flagsntype flntp, intmax_t n, int j)
 {
 	int i;
@@ -86,17 +109,17 @@ char *ifoct1(char **res, t_flagsntype flntp, intmax_t n, int j)
 		*res = insertoct(*res, flntp, n);
 		while (i++ < (flntp.sizenoll > flntp.number ? flntp.sizenoll
 					: flntp.number) - j)
-			*res = ft_add_char(&*res, '0');
+			*res = ft_add_char(res, '0');
 	}
 	else if (flntp.noll == 0 && flntp.sizenoll == 0 && flntp.minus == 0
 				&& flntp.noll2 == 0)
 	{
 		while (i++ < flntp.number - j)
-			*res = ft_add_char(&*res, ' ');
+			*res = ft_add_char(res, ' ');
 		if (n < 0 && id(flntp))
-			*res = ft_add_char(&*res, '-');
+			*res = ft_add_char(res, '-');
 		else if (flntp.plus == 1 && id(flntp))
-			*res = ft_add_char(&*res, '+');
+			*res = ft_add_char(res, '+');
 		*res = insertoct(*res, flntp, n);
 	}
 	return (*res);
@@ -118,46 +141,8 @@ char	*ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 				&& flntp.noll2 == 0) || ((flntp.sizenoll > flntp.number || flntp.noll == 1)
 		 && flntp.minus == 0))
 			res = ifoct1(&res, flntp, n, j);
-		// if ((flntp.noll == 1 || flntp.sizenoll > flntp.number) &&
-		// 		flntp.minus == 0 )
-		// {
-		// 	res = plminsp(res, flntp, n);
-		// 	res = insertoct(res, flntp, n);
-		// 	while (i++ < (flntp.sizenoll > flntp.number ? flntp.sizenoll
-		// 				: flntp.number) - j)
-		// 		res = ft_add_char(&res, '0');
-		// }
-		// else if (flntp.noll == 0 && flntp.sizenoll == 0 && flntp.minus == 0
-		// 		&& flntp.noll2 == 0)
-		// {
-		// 	while (i++ < flntp.number - j)
-		// 		res = ft_add_char(&res, ' ');
-		// 	if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' ||
-		// 				flntp.type == 'D'))
-		// 		res = ft_add_char(&res, '-');
-		// 	else if (flntp.plus == 1 && (flntp.type == 'i' || flntp.type == 'd'
-		// 				|| flntp.type == 'D'))
-		// 		res = ft_add_char(&res, '+');
-		// 	res = insertoct(res, flntp, n);
-		// }
 		else if (flntp.sizenoll  < flntp.number && flntp.minus == 0)
-		{
-			if (is_type(flntp.type))
-			{
-				while (i++ < flntp.number - (flntp.sizenoll > j ?
-		flntp.sizenoll : j))
-					res = ft_add_char(&res, ' ');
-			}
-			if (n < 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-				res = ft_add_char(&res, '-');
-			else if (flntp.plus == 1 && n >= 0 && (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D'))
-				res = ft_add_char(&res, '+');
-			res = insertoct(res, flntp, n);
-			while (i++ < flntp.number -  j + ((flntp.type == 'x' ||
-	flntp.type == 'X' || (flntp.type == 'i' || flntp.type == 'd' ||
-		flntp.type == 'D' || flntp.type == 'U' || flntp.type == 'u')) ? 1 : 0))
-				res = ft_add_char(&res, '0');
-		}
+			res = ifoct2(&res, flntp, n, j);
 		else
 		{
 			res = plminsp(res, flntp, n);
