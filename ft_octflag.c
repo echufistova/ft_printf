@@ -13,6 +13,9 @@
 #include "ft_printf.h"
 #include "libft.h"
 
+#include "ft_printf.h"
+#include "libft.h"
+
 int id(t_flagsntype flntp)
 {
 	if (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')
