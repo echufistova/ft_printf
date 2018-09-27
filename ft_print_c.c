@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:40:40 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/24 20:55:36 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:38:45 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,15 @@ void	ft_printnull(char *res, t_flagsntype flntp, unsigned int c, wchar_t w)
 		ft_putchar_w(w);
 }
 
-char *elseif(char *res, t_flagsntype flntp, int *len, t_char l)
+char	*elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (flntp.minus == 1)
 	{
-		i = 1;
 		if (flntp.type == 'c')
-			res = ft_add_char(&res, (char) l.c);
+			res = ft_add_char(&res, (char)l.c);
 		else
 		{
 			ft_putstr(res);
@@ -41,7 +40,7 @@ char *elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 			ft_printnull(res, flntp, l.c, l.w);
 			(*len)++;
 		}
-		while (i++ < flntp.number)
+		while (++i < flntp.number)
 			res = ft_add_char(&res, ' ');
 		ft_putstr(res);
 	}
@@ -55,7 +54,7 @@ char *elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 
 char	*ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
 {
-	t_char l;
+	t_char	l;
 
 	l.c = 0;
 	l.w = 0;
@@ -73,6 +72,6 @@ char	*ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
 	}
 	if (!flntp.minus)
 		ft_printnull(res, flntp, l.c, l.w);
-	(flntp.minus == 0) ? (*len)++ : (*len); //+ ((c == '\0') ? 1 : 0);
-    return (res);
+	(flntp.minus == 0) ? (*len)++ : (*len);
+	return (res);
 }
