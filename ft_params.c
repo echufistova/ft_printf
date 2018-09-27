@@ -6,12 +6,19 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:30:38 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/25 19:34:12 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:17:15 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+
+int		id(t_flagsntype flntp)
+{
+	if (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')
+		return (1);
+	return (0);
+}
 
 int		is_type(char c)
 {

@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/07 16:58:02 by ychufist          #+#    #+#             */
-/*   Updated: 2018/04/17 15:08:52 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:05:57 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ char			*ft_itoa(long long int n)
 		np = np / 10;
 		i++;
 	}
-	//if (n < 0)
-	//	return (print_negative_numbers(res, n, i));
 	if (n > 0)
 		return (print_positive_numbers(res, n, i));
 	res = ft_memalloc(2);

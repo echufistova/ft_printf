@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:10:18 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/24 20:12:18 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:07:33 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static char		*print_positive_numbers(char *res, intmax_t n, int i)
 		return (NULL);
 	while (i > 0)
 	{
-		res[i - 1] = (uintmax_t )n % 10 + 48;
-		n = (uintmax_t )n / 10;
+		res[i - 1] = (uintmax_t)n % 10 + 48;
+		n = (uintmax_t)n / 10;
 		i--;
 	}
 	return (res);
@@ -46,7 +46,7 @@ char			*ft_itoa_signed(intmax_t n)
 	int					i;
 
 	res = NULL;
-	i = ft_intlength((uintmax_t )n);
+	i = ft_intlength((uintmax_t)n);
 	if (n != 0)
 		return (print_positive_numbers(res, n, i));
 	res = ft_memalloc(2);

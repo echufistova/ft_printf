@@ -6,14 +6,14 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:12:53 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/25 16:05:30 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:11:27 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int		checkflags(char c)
+int				checkflags(char c)
 {
 	if (c == '#' || c == '0' || c == '-' ||
 		c == '+' || c == ' ' || c == '.' || c == '*' || (c >= '0' && c <= '9'))
@@ -21,7 +21,7 @@ int		checkflags(char c)
 	return (0);
 }
 
-t_flagsntype	ft_new_flntp()
+t_flagsntype	ft_new_flntp(void)
 {
 	t_flagsntype flagstype;
 
@@ -66,15 +66,17 @@ t_flagsntype	ft_hljz(t_flagsntype fltp, const char *fl_tp, unsigned int *i)
 		fltp.hljz.j = 1;
 	else if (fl_tp[*i] == 'z')
 		fltp.hljz.z = 1;
-	if (fl_tp[*i] == 'h' || fl_tp[*i] == 'l' || fl_tp[*i] == 'j' || fl_tp[*i] == 'z')
+	if (fl_tp[*i] == 'h' || fl_tp[*i] == 'l' || fl_tp[*i] == 'j' ||
+			fl_tp[*i] == 'z')
 		(*i)++;
 	fltp.type = fl_tp[(*i)++];
 	return (fltp);
 }
 
-void flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i, char **n)
+void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
+		unsigned int *i, char **n)
 {
-	int j;
+	int		j;
 
 	j = 0;
 	if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
@@ -97,10 +99,11 @@ void flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i, char *
 			fltp->sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
 		}
 		(*i)--;
-    }
+	}
 }
 
-t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i, const char *format)
+t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
+		const char *format)
 {
 	t_flagsntype	flagstype;
 	char			*n;
