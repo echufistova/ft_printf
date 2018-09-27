@@ -13,26 +13,6 @@
 #include <stdlib.h>
 #include "libft.h"
 
-//static char		*print_negative_numbers(char *res, long long int n, long long int i)
-//{
-//	if (!(res = (char*)ft_memalloc(sizeof(char) * (i + 2))))
-//		return (NULL);
-//	if (n == -2147483648)
-//	{
-//		ft_strcpy(res, "-2147483648");
-//		return (res);
-//	}
-//	n = n * (-1);
-//	while (i > 0)
-//	{
-//		res[i] = n % 10 + 48;
-//		n = n / 10;
-//		i--;
-//	}
-//	res[0] = '-';
-//	return (res);
-//}
-
 static char		*print_positive_numbers(char *res, long long int n, int i)
 {
 	if (!(res = (char*)ft_memalloc(sizeof(char) * (i + 1))))

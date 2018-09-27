@@ -52,7 +52,6 @@ char *if2if1(char **res, t_flagsntype *flntp, intmax_t n, int i)
 char  *if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 {
     char *res1;
-    char *res2;
 
     if (flntp.dot == 1 && flntp.sizenoll != 0)
     {

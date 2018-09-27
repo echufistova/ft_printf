@@ -163,18 +163,6 @@ char	*ft_octflag(char *res, t_flagsntype flntp, intmax_t n)
 			res = ifoct2(&res, flntp, n, j);
 		else
 			res = ifoct3(&res, flntp, n , j);
-		// {
-			// res = plminsp(res, flntp, n);
-			// if ((flntp.plus == 1 || flntp.space == 1 || n < 0) && id(flntp))
-			// 	flntp.number--;
-			// res = insertoct(res, flntp, n);
-			// if  ((flntp.number >= flntp.sizenoll && flntp.sizenoll != 0) ||
-			// 		(flntp.sizenoll >= flntp.number))
-			// {
-			// 	while (i++ < (flntp.number > flntp.sizenoll? flntp.number : flntp.sizenoll) - j)
-			// 		res = ft_add_char(&res, '0');
-			// }
-		// }
 	}
 	else
 		return (elseoct(res, &flntp, n, j));
