@@ -29,7 +29,7 @@ char	*elseif1(char *res, t_flagsntype *flntp, intmax_t n, int j)
     int		i;
 
     i = 0;
-    if (flntp->space == 1 && id(*flntp))
+    if (flntp->plus == 0 && n >= 0 && flntp->space == 1 && id(*flntp))
     {
         res = ft_add_char(&res, ' ');
         flntp->number--;
