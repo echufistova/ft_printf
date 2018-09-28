@@ -88,8 +88,7 @@ char	*ifoct3(char **res, t_flagsntype flntp, intmax_t n, int j)
 	if ((flntp.number >= flntp.sizenoll && flntp.sizenoll != 0) ||
 			(flntp.sizenoll >= flntp.number))
 	{
-		while (i++ < (flntp.number > flntp.sizenoll ? flntp.number :
-					flntp.sizenoll) - j)
+		while (i++ < flntp.sizenoll - j)
 			*res = ft_add_char(res, '0');
 	}
 	return (*res);
