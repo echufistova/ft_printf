@@ -87,11 +87,11 @@ int ft_printf(const char *restrict format, ...)
 //  int main (void)
 //  {
 //      setlocale(LC_ALL, "");
-//   //int p;
+//   int p;
 //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
 // //      #define PRINTF "{%05.s}", 0
-//      printf("|% #5.4ld|\n", -25);
-//     		ft_printf("|% #5.4ld|\n", -25);
+//      printf("|%#p|\n", p);
+//     		ft_printf("|%#p|\n", p);
 // // //    printf(" %d\n", printf(PRINTF));
 // // //    printf(" %d\n", ft_printf(PRINTF));
 // //         system("leaks a.out");
