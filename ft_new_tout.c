@@ -73,17 +73,16 @@ t_flagsntype	ft_hljz(t_flagsntype fltp, const char *fl_tp, unsigned int *i)
 	return (fltp);
 }
 
-char *flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i)
+void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
+		unsigned int *i, char **n)
 {
-	int j;
-	char *n;
+	int		j;
 
 	j = 0;
-	n = NULL;
 	if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
 	{
 		while (fl_tp[*i] != '\0' && fl_tp[*i] >= '0' && fl_tp[*i] <= '9')
-			n = ft_add_char(&n, fl_tp[(*i)++]);
+			*n = ft_add_char(n, fl_tp[(*i)++]);
 		if (fl_tp[*i] == '.')
 		{
 			fltp->dot = 1;
@@ -101,7 +100,6 @@ char *flntp_number(const char *fl_tp, t_flagsntype *fltp, unsigned int *i)
 		}
 		(*i)--;
 	}
-	return (n);
 }
 
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
@@ -111,7 +109,7 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
 	char			*n;
 
 	flagstype = ft_new_flntp();
-	//n = NULL;
+	n = (char*)ft_memalloc(sizeof(char));
 	while (format[*i] != '\0' && checkflags(fl_tp[*i]))
 	{
 		if (fl_tp[*i] == '#')
@@ -127,7 +125,7 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
 		else if (fl_tp[*i] == '*')
 			flagstype.zirka1 = 1;
 		else
-			n = flntp_number(fl_tp, &flagstype, i);
+			flntp_number(fl_tp, &flagstype, i, &n);
 		(*i)++;
 	}
 	flagstype.number = ft_atoi(n);

@@ -84,16 +84,16 @@ int ft_printf(const char *restrict format, ...)
     return ((int)(ft_strlen(res) + len));//(int)ft_strlen(res));
 }
 
- //  int main (void)
- //  {
- //      setlocale(LC_ALL, "");
- //   //int p;
- //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
- // //      #define PRINTF "{%05.s}", 0
- //      printf"%+10.5d\n", 4242);
- //     		ft_printf("|% #5.4ld|\n", -25);
- // // //    printf(" %d\n", printf(PRINTF));
- // // //    printf(" %d\n", ft_printf(PRINTF));
- // //         system("leaks a.out");
- //      return (0);
- //  }
+//  int main (void)
+//  {
+//      setlocale(LC_ALL, "");
+//   //int p;
+//   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
+// //      #define PRINTF "{%05.s}", 0
+//      printf("|% #5.4ld|\n", -25);
+//     		ft_printf("|% #5.4ld|\n", -25);
+// // //    printf(" %d\n", printf(PRINTF));
+// // //    printf(" %d\n", ft_printf(PRINTF));
+// //         system("leaks a.out");
+//      return (0);
+//  }

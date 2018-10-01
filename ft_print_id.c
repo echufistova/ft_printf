@@ -24,10 +24,10 @@ char	*if1(char *res, t_flagsntype flntp, intmax_t n)
 			res = ft_add_char(&res, '-');
 		flntp.number--;
 	}
-	if (flntp.plus == 1 && flntp.space == 0 && n >= 0) //|| (flntp.plus == 0 && flntp.space == 1 && n >= 0))
+	if (flntp.plus == 1 && flntp.space == 0 && n >= 0)
 		flntp.number--;
 	res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
-	if (flntp.space == 1)// && flntp.plus == 0 && n >= 0 && id(flntp))
+	if (flntp.space == 1)
 		flntp.number--;
 	while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ?
 				flntp.sizenoll : ft_intlength(n)))
