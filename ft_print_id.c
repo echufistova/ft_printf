@@ -29,6 +29,8 @@ char	*if1(char *res, t_flagsntype flntp, intmax_t n)
 	res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
 	if (flntp.space == 1)
 		flntp.number--;
+	if (flntp.space == 1 && n < 0 && flntp.minus == 1)
+		flntp.number++;
 	while (i++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ?
 				flntp.sizenoll : ft_intlength(n)))
 		res = ft_add_char(&res, ' ');
