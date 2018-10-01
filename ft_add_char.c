@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 19:56:42 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/24 19:56:54 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 16:45:36 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 char	*ft_add_char(char **str, char c)
 {
-	int i;
-	char *res;
+	int		i;
+	char	*res;
 
 	i = 0;
-	res = (char *)malloc(sizeof(char) * (ft_strlen(*str) + 2));
+	res = (char *)ft_memalloc(sizeof(char) * (ft_strlen(*str) + 2));
 	if (str != NULL && *str)
 	{
 		while ((*str)[i] != '\0')
@@ -27,8 +27,8 @@ char	*ft_add_char(char **str, char c)
 			res[i] = (*str)[i];
 			i++;
 		}
+		ft_strdel(str);
 	}
 	res[i] = c;
-	ft_strdel(str);
-    return (res);
+	return (res);
 }

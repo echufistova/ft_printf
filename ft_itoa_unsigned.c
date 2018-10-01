@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:10:18 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/24 20:12:18 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:07:33 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,20 @@
 
 static char		*print_positive_numbers(char *res, intmax_t n, int i)
 {
-	char *res1;
-
 	n = (n > 0 ? n : -n);
-	if (!(res1 = (char*)ft_memalloc(sizeof(char) * (i + 1))))
+	if (!(res = (char*)ft_memalloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	while (i > 0)
 	{
-		res1[i - 1] = (uintmax_t )n % 10 + 48;
-		n = (uintmax_t )n / 10;
+		res[i - 1] = (uintmax_t)n % 10 + 48;
+		n = (uintmax_t)n / 10;
 		i--;
 	}
-	ft_strdel(&res);
-	return (res1);
+	return (res);
 }
 
-static char		*print_positive_numbers_uns(char *res1, uintmax_t n, int i)
+static char		*print_positive_numbers_uns(char *res, uintmax_t n, int i)
 {
-	char *res;
-
 	if (!(res = (char*)ft_memalloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	while (i > 0)
@@ -42,7 +37,6 @@ static char		*print_positive_numbers_uns(char *res1, uintmax_t n, int i)
 		n = n / 10;
 		i--;
 	}
-	ft_strdel(&res1);
 	return (res);
 }
 
@@ -52,7 +46,7 @@ char			*ft_itoa_signed(intmax_t n)
 	int					i;
 
 	res = NULL;
-	i = ft_intlength((uintmax_t )n);
+	i = ft_intlength((uintmax_t)n);
 	if (n != 0)
 		return (print_positive_numbers(res, n, i));
 	res = ft_memalloc(2);
