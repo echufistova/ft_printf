@@ -46,7 +46,7 @@ char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 	int		i;
 
 	i = 0;
-	if (flntp.number == 0)
+	if (flntp.number <= 0)
         res = ft_strjoin(insertoct(res, flntp, n), s);
 	while (i++ < flntp.number - (flntp.sizenoll > (int)ft_strlen(s)
                                  ? flntp.sizenoll : (int)ft_strlen(s)))
