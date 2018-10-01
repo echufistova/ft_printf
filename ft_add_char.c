@@ -20,6 +20,7 @@ char	*ft_add_char(char **str, char c)
 
 	i = 0;
 	res = (char *)ft_memalloc(sizeof(char) * (ft_strlen(*str) + 2));
+	res = (char *)malloc(sizeof(char) * (ft_strlen(*str) + 2));
 	if (str != NULL && *str)
 	{
 		while ((*str)[i] != '\0')
@@ -27,7 +28,6 @@ char	*ft_add_char(char **str, char c)
 			res[i] = (*str)[i];
 			i++;
 		}
-		ft_strdel(str);
 	}
 	res[i] = c;
 	return (res);
