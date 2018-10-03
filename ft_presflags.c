@@ -88,6 +88,7 @@ char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 {
 	int			i;
 	intmax_t	j;
+    int k;
 
 	i = 0;
 	j = (flntp.type == 'x' || flntp.type == 'X' || flntp.type == 'o' ||
@@ -106,15 +107,16 @@ char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
         res = else2(res, &flntp, n, &i);
         while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
             res = ft_add_char(&res, '0');
-        // if (flntp.sizenoll > 0 && (flntp.number2 > flntp.sizenoll && flntp.sizenoll > ft_intlength(n))
-        // && flntp.noll2 == 0 && flntp.plus == 0 && (flntp.type == 'o' || flntp.type == 'O'))
-        // {
-        //     j = 0;
-        //     while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
-        //     flntp.sizenoll : ft_intlength(n)))
-        //         res = ft_add_char(&res, ' ');
-        //     return (res);
-        // }
+        if ((flntp.sizenoll != 0 && flntp.number2 > flntp.sizenoll &&
+                (flntp.sizenoll < ft_intlength(n) || n == 0)
+        && flntp.noll2 == 0 && flntp.plus == 0 && (flntp.type == 'o' || flntp.type == 'O')) )
+        //&& )
+        {
+            k = 0;
+            while (k++ < flntp.number - flntp.sizenoll)
+                res = ft_add_char(&res, ' ');
+            return (res);
+        }
     }
     return (res);
 }
