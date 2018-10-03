@@ -51,6 +51,28 @@ char	*elseoctif(char **res, t_flagsntype *flntp, int i, int j)
 	return (*res);
 }
 
+char *elseifif(char *res, t_flagsntype flntp, intmax_t n, int j)
+{
+	char *res1;
+
+	if (flntp.dot == 1 && flntp.sizenoll != 0)
+	{
+		res1 = ft_presflags(res, flntp, 1);
+		res = ft_add_char(&res1, '0');
+		if (flntp.sizenoll != 0 && flntp.number2 > flntp.sizenoll &&
+		 (flntp.sizenoll < ft_intlength(n) || n == 0)
+		 && flntp.noll2 == 0 )
+		{
+			while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
+										  flntp.sizenoll : ft_intlength(n)) )
+				res1 = ft_add_char(&res, ' ');
+			return (res1);
+		}
+		return (res);
+	}
+	return (res);
+}
+
 char	*elseoct(char *res, t_flagsntype *flntp, intmax_t n, int j)
 {
 	int		i;
@@ -73,6 +95,8 @@ char	*elseoct(char *res, t_flagsntype *flntp, intmax_t n, int j)
 	if ((flntp->sizenoll > flntp->number) || (flntp->number != 0 &&
 		flntp->noll == 1 && flntp->minus == 0 && flntp->dot == 0))
 		res = elseoctif(&res, flntp, i, j);
+	else 
+		res = elseifif(res, *flntp, n, j);
 	return (res);
 }
 
