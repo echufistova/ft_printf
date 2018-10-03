@@ -61,11 +61,22 @@ char	*if2if1(char **res, t_flagsntype *flntp, intmax_t n, int i)
 char	*if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 {
 	char	*res1;
+	int j;
 
+	j = 0;
 	if (flntp.dot == 1 && flntp.sizenoll != 0)
 	{
 		res1 = ft_presflags(res, flntp, 1);
-		return (ft_add_char(&res1, '0'));
+		res = ft_add_char(&res1, '0');
+		if ((flntp.number2 > flntp.sizenoll || flntp.number2 > ft_intlength(n))
+			&& flntp.noll2 == 0 && flntp.plus == 0 && flntp.space == 0)
+        {
+		    while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
+		    flntp.sizenoll : ft_intlength(n)) )
+		        res1 = ft_add_char(&res, ' ');
+		    return (res1);
+        }
+		return (res);
 	}
 	else if (flntp.dot)
 		return (ft_presflags(res, flntp, n));

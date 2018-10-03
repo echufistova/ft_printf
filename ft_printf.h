@@ -36,6 +36,7 @@ typedef struct		s_flagsntype
     int             space;
 	int				dot;
     int             number;
+    int             number2;
     int             zirka1;
     int             zirka2;
     char            type;

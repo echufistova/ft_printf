@@ -81,7 +81,8 @@ char	*ifoct3(char **res, t_flagsntype flntp, intmax_t n, int j)
 	int		i;
 
 	i = 0;
-	*res = plminsp(*res, flntp, n);
+	//if (flntp.oct == 0 || n >= 0)
+		*res = plminsp(*res, flntp, n);
 	if ((flntp.plus == 1 || flntp.space == 1 || n < 0) && id(flntp))
 		flntp.number--;
 	*res = insertoct(*res, flntp, n);

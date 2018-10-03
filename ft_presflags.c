@@ -101,15 +101,20 @@ char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 	else if (flntp.minus == 0 && n != 0 && is_type(flntp.type))
 		res = elseif1(res, &flntp, n, j);
 	else
-	{
-		res = else2(res, &flntp, n, &i);
-		while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
-			res = ft_add_char(&res, '0');
-//		if (i < flntp.number && n == 0 && flntp.minus == 1)
-//		{
-//			while (i++ <= flntp.number)
-//				res = ft_add_char(&res, ' ');
-//		}
-	}
-	return (res);
+    {
+
+        res = else2(res, &flntp, n, &i);
+        while (i++ < (flntp.sizenoll > j ? flntp.sizenoll : j) - j)
+            res = ft_add_char(&res, '0');
+        // if (flntp.sizenoll > 0 && (flntp.number2 > flntp.sizenoll && flntp.sizenoll > ft_intlength(n))
+        // && flntp.noll2 == 0 && flntp.plus == 0 && (flntp.type == 'o' || flntp.type == 'O'))
+        // {
+        //     j = 0;
+        //     while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
+        //     flntp.sizenoll : ft_intlength(n)))
+        //         res = ft_add_char(&res, ' ');
+        //     return (res);
+        // }
+    }
+    return (res);
 }

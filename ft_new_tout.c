@@ -34,6 +34,7 @@ t_flagsntype	ft_new_flntp(void)
 	flagstype.space = 0;
 	flagstype.dot = 0;
 	flagstype.number = 0;
+	flagstype.number2 = 0;
 	flagstype.hljz.hh = 0;
 	flagstype.hljz.h = 0;
 	flagstype.hljz.ll = 0;
@@ -129,5 +130,6 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
 		(*i)++;
 	}
 	flagstype.number = ft_atoi(n);
+	flagstype.number2 = flagstype.number;
 	return (ft_hljz(flagstype, fl_tp, i));
 }
