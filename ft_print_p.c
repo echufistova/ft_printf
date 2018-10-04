@@ -53,7 +53,7 @@ char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 		res = ft_add_char(&res, ' ');
 	if (flntp.sizenoll > flntp.number)
 	{
-	    if (flntp.oct == 0 && flntp.dot == 0)
+	    if (flntp.oct == 0 && flntp.dot == 0 && flntp.number > 0)
 		    res = ft_strjoin(res, s);
 		while (i++ < flntp.sizenoll)
 			res = ft_add_char(&res, '0');
