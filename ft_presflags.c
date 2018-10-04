@@ -111,7 +111,7 @@ char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
             res = ft_add_char(&res, '0');
         if ((flntp.sizenoll != 0 && flntp.number2 > flntp.sizenoll &&
                 (flntp.sizenoll < ft_intlength(n) || n == 0)
-        && flntp.noll2 == 0 && flntp.plus == 0 && (flntp.type == 'o' || flntp.type == 'O')) )
+        && flntp.noll2 == 0 && (flntp.type == 'o' || flntp.type == 'O')) )
         //&& )
         {
             k = 0;
