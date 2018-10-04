@@ -78,6 +78,7 @@ void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
 		unsigned int *i, char **n)
 {
 	int		j;
+	char *res;
 
 	j = 0;
 	if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
@@ -97,7 +98,9 @@ void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
 			}
 			while (fl_tp[*i] >= 48 && fl_tp[*i] <= 57)
 				(*i)++;
-			fltp->sizenoll = ft_atoi(ft_strsub(fl_tp, j, *i - j));
+			res = ft_strsub(fl_tp, j, *i - j);
+			fltp->sizenoll = ft_atoi(res);
+			ft_strdel(&res);
 		}
 		(*i)--;
 	}

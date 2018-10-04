@@ -34,6 +34,8 @@ char	*elseif1(char *res, t_flagsntype *flntp, intmax_t n, int j)
         res = ft_add_char(&res, ' ');
         flntp->number--;
     }
+    if (flntp->plus && n == 1)
+        flntp->number--;
     while (i++ < flntp->number - (flntp->sizenoll > j ? flntp->sizenoll : j))
         res = ft_add_char(&res, ' ');
     if (n < 0 && id(*flntp))
