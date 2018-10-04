@@ -98,9 +98,20 @@ char	*if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 	return (res);
 }
 
+char *elsei(char *res, t_flagsntype flntp, intmax_t n)
+{
+	char *res1;
+
+	res1 = ft_itoa_signed(n);
+	res = flag_space(res, flntp, n);
+	res = ft_strjoin_free(&res, &res1);
+return (res);
+}
+
 char	*ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 {
 	intmax_t n;
+	// char *res1;
 
 	if (flntp.hljz.l == 1 || flntp.type == 'D')
 		n = va_arg(ap, long int);
@@ -121,6 +132,11 @@ char	*ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 	else if (n == 0)
 		res = if2(res, flntp, n, 1);
 	else
-		return (ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n)));
+	{
+		// res1 = ft_itoa_signed(n);
+		// res = flag_space(res, flntp, n);
+		// res = ft_strjoin_free(&res, &res1);
+		res = elsei(res, flntp, n);
+	}
 	return (res);
 }

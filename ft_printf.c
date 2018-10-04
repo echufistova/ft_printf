@@ -53,7 +53,6 @@ int ft_printf(const char *restrict format, ...)
             i++;
         res1 = ft_strsub(format, j, i - j);
         res = ft_strjoin_free(&res, &res1);
-        //free(res1);
         if (format[i] != '\0')
 			i++;
         if (format[i] != '\0' && format[i] != '%' && format[i - 1] == '%')
@@ -79,9 +78,13 @@ int ft_printf(const char *restrict format, ...)
         }
     }
     if (format[i] == '\0')
+    {
+        j = (int)(ft_strlen(res) + len);
         ft_putstr(res);
+        ft_strdel(&res);
+    }
     va_end(ap);
-    return ((int)(ft_strlen(res) + len));//(int)ft_strlen(res));
+    return (j);//(int)ft_strlen(res));
 }
 
 //  int main (void)
@@ -89,9 +92,9 @@ int ft_printf(const char *restrict format, ...)
 //      setlocale(LC_ALL, "");
 //   int p;
 //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-// //      #define PRINTF "{%05.s}", 0
-//      printf("|%-+15.9o|\n", 0);
-//     		ft_printf("|%-+15.9o|\n", 0);
+//      #define PRINTF "%d%d\n", 42, 41
+//      printf("%d%d\n", 42, 41);
+//     		ft_printf("%d%d\n", 42, 41);
 // // //    printf(" %d\n", printf(PRINTF));
 // // //    printf(" %d\n", ft_printf(PRINTF));
 //         system("leaks a.out");
