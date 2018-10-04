@@ -71,9 +71,13 @@ char	*if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 		if ((flntp.number2 > flntp.sizenoll || flntp.number2 > ft_intlength(n))
 			&& flntp.noll2 == 0 && flntp.plus == 0 && flntp.space == 0)
         {
+			res1 = res;
 		    while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
 		    flntp.sizenoll : ft_intlength(n)) )
-		        res1 = ft_add_char(&res, ' ');
+			{
+				res = res1;
+		    	res1 = ft_add_char(&res, ' ');
+			}
 		    return (res1);
         }
 		return (res);
