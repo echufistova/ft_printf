@@ -8,11 +8,15 @@
 char *if1u(char *res, t_flagsntype flntp, uintmax_t n)
 {
     int i;
+    char *res1;
+    char *res2;
 
     i = 0;
     if (n == 0)
         flntp.number = (flntp.minus || flntp.noll) ? flntp.number - 1 : flntp.number;
-    res = ft_strjoin(unsflag_space(res, flntp, n), ft_itoa_unsigned(n));
+    res1 = ft_itoa_unsigned(n);
+    res2 = unsflag_space(res, flntp, n);
+    res = ft_strjoin_free(&res2, &res1);
     if (flntp.minus == 1)
     {
         i = (ft_intlength_uns(n) > flntp.sizenoll) ? ft_intlength_uns(n) : flntp.sizenoll;
