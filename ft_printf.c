@@ -90,10 +90,10 @@ int ft_printf(const char *restrict format, ...)
 //   int p;
 //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
 // //      #define PRINTF "{%05.s}", 0
-//      printf("|% -20p|\n", 0);
-//     		ft_printf("|% -20p|\n", 0);
+//      printf("|% 2x|\n", 25);
+//     		ft_printf("|% 2x|\n", 25);
 // // //    printf(" %d\n", printf(PRINTF));
 // // //    printf(" %d\n", ft_printf(PRINTF));
-// //         system("leaks a.out");
+//         system("leaks a.out");
 //      return (0);
 //  }

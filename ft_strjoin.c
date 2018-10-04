@@ -36,12 +36,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 			i++;
 		}
 		res[i] = '\0';
-		//ft_bzero(s1, ft_strlen(s1));
-		//ft_bzero(s2, ft_strlen(s2));
 		return (res);
 	}
-	//ft_bzero(s1, ft_strlen(s1));
-	//ft_bzero(s2, ft_strlen(s2));
 	return (NULL);
 }
 

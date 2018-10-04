@@ -34,13 +34,13 @@ char *ifx2(char *res, t_flagsntype flntp, unsigned long int n)
     int s;
     char *res1;
 
-    s = ft_strlen(ft_itoa_base_uns((intmax_t)n, 16, flntp));
+    res1 = ft_itoa_base_uns((intmax_t)n, 16, flntp);
+    s = ft_strlen(res1);
     if (flntp.oct == 1 && flntp.sizenoll < flntp.number)
         flntp.number = flntp.number - 2;
     res = (flntp.oct == 1) ? ft_octflag(res, flntp, s) : flag_space(res, flntp, s);
-    j = (int)ft_strlen(ft_itoa_base_uns((intmax_t)n, 16, flntp));
+    j = (int)ft_strlen(res1);
     j = (j > flntp.sizenoll) ? j : flntp.sizenoll;
-    res1 = ft_itoa_base_uns((intmax_t)n, 16, flntp);
     res = ft_strjoin_free(&res, &res1);
     if (flntp.minus == 1)
     {
