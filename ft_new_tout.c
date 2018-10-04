@@ -131,5 +131,6 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
 	}
 	flagstype.number = ft_atoi(n);
 	flagstype.number2 = flagstype.number;
+	ft_strdel(&n);
 	return (ft_hljz(flagstype, fl_tp, i));
 }
