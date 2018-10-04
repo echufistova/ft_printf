@@ -16,6 +16,8 @@
 char	*if1(char *res, t_flagsntype flntp, intmax_t n)
 {
 	int		i;
+	char *res1;
+	char *res2;
 
 	i = 0;
 	if (n < 0)
@@ -26,7 +28,9 @@ char	*if1(char *res, t_flagsntype flntp, intmax_t n)
 	}
 	if (flntp.plus == 1 && flntp.space == 0 && n >= 0)
 		flntp.number--;
-	res = ft_strjoin(flag_space(res, flntp, n), ft_itoa_signed(n));
+	res1 = flag_space(res, flntp, n);
+	res2 = ft_itoa_signed(n);
+	res = ft_strjoin_free(&res1, &res2);
 	if (flntp.space == 1)
 		flntp.number--;
 	if (flntp.space == 1 && n < 0 && flntp.minus == 1)

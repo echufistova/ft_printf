@@ -92,11 +92,13 @@ int ft_printf(const char *restrict format, ...)
 //      setlocale(LC_ALL, "");
 //   int p;
 //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "%d%d\n", 42, 41
-//      printf("%d%d\n", 42, 41);
-//     		ft_printf("%d%d\n", 42, 41);
+//      // #define PRINTF "%d%d\n", 42, 41
+//      // printf("%d%d\n", 42, 41);
+//     	// 	ft_printf("%d%d\n", 42, 41);
 // // //    printf(" %d\n", printf(PRINTF));
 // // //    printf(" %d\n", ft_printf(PRINTF));
+//   printf("%-10d\n", 3);
+//       ft_printf("%-10d\n\n", 3);
 //         system("leaks a.out");
 //      return (0);
 //  }
