@@ -27,7 +27,7 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
     else if (flntp.type == 's' && flntp.hljz.l == 0)
         res = ft_print_s(ap, flntp, res);
     else if (flntp.type == 'S' || flntp.hljz.l == 1)
-        res = ft_print_S(ap, flntp, res, len);
+        res = ft_print_bigs(ap, flntp, res, len);
     return (res);
 }
 
