@@ -18,7 +18,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <ctype.h>
-#include <stdarg.h>
+# include <stdarg.h>
 
 int					g_atoi_i;
 int					g_atoi_flag;
@@ -76,12 +76,6 @@ void				ft_putchar(unsigned int c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
 void				ft_putnbr(int n);
-
-//void				ft_putnbr_u(unsigned long int nb);
-//void                ft_putnbr_ld(long int nbr);
-//void                ft_print_xX(va_list ap, char c);
-//void                ft_print_o(va_list ap, char c);
-
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);

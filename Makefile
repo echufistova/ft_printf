@@ -41,7 +41,6 @@ SRCPRNTF = ./ft_printf.c \
 	./ft_itoa.c \
 	./ft_putchar.c \
 	./ft_putstr.c \
-	./ft_putnbr.c \
 	./ft_strnew.c \
 	./ft_strcmp.c\
 	./ft_strdel.c

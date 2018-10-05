@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 19:44:22 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/24 21:01:11 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/05 18:52:32 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ char	*ft_strjoin_free(char **s1, char **s2)
 	if (s1 && s2 && (*s1 || *s2))
 	{
 		len = ft_strlen(*s1) + ft_strlen(*s2) + 1;
-		res = (char*)malloc(sizeof(char) * len);
-		if (res == NULL)
+		if (!(res = (char*)malloc(sizeof(char) * len)))
 			return (NULL);
 		while ((*s1)[i] != '\0')
 		{
@@ -67,7 +66,7 @@ char	*ft_strjoin_free(char **s1, char **s2)
 		ft_strdel(s1);
 		ft_strdel(s2);
 		return (res);
-	}	
+	}
 	return (NULL);
 }
 
@@ -81,8 +80,7 @@ char	*ft_strjoin_free_one(char **s1, char *s2)
 	if (s1 && (s2 || *s1))
 	{
 		len = ft_strlen(*s1) + ft_strlen(s2) + 1;
-		res = (char*)malloc(sizeof(char) * len);
-		if (res == NULL)
+		if (!(res = (char*)malloc(sizeof(char) * len)))
 			return (NULL);
 		while ((*s1)[i] != '\0')
 		{
@@ -94,10 +92,8 @@ char	*ft_strjoin_free_one(char **s1, char *s2)
 			res[i] = s2[i - ft_strlen((*s1))];
 			i++;
 		}
-
 		res[i] = '\0';
-		free((void *)s1);
-		// free((void *)s2);
+		ft_strdel(s1);
 		return (res);
 	}
 	return (NULL);

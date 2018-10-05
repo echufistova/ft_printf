@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:24:21 by ychufist          #+#    #+#             */
-/*   Updated: 2018/08/15 10:22:37 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/05 18:54:26 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t		ft_strlen(const char *str)
 	if (str != NULL)
 	{
 		while (str[i] != '\0')
-		i++;
+			i++;
 	}
 	return (i);
 }

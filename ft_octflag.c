@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:19:36 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/27 17:30:26 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/05 18:44:47 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*elseoctif(char **res, t_flagsntype *flntp, int i, int j)
 	return (*res);
 }
 
-char *elseifif(char *res, t_flagsntype flntp, intmax_t n, int j)
+char	*elseifif(char *res, t_flagsntype flntp, intmax_t n, int j)
 {
 	char *res1;
 
@@ -60,11 +60,10 @@ char *elseifif(char *res, t_flagsntype flntp, intmax_t n, int j)
 		res1 = ft_presflags(res, flntp, 1);
 		res = ft_add_char(&res1, '0');
 		if (flntp.sizenoll != 0 && flntp.number2 > flntp.sizenoll &&
-		 (flntp.sizenoll < ft_intlength(n) || n == 0)
-		 && flntp.noll2 == 0 )
+	(flntp.sizenoll < ft_intlength(n) || n == 0) && flntp.noll2 == 0)
 		{
 			while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
-										  flntp.sizenoll : ft_intlength(n)) )
+						flntp.sizenoll : ft_intlength(n)))
 				res1 = ft_add_char(&res, ' ');
 			return (res1);
 		}
@@ -95,7 +94,7 @@ char	*elseoct(char *res, t_flagsntype *flntp, intmax_t n, int j)
 	if ((flntp->sizenoll > flntp->number) || (flntp->number != 0 &&
 		flntp->noll == 1 && flntp->minus == 0 && flntp->dot == 0))
 		res = elseoctif(&res, flntp, i, j);
-	else 
+	else
 		res = elseifif(res, *flntp, n, j);
 	return (res);
 }
@@ -105,8 +104,7 @@ char	*ifoct3(char **res, t_flagsntype flntp, intmax_t n, int j)
 	int		i;
 
 	i = 0;
-	//if (flntp.oct == 0 || n >= 0)
-		*res = plminsp(*res, flntp, n);
+	*res = plminsp(*res, flntp, n);
 	if ((flntp.plus == 1 || flntp.space == 1 || n < 0) && id(flntp))
 		flntp.number--;
 	*res = insertoct(*res, flntp, n);
@@ -122,19 +120,16 @@ char	*ifoct3(char **res, t_flagsntype flntp, intmax_t n, int j)
 char	*ifoct2(char **res, t_flagsntype flntp, intmax_t n, int j)
 {
 	int		i;
-	int g;
+	int		g;
 
 	i = 0;
 	if (is_type(flntp.type))
 	{
-		g = (flntp.sizenoll > j) ? 	flntp.sizenoll : j;
+		g = (flntp.sizenoll > j) ? flntp.sizenoll : j;
 		while (i++ < flntp.number - g)
 			*res = ft_add_char(res, ' ');
 		flntp.space = (flntp.number < g && flntp.space == 1) ? 1 : 0;
 	}
-	// *res = plminsp(*res, flntp, n);
-	// if (flntp.space == 1 && id(flntp))
-	// 	flntp.number--;
 	if (n < 0 && id(flntp))
 		*res = ft_add_char(res, '-');
 	else if (flntp.plus == 1 && n >= 0 && id(flntp))
