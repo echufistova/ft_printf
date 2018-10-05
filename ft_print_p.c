@@ -67,6 +67,8 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 {
 	unsigned long	n;
     char			*s;
+    char *res1;
+    char *res2;
     int				i;
 
 	i = 0;
@@ -84,10 +86,15 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	if (flntp.minus == 1 || flntp.noll == 1)
 		res = if1p(res, flntp, n, s);
 	else if (flntp.oct == 0 && n != 0)
-		res = (flntp.number > flntp.sizenoll)?
-ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s) :
-ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
+	{
+		// res1 = insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s));
+		// res2 = flag_space(insertoct(res, flntp, ft_strlen(s)), flntp, ft_strlen(s));
+		res = (flntp.number > flntp.sizenoll) ? 
+		ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s) :
+		ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
+	}
 	else
 		res = if2p(res, flntp, n, s);
+	// ft_strdel(&s);
 	return (res);
 }

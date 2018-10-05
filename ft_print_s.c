@@ -48,6 +48,22 @@ int ft_strcmp_w(const wchar_t *str1, const char *str2)
     return (s1[i] - s2[i]);
 }
 
+char *flntpminus(char *res, t_flagsntype *flntp, char *str, int *i)
+{
+    int j;
+
+    while (*i < flntp->sizenoll)
+        res = ft_add_char(&res, str[(*i)++]);
+    if (ft_strlen(str) == 0)
+        flntp->sizenoll = 0;
+    if (flntp->dot == 0 && ft_strcmp(str, "(null)") != 0)
+        res = ft_strjoin(res, str);
+    *i = 0;
+    j = (flntp->dot == 1 ? flntp->sizenoll : ft_strlen(str));
+    while ((*i)++ < flntp->number - j)
+        res = ft_add_char(&res, ' ');
+    return (res);
+}
 
 char *ft_print_s(va_list ap, t_flagsntype flntp, char *res)
 {
@@ -59,16 +75,17 @@ char *ft_print_s(va_list ap, t_flagsntype flntp, char *res)
     i = 0;
     if (flntp.minus == 1)
     {
-            while (i < flntp.sizenoll)
-                res = ft_add_char(&res, str[i++]);
-        if (ft_strlen(str) == 0)
-            flntp.sizenoll = 0;
-		if (flntp.dot == 0 && ft_strcmp(str, "(null)") != 0)
-       		 res = ft_strjoin(res, str);
-        i = 0;
-        j = (flntp.dot == 1 ? flntp.sizenoll :ft_strlen(str));
-        while (i++ < flntp.number - j)
-            res = ft_add_char(&res, ' ');
+        res = flntpminus(res, &flntp, str, &i);
+  //           while (i < flntp.sizenoll)
+  //               res = ft_add_char(&res, str[i++]);
+  //       if (ft_strlen(str) == 0)
+  //           flntp.sizenoll = 0;
+		// if (flntp.dot == 0 && ft_strcmp(str, "(null)") != 0)
+  //      		 res = ft_strjoin(res, str);
+  //       i = 0;
+  //       j = (flntp.dot == 1 ? flntp.sizenoll :ft_strlen(str));
+  //       while (i++ < flntp.number - j)
+  //           res = ft_add_char(&res, ' ');
      }
     if (flntp.noll == 1 && ft_strcmp(str, "(null)") != 0)
     {

@@ -7,6 +7,8 @@
 
 char *procent(va_list ap, const char *format, unsigned int *i, char *res)
 {
+    char *res1;
+
     while (format[*i] != '%' && format[*i] != '\0')
     {
         ft_putchar(format[*i]);
@@ -15,7 +17,9 @@ char *procent(va_list ap, const char *format, unsigned int *i, char *res)
     //va_arg(ap, int);
     (*i)++;
     if (format[*i] == '%' && format[*i] != '%')
-        res = ft_strjoin(res, procent(ap, format, i, res));
-    //return (0);
+    {
+        res1 = procent(ap, format, i, res);
+        res = ft_strjoin_free(&res, &res1);
+    }
     return (res);
 }
