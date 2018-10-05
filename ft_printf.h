@@ -74,6 +74,9 @@ char			*ft_minusflags(char *res, t_flagsntype flntp, intmax_t n);
 char            *procent(va_list ap, const char *format, unsigned int *i, char *res);
 char *plminsp(char *res, t_flagsntype flntp, intmax_t n);
 char *insertoct(char *res, t_flagsntype flntp, intmax_t n);
+size_t ft_strlen_w(wchar_t *w_str);
+void ft_putstr_w(wchar_t *w_str);
+int ft_strcmp_w(const wchar_t *str1, const char *str2);
 
 int				ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
