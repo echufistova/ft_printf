@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:39:47 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/27 17:47:18 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/05 17:52:39 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 char	*if1(char *res, t_flagsntype flntp, intmax_t n)
 {
 	int		i;
-	char *res1;
-	char *res2;
+	char	*res1;
+	char	*res2;
 
 	i = 0;
 	if (n < 0)
@@ -62,30 +62,37 @@ char	*if2if1(char **res, t_flagsntype *flntp, intmax_t n, int i)
 	return (*res);
 }
 
+char	*dotsizenoll(char *res, t_flagsntype flntp, intmax_t n)
+{
+	char	*res1;
+	int		j;
+
+	j = 0;
+	res1 = ft_presflags(res, flntp, 1);
+	res = ft_add_char(&res1, '0');
+	if ((flntp.number2 > flntp.sizenoll || flntp.number2 > ft_intlength(n))
+			&& flntp.noll2 == 0 && flntp.plus == 0 && flntp.space == 0)
+	{
+		res1 = res;
+		while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
+		flntp.sizenoll : ft_intlength(n)))
+		{
+			res = res1;
+			res1 = ft_add_char(&res, ' ');
+		}
+		return (res1);
+	}
+	return (res);
+}
+
 char	*if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 {
 	char	*res1;
-	int j;
+	int		j;
 
 	j = 0;
 	if (flntp.dot == 1 && flntp.sizenoll != 0)
-	{
-		res1 = ft_presflags(res, flntp, 1);
-		res = ft_add_char(&res1, '0');
-		if ((flntp.number2 > flntp.sizenoll || flntp.number2 > ft_intlength(n))
-			&& flntp.noll2 == 0 && flntp.plus == 0 && flntp.space == 0)
-        {
-			res1 = res;
-		    while (j++ < flntp.number2 - (flntp.sizenoll > ft_intlength(n) ?
-		    flntp.sizenoll : ft_intlength(n)) )
-			{
-				res = res1;
-		    	res1 = ft_add_char(&res, ' ');
-			}
-		    return (res1);
-        }
-		return (res);
-	}
+		return (dotsizenoll(res, flntp, n));
 	else if (flntp.dot)
 		return (ft_presflags(res, flntp, n));
 	else if (flntp.minus == 1)
@@ -102,20 +109,19 @@ char	*if2(char *res, t_flagsntype flntp, intmax_t n, int i)
 	return (res);
 }
 
-char *elsei(char *res, t_flagsntype flntp, intmax_t n)
+char	*elsei(char *res, t_flagsntype flntp, intmax_t n)
 {
-	char *res1;
+	char	*res1;
 
 	res1 = ft_itoa_signed(n);
 	res = flag_space(res, flntp, n);
 	res = ft_strjoin_free(&res, &res1);
-return (res);
+	return (res);
 }
 
 char	*ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 {
 	intmax_t n;
-	// char *res1;
 
 	if (flntp.hljz.l == 1 || flntp.type == 'D')
 		n = va_arg(ap, long int);
@@ -136,11 +142,6 @@ char	*ft_print_int(va_list ap, t_flagsntype flntp, char *res)
 	else if (n == 0)
 		res = if2(res, flntp, n, 1);
 	else
-	{
-		// res1 = ft_itoa_signed(n);
-		// res = flag_space(res, flntp, n);
-		// res = ft_strjoin_free(&res, &res1);
 		res = elsei(res, flntp, n);
-	}
 	return (res);
 }
