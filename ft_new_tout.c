@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:12:53 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/27 17:11:27 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/05 18:39:29 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
 		unsigned int *i, char **n)
 {
 	int		j;
-	char *res;
+	char	*res;
 
 	j = 0;
 	if ((fl_tp[*i] >= '0' && fl_tp[*i] <= '9') || fl_tp[*i] == '.')
@@ -104,6 +104,13 @@ void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
 		}
 		(*i)--;
 	}
+}
+
+void			flntp_numbers(t_flagsntype *flagstype, char **n)
+{
+	flagstype->number = ft_atoi(*n);
+	flagstype->number2 = flagstype->number;
+	ft_strdel(n);
 }
 
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
@@ -132,8 +139,6 @@ t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,
 			flntp_number(fl_tp, &flagstype, i, &n);
 		(*i)++;
 	}
-	flagstype.number = ft_atoi(n);
-	flagstype.number2 = flagstype.number;
-	ft_strdel(&n);
+	flntp_numbers(&flagstype, &n);
 	return (ft_hljz(flagstype, fl_tp, i));
 }
