@@ -92,101 +92,10 @@ int ft_printf(const char *restrict format, ...)
 //      setlocale(LC_ALL, "");
 //   int p;
 //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      // #define PRINTF "%d%d\n", 42, 41
-//      // printf("%d%d\n", 42, 41);
-//     	// 	ft_printf("%d%d\n", 42, 41);
+//      #define PRINTF "%d%d\n", 42, 41
+//      printf("|%-+20.15d|\n", 0);
+//     		ft_printf("|%-+20.15d|\n", 0);
 // // //    printf(" %d\n", printf(PRINTF));
 // // //    printf(" %d\n", ft_printf(PRINTF));
-  
-//      // printf("\n");
-//      // ft_printf("\n\n");
-
-//      // printf("%%\n");
-//      // ft_printf("%%\n\n");
-
-//      // printf("%d\n", 42);
-//      // ft_printf("%d\n\n", 42);
-
-//      // printf("%d%d\n", 42, 41);
-//      // ft_printf("%d%d\n\n", 42, 41);
-
-//      // printf("%d%d%d\n", 42, 43, 44);
-//      // ft_printf("%d%d%d\n\n", 42, 43, 44);
-
-//      // printf("%ld\n", 2147483647);
-//      // ft_printf("%ld\n\n", 2147483647);
-
-//      // printf("%lld\n", 9223372036854775807);
-//      // ft_printf("%lld\n\n", 9223372036854775807);
-
-//      // printf("%x\n", 505);
-//      // ft_printf("%x\n\n", 505);
-
-//      // printf("%X\n", 505);
-//      // ft_printf("%X\n\n", 505);
-
-//      // printf("%p\n", &ft_printf);
-//      // ft_printf("%p\n\n", &ft_printf);
-
-//      // printf("%20.15d\n", 54321);
-//      // ft_printf("%20.15d\n\n", 54321);
-
-//      // printf("%-10d\n", 3);
-//      // ft_printf("%-10d\n\n", 3);
-
-//      // printf("% d\n", 3);
-//      // ft_printf("% d\n\n", 3);
-
-//      // printf("%+d\n", 3);
-//      // ft_printf("%+d\n\n", 3);
-
-//      // printf("%010d\n", 1);
-//      // ft_printf("%010d\n\n", 1);
-
-//      // printf("%hhd\n", 0);
-//      // ft_printf("%hhd\n\n", 0);
-
-//      // printf("%jd\n", 9223372036854775807);
-//      // ft_printf("%jd\n\n", 9223372036854775807);
-
-//      // printf("%zd\n", 4294967295);
-//      // ft_printf("%zd\n\n", 4294967295);
-
-//      // printf("%\n");
-//      // ft_printf("%\n\n");
-
-//      // printf("%U\n", 4294967295);
-//      // ft_printf("%U\n\n", 4294967295);
-
-//      // printf("%u\n", 4294967295);
-//      // ft_printf("%u\n\n", 4294967295);
-
-//      // printf("%o\n", 40);
-//      // ft_printf("%o\n\n", 40);
-
-//      // printf("%%#08x\n", 42);
-//      // ft_printf("%%#08x\n\n", 42);
-
-//      // printf("%x\n", 1000);
-//      // ft_printf("%x\n\n", 1000);
-
-//      // printf("%#X\n", 1000);
-//      // ft_printf("%#X\n\n", 1000);
-
-//      // printf("%s\n", NULL);
-//      // ft_printf("%s\n\n", NULL);
-
-//      // printf("%S\n", L"ݗݜशব");
-//      // ft_printf("%S\n\n", L"ݗݜशব");
-
-//      // printf("%s%s\n", "test", "test");
-//      // ft_printf("%s%s\n\n", "test", "test");
-
-//      // printf("%s%s%s\n", "test", "test", "test");
-//      // ft_printf("%s%s%s\n\n", "test", "test", "test");
-
-//      // printf("%C\n", 15000);
-//      // ft_printf("%C\n\n", 15000);
-//         system("leaks a.out");
-//      return (0);
-//  }
+//     return (0);
+// }
