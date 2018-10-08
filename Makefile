@@ -30,40 +30,28 @@ SRCPRNTF = ./ft_printf.c \
 	./ft_presflags.c\
 	./ft_itoa_base_uns.c\
 	./ft_octflag.c\
-\
-	./ft_bzero.c \
-	./ft_strdup.c \
-	./ft_strlen.c \
-	./ft_strsub.c \
-	./ft_memalloc.c\
-	./ft_strjoin.c \
-	./ft_atoi.c \
-	./ft_itoa.c \
-	./ft_putchar.c \
-	./ft_putstr.c \
-	./ft_strnew.c \
-	./ft_strcmp.c\
-	./ft_strdel.c
 
 OUTP = $(SRCPRNTF:.c=.o)
 
-HDRPRNTF = ./ft_printf.h
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror
+
+LIBA = ./libft/libft.a
 
 all: $(NAME)
 
 %.o:%.c $(HDR)
-	gcc $(FLAGS) -o $@ $<
+	gcc $(FLAGS) -o $< -c &< $(LIBA)
 
 $(NAME):
-	gcc $(FLAG) -c $(SRCPRNTF) -I $(HDRPRNTF)
-	ar rc $(NAME) $(OUTP)
+	gcc $(FLAG) -c libft/*.c -I libft/libft.h
+	gcc -c $(SRCPRNTF)
+	ar rc $(NAME) *.o
 
 clean:
-	/bin/rm -f $(OUTP)
+	/bin/rm -f *.o libft/*.o
 	/bin/rm -f *~
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME) libft/*.a
 
 re: fclean all

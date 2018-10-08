@@ -1,6 +1,14 @@
-//
-// Created by Yevheniya CHUFISTOVA on 7/3/18.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/10/08 19:09:40 by ychufist          #+#    #+#             */
+/*   Updated: 2018/10/08 19:14:27 by ychufist         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdarg.h>
 #include "libft.h"
@@ -31,6 +39,14 @@ char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
     return (res);
 }
 
+int konec(char **res, int len)
+{
+	len = (int)(ft_strlen(*res) + len);
+    ft_putstr(*res);
+    ft_strdel(res);
+	return (len);
+}
+
 int ft_printf(const char *restrict format, ...)
 {
     unsigned int i;
@@ -58,8 +74,9 @@ int ft_printf(const char *restrict format, ...)
         if (format[i] != '\0' && format[i] != '%' && format[i - 1] == '%')
         {
             flntp = ft_get_flntp(format, &i, format);
-            if (flntp.type == 'F' || flntp.type == 'f' || flntp.type == 'A' || flntp.type == 'a' ||
-            flntp.type == 'G' || flntp.type == 'g' || flntp.type == 'E' || flntp.type == 'e')
+            if (flntp.type == 'F' || flntp.type == 'f' || flntp.type == 'A'
+		|| flntp.type == 'a' || flntp.type == 'G' || flntp.type == 'g' ||
+			flntp.type == 'E' || flntp.type == 'e')
                 return (0);
             if (!is_type(flntp.type) ) {
                 res = no_params(res, flntp, &i);
@@ -77,14 +94,9 @@ int ft_printf(const char *restrict format, ...)
             res = procent(ap, format, &i, res);
         }
     }
-    if (format[i] == '\0')
-    {
-        j = (int)(ft_strlen(res) + len);
-        ft_putstr(res);
-        ft_strdel(&res);
-    }
+    len = (format[i] == '\0') ? konec(&res, len) : 0;
     va_end(ap);
-    return (j);//(int)ft_strlen(res));
+    return (len);//(int)ft_strlen(res));
 }
 
 //  int main (void)
