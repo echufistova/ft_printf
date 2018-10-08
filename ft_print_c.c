@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	ft_printnull(char *res, t_flagsntype flntp, unsigned int c, wchar_t w)

@@ -11,10 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft.h"
-
-#include "ft_printf.h"
-#include "libft.h"
+#include "libft/libft.h"
 
 char	*insertoct(char *res, t_flagsntype flntp, intmax_t n)
 {

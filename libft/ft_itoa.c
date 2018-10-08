@@ -46,7 +46,7 @@ static char		*print_positive_numbers(char *res, int n, int i)
 	return (res);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long int n)
 {
 	char	*res;
 	int		np;

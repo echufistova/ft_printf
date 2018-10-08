@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdarg.h>
-#include "libft.h"
+#include "libft/libft.h"
 #include "ft_printf.h"
 
 char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)

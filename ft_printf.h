@@ -74,26 +74,8 @@ char			*ft_minusflags(char *res, t_flagsntype flntp, intmax_t n);
 char            *procent(va_list ap, const char *format, unsigned int *i, char *res);
 char *plminsp(char *res, t_flagsntype flntp, intmax_t n);
 char *insertoct(char *res, t_flagsntype flntp, intmax_t n);
-size_t ft_strlen_w(wchar_t *w_str);
-void ft_putstr_w(wchar_t *w_str);
-int ft_strcmp_w(const wchar_t *str1, const char *str2);
-
-int				ft_atoi(const char *str);
-void	ft_bzero(void *s, size_t n);
-char			*ft_itoa(long long int n);
-void	*ft_memalloc(size_t size);
-void	ft_putchar(unsigned int c);
-void    ft_putchar_w(wchar_t c);
-void	ft_putnbr(int nbr);
-void	ft_putstr(char const *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-char    *ft_strjoin_free(char **s1, char **s2);
-char    *ft_strjoin_free_one(char **s1, char **s2);
-size_t		ft_strlen(const char *str);
-char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char *flag_space(char *res, t_flagsntype flntp, intmax_t n);
 char *unsflag_space(char *res, t_flagsntype flntp, uintmax_t n);
-void    ft_strdel(char **as);
 
 typedef struct      s_char
 {

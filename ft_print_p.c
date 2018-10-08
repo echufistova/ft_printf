@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft/libft.h"
 
 char	*if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 {
