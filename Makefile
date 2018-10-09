@@ -28,7 +28,6 @@ SRCPRNTF = ./ft_printf.c \
 	./ft_params.c\
 	./ft_flags.c\
 	./ft_presflags.c\
-	./ft_itoa_base_uns.c\
 	./ft_octflag.c\
 
 OUTP = $(SRCPRNTF:.c=.o)

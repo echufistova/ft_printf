@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:39:47 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/05 17:52:39 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:55:14 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,29 +62,29 @@ char	*if2if1(char **res, t_flagsntype *flntp, intmax_t n, int i)
 	return (*res);
 }
 
-char    *dotsizenoll(char *res, t_flagsntype flntp, intmax_t n)
+char	*dotsizenoll(char *res, t_flagsntype flntp, intmax_t n)
 {
-    char    *res1;
-    int        j;
-    
-    j = 0;
-    res1 = ft_presflags(res, flntp, 1);
-    res = ft_add_char(&res1, '0');
-    if (flntp.plus == 1 && flntp.number2 == flntp.number)
-        flntp.number--;
-    if ((flntp.number2 > flntp.sizenoll || flntp.number2 > ft_intlength(n))
-        && flntp.noll2 == 0 && flntp.space == 0)
-    {
-        res1 = res;
-        while (j++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ?
-                                     flntp.sizenoll : ft_intlength(n)))
-        {
-            res = res1;
-            res1 = ft_add_char(&res, ' ');
-        }
-        return (res1);
-    }
-    return (res);
+	char	*res1;
+	int		j;
+
+	j = 0;
+	res1 = ft_presflags(res, flntp, 1);
+	res = ft_add_char(&res1, '0');
+	if (flntp.plus == 1 && flntp.number2 == flntp.number)
+		flntp.number--;
+	if ((flntp.number2 > flntp.sizenoll || flntp.number2 > ft_intlength(n))
+			&& flntp.noll2 == 0 && flntp.space == 0)
+	{
+		res1 = res;
+		while (j++ < flntp.number - (flntp.sizenoll > ft_intlength(n) ?
+					flntp.sizenoll : ft_intlength(n)))
+		{
+			res = res1;
+			res1 = ft_add_char(&res, ' ');
+		}
+		return (res1);
+	}
+	return (res);
 }
 
 char	*if2(char *res, t_flagsntype flntp, intmax_t n, int i)
