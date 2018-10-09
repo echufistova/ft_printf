@@ -26,6 +26,9 @@ int		is_type(char c)
 		c == 'o' || c == 'O' || c == 'u' || c == 'U' || c == 'x' || c == 'X' ||
 		c == 'c' || c == 'C')
 		return (1);
+	else if  (c == 'F' || c == 'f' || c == 'A' || c == 'a' || c == 'G' ||
+		c == 'g'|| c == 'E' || c == 'e')
+		return (3);
 	return (0);
 }
 

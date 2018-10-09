@@ -43,14 +43,13 @@ char	*ft_strjoin(char const *s1, char const *s2)
 char	*ft_strjoin_free(char **s1, char **s2)
 {
 	int		i;
-	int		len;
 	char	*res;
 
 	i = 0;
 	if (s1 && s2 && (*s1 || *s2))
 	{
-		len = ft_strlen(*s1) + ft_strlen(*s2) + 1;
-		if (!(res = (char*)malloc(sizeof(char) * len)))
+		if (!(res = (char*)malloc(sizeof(char) * (ft_strlen(*s1) +
+			ft_strlen(*s2) + 1))))
 			return (NULL);
 		while ((*s1)[i] != '\0')
 		{

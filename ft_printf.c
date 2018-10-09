@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 19:09:40 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 17:46:37 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 20:38:29 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,67 +47,76 @@ int		konec(char **res, int len)
 	return (len);
 }
 
-int		ft_printf(const char *restrict format, ...)
+char	*else1(const char *format, t_printf *t)
 {
-    unsigned int i;
-    unsigned int j;
-    int len;
-    t_flagsntype flntp;
-    va_list ap;
-    char *res;
-    char *res1;
-
-    i = 0;
-    len = 0;
-    res = ft_strnew(1);
-    va_start(ap, format);
-
-    while (format[i] != '\0')
-    {
-        j = i;
-        while (format[i] != '\0' && format[i] != '%')
-            i++;
-        res1 = ft_strsub(format, j, i - j);
-        res = ft_strjoin_free(&res, &res1);
-        if (format[i] != '\0')
-			i++;
-        if (format[i] != '\0' && format[i] != '%' && format[i - 1] == '%')
-        {
-            flntp = ft_get_flntp(format, &i, format);
-            if (flntp.type == 'F' || flntp.type == 'f' || flntp.type == 'A'
-		|| flntp.type == 'a' || flntp.type == 'G' || flntp.type == 'g' ||
-			flntp.type == 'E' || flntp.type == 'e')
-                return (0);
-            if (!is_type(flntp.type) ) {
-                res = no_params(res, flntp, &i);
-                continue;
-            }
-            res = what_to_print(res, flntp, ap, &len);
-            len += (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')? ft_strlen(res) : 0;
-            if (flntp.type == 'c' || flntp.type == 's' || flntp.type == 'C' || flntp.type == 'S')
-                ft_bzero(res, ft_strlen(res));
-        }
-        else if (format[i] != '\0' && format[i] == '%' && format[i - 1] == '%')
-        {
-            res1 = ft_strsub(format, i, 1);
-            res = ft_strjoin_free(&res, &res1);
-            res = procent(ap, format, &i, res);
-        }
-    }
-    len = (format[i] == '\0') ? konec(&res, len) : 0;
-    va_end(ap);
-    return (len);//(int)ft_strlen(res));
+	if (format[t->i] != '\0' && format[t->i] == '%' && format[t->i - 1] == '%')
+	{
+		t->res1 = ft_strsub(format, t->i, 1);
+		t->res = ft_strjoin_free(&t->res, &t->res1);
+		t->res = procent(t->ap, format, &t->i, t->res);
+	}
+	return (t->res);
 }
 
-//  int main (void)
-//  {
-//      setlocale(LC_ALL, "");
-//   int p;
-//   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "%d%d\n", 42, 41
-//      printf("|%20p|\n", &p);
-//     		ft_printf("|%20p|\n", &p);
-// // //    printf(" %d\n", printf(PRINTF));
-// // //    printf(" %d\n", ft_printf(PRINTF));
-//     return (0);
-// }
+int		cs(char c)
+{
+	if (c == 's' || c == 'S' || c == 'c' || c == 'C')
+		return (1);
+	return (0);
+}
+
+int		if1printf(const char *format, t_printf *t)
+{
+	if (format[t->i] != '\0' && format[t->i] != '%' && format[t->i - 1] == '%')
+	{
+		t->flntp = ft_get_flntp(format, &t->i, format);
+		if (is_type(t->flntp.type) == 3)
+			return (0);
+		if (!is_type(t->flntp.type))
+		{
+			t->res = no_params(t->res, t->flntp, &t->i);
+			return (1);
+		}
+		t->res = what_to_print(t->res, t->flntp, t->ap, &t->len);
+		t->len += (cs(t->flntp.type)) ? ft_strlen(t->res) : 0;
+		if (cs(t->flntp.type))
+			ft_bzero(t->res, ft_strlen(t->res));
+	}
+	return (2);
+}
+
+void	nachalo(const char *format, t_printf *t)
+{
+	t->j = t->i;
+	while (format[t->i] != '\0' && format[t->i] != '%')
+		t->i++;
+}
+
+int		ft_printf(const char *restrict format, ...)
+{
+	t_printf	t;
+	int			k;
+
+	t.i = 0;
+	t.len = 0;
+	t.res = ft_strnew(1);
+	va_start(t.ap, format);
+	while (format[t.i] != '\0')
+	{
+		nachalo(format, &t);
+		t.res1 = ft_strsub(format, t.j, t.i - t.j);
+		t.res = ft_strjoin_free(&t.res, &t.res1);
+		t.i = (format[t.i] != '\0') ? t.i + 1 : t.i;
+		if (format[t.i] != '\0' && format[t.i] != '%' && format[t.i - 1] == '%')
+		{
+			if ((k = if1printf(format, &t)) == 0)
+				return (0);
+			else if (k == 1)
+				continue;
+		}
+		t.res = else1(format, &t);
+	}
+	t.len = (format[t.i] == '\0') ? konec(&t.res, t.len) : 0;
+	va_end(t.ap);
+	return (t.len);
+}

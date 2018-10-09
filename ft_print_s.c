@@ -65,7 +65,7 @@ char	*flntpminus(char *res, t_flagsntype *flntp, char *str, int *i)
 	if (ft_strlen(str) == 0)
 		flntp->sizenoll = 0;
 	if (flntp->dot == 0 && ft_strcmp(str, "(null)") != 0)
-		res = ft_strjoin(res, str);
+		res = ft_strjoin_free_one(&res, str);
 	*i = 0;
 	j = (flntp->dot == 1 ? flntp->sizenoll : ft_strlen(str));
 	while ((*i)++ < flntp->number - j)
@@ -130,7 +130,7 @@ char	*ft_print_s(va_list ap, t_flagsntype flntp, char *res)
 		res = flntpdot(res, &flntp, str, &i);
 	if (ft_strcmp(str, "(null)") == 0)
 	{
-		res = ft_strjoin(res, "(null)");
+		res = ft_strjoin_free_one(&res, "(null)");
 		ft_putstr(res);
 	}
 	else
