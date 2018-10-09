@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 19:09:40 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/08 19:14:27 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 17:46:37 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-char *what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
+char	*what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
 {
-    if (flntp.zirka1 == 1)
-        flntp.number = va_arg(ap, int);
-    if (flntp.zirka2 == 1)
-        flntp.sizenoll = va_arg(ap, int);
-    if (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')
-        res = ft_print_int(ap, flntp, res);
-    else if (flntp.type == 'u' || flntp.type == 'U')
-        res = ft_print_u(ap, flntp, res);
-    else if (flntp.type == 'o' || flntp.type == 'O')
-        res = ft_print_o(ap, flntp, res);
-    else if (flntp.type == 'x' || flntp.type == 'X')
-        res = (ft_print_x(ap, flntp, res));
-    else if (flntp.type == 'c' || flntp.type == 'C')
-        res = ft_print_c(ap, flntp, res, len);
-    else if (flntp.type == 'p')
-        res = ft_print_p(ap, flntp, res);
-    else if (flntp.type == 's' && flntp.hljz.l == 0)
-        res = ft_print_s(ap, flntp, res);
-    else if (flntp.type == 'S' || flntp.hljz.l == 1)
-        res = ft_print_bigs(ap, flntp, res, len);
-    return (res);
+	if (flntp.zirka1 == 1)
+		flntp.number = va_arg(ap, int);
+	if (flntp.zirka2 == 1)
+		flntp.sizenoll = va_arg(ap, int);
+	if (flntp.type == 'i' || flntp.type == 'd' || flntp.type == 'D')
+		res = ft_print_int(ap, flntp, res);
+	else if (flntp.type == 'u' || flntp.type == 'U')
+		res = ft_print_u(ap, flntp, res);
+	else if (flntp.type == 'o' || flntp.type == 'O')
+		res = ft_print_o(ap, flntp, res);
+	else if (flntp.type == 'x' || flntp.type == 'X')
+		res = (ft_print_x(ap, flntp, res));
+	else if (flntp.type == 'c' || flntp.type == 'C')
+		res = ft_print_c(ap, flntp, res, len);
+	else if (flntp.type == 'p')
+		res = ft_print_p(ap, flntp, res);
+	else if (flntp.type == 's' && flntp.hljz.l == 0)
+		res = ft_print_s(ap, flntp, res);
+	else if (flntp.type == 'S' || flntp.hljz.l == 1)
+		res = ft_print_bigs(ap, flntp, res, len);
+	return (res);
 }
 
-int konec(char **res, int len)
+int		konec(char **res, int len)
 {
 	len = (int)(ft_strlen(*res) + len);
-    ft_putstr(*res);
-    ft_strdel(res);
+	ft_putstr(*res);
+	ft_strdel(res);
 	return (len);
 }
 
-int ft_printf(const char *restrict format, ...)
+int		ft_printf(const char *restrict format, ...)
 {
     unsigned int i;
     unsigned int j;

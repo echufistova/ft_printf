@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:33:22 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/05 17:02:27 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 17:49:45 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ char	*ifsizebnum(char *res, t_flagsntype flntp, intmax_t n, int j)
 		res = ft_add_char(&res, '0');
 	return (res);
 }
+
 
 char	*ft_presflags(char *res, t_flagsntype flntp, intmax_t n)
 {

@@ -15,14 +15,11 @@ NAME = libftprintf.a
 SRCPRNTF = ./ft_printf.c \
 	./ft_print_id.c\
 	./ft_print_o.c \
-	./ft_print_u.c \
-	./ft_print_x.c\
+	./ft_print_x_u.c\
 	./ft_print_bigs.c\
 	./ft_print_s.c \
 	./ft_print_c.c\
 	./ft_print_p.c\
-	./ft_print_procent.c \
-	./ft_add_char.c \
 	./ft_itoa_unsigned.c \
 	./ft_new_tout.c \
 	./ft_params.c\

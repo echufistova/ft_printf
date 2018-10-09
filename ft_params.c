@@ -48,3 +48,41 @@ char	*no_params(char *res, t_flagsntype flntp, unsigned int *i)
 	(*i)++;
 	return (res);
 }
+
+char	*procent(va_list ap, const char *format, unsigned int *i, char *res)
+{
+	char *res1;
+
+	while (format[*i] != '%' && format[*i] != '\0')
+	{
+		ft_putchar(format[*i]);
+		(*i)++;
+	}
+	(*i)++;
+	if (format[*i] == '%' && format[*i] != '%')
+	{
+		res1 = procent(ap, format, i, res);
+		res = ft_strjoin_free(&res, &res1);
+	}
+	return (res);
+}
+
+char	*ft_add_char(char **str, char c)
+{
+	int		i;
+	char	*res;
+
+	i = 0;
+	res = (char *)ft_memalloc(sizeof(char) * (ft_strlen(*str) + 2));
+	if (str != NULL && *str)
+	{
+		while ((*str)[i] != '\0')
+		{
+			res[i] = (*str)[i];
+			i++;
+		}
+		ft_strdel(str);
+	}
+	res[i] = c;
+	return (res);
+}
