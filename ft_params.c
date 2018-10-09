@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:30:38 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/27 17:17:15 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:49:39 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,30 +47,4 @@ char	*no_params(char *res, t_flagsntype flntp, unsigned int *i)
 	}
 	(*i)++;
 	return (res);
-}
-
-int		ft_intlength(intmax_t n)
-{
-	int		i;
-
-	i = 0;
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
-int		ft_intlength_uns(uintmax_t n)
-{
-	int		i;
-
-	i = 0;
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
 }

@@ -105,8 +105,8 @@ int ft_printf(const char *restrict format, ...)
 //   int p;
 //   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
 //      #define PRINTF "%d%d\n", 42, 41
-//      printf("|%-+20.15d|\n", 0);
-//     		ft_printf("|%-+20.15d|\n", 0);
+//      printf("|%20p|\n", &p);
+//     		ft_printf("|%20p|\n", &p);
 // // //    printf(" %d\n", printf(PRINTF));
 // // //    printf(" %d\n", ft_printf(PRINTF));
 //     return (0);

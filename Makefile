@@ -39,13 +39,13 @@ LIBA = ./libft/libft.a
 
 all: $(NAME)
 
-%.o:%.c $(HDR)
-	gcc $(FLAGS) -o $< -c &< $(LIBA)
-
 $(NAME):
-	gcc $(FLAG) -c libft/*.c -I libft/libft.h
+	gcc $(FLAGS) -c libft/*.c -I libft/libft.h
 	gcc -c $(SRCPRNTF)
 	ar rc $(NAME) *.o
+
+%.o:%.c
+	gcc $(FLAGS) -o $< -c &< $(LIBA)
 
 clean:
 	/bin/rm -f *.o libft/*.o
