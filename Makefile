@@ -26,6 +26,8 @@ SRCPRNTF = ./ft_printf.c \
 	./ft_flags.c\
 	./ft_presflags.c\
 	./ft_octflag.c\
+	./ft_dopfile.c\
+	./ft_dopfile1.c
 
 OUTP = $(SRCPRNTF:.c=.o)
 

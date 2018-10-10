@@ -26,3 +26,15 @@ void	ft_putstr(char const *s)
 		}
 	}
 }
+
+void	ft_putstr_w(wchar_t *w_str)
+{
+	int i;
+
+	i = 0;
+	while (w_str[i])
+	{
+		ft_putchar_w(w_str[i]);
+		i++;
+	}
+}

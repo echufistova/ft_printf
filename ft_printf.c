@@ -120,17 +120,3 @@ int		ft_printf(const char *restrict format, ...)
 	va_end(t.ap);
 	return (t.len);
 }
-
-//  int main (void)
-//  {
-//      setlocale(LC_ALL, "");
-//   int p;
-//   //    #define PRINTF  "{%(+-# 0)(20.2)(ll)(d)}\n", 9223372036854775807
-//      #define PRINTF "%d%d\n", 42, 41
-//     // printf("%p\n", &ft_printf);
-//          ft_printf("%p\n", &p);
-// // //    printf(" %d\n", printf(PRINTF));
-// // //    printf(" %d\n", ft_printf(PRINTF));
-//             system("leaks a.out");
-//     return (0);
-// }

@@ -13,17 +13,6 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-char	*plminsp(char *res, t_flagsntype flntp, intmax_t n)
-{
-	if (n < 0 && id(flntp))
-		res = ft_add_char(&res, '-');
-	else if (flntp.plus == 1 && n >= 0 && id(flntp))
-		res = ft_add_char(&res, '+');
-	else if (flntp.space == 1 && id(flntp))
-		res = ft_add_char(&res, ' ');
-	return (res);
-}
-
 char	*elseif1(char *res, t_flagsntype *flntp, intmax_t n, int j)
 {
 	int		i;

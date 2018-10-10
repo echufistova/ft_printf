@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:54:23 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 21:25:43 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 17:28:10 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 {
 	int		i;
-	char *res1;
+	char	*res1;
 
 	i = 0;
 	if (flntp.number <= 0)

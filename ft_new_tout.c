@@ -87,9 +87,7 @@ void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
 			*n = ft_add_char(n, fl_tp[(*i)++]);
 		if (fl_tp[*i] == '.')
 		{
-			fltp->dot = 1;
-			fltp->noll2 = (fltp->noll == 1) ? 3 : 0;
-			fltp->noll = 0;
+			flntpnoll(fltp);
 			j = ++(*i);
 			if (fl_tp[(*i)] == '*')
 			{
@@ -104,13 +102,6 @@ void			flntp_number(const char *fl_tp, t_flagsntype *fltp,
 		}
 		(*i)--;
 	}
-}
-
-void			flntp_numbers(t_flagsntype *flagstype, char **n)
-{
-	flagstype->number = ft_atoi(*n);
-	flagstype->number2 = flagstype->number;
-	ft_strdel(n);
 }
 
 t_flagsntype	ft_get_flntp(const char *fl_tp, unsigned int *i,

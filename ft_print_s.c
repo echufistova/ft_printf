@@ -13,49 +13,6 @@
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-size_t	ft_strlen_w(wchar_t *w_str)
-{
-	size_t i;
-
-	i = 0;
-	if (w_str != NULL)
-	{
-		while (w_str[i])
-			i++;
-	}
-	return (i);
-}
-
-void	ft_putstr_w(wchar_t *w_str)
-{
-	int i;
-
-	i = 0;
-	while (w_str[i])
-	{
-		ft_putchar_w(w_str[i]);
-		i++;
-	}
-}
-
-int		ft_strcmp_w(const wchar_t *str1, const char *str2)
-{
-	int				i;
-	unsigned char	*s1;
-	unsigned char	*s2;
-
-	i = 0;
-	s1 = (unsigned char *)str1;
-	s2 = (unsigned char *)str2;
-	while (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
-}
-
 char	*flntpminus(char *res, t_flagsntype *flntp, char *str, int *i)
 {
 	int j;

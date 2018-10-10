@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 16:59:21 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 21:32:50 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 17:51:13 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,14 @@ char				*plminsp(char *res, t_flagsntype flntp, intmax_t n);
 char				*insertoct(char *res, t_flagsntype flntp, intmax_t n);
 char				*flag_space(char *res, t_flagsntype flntp, intmax_t n);
 char				*unsflag_space(char *res, t_flagsntype flntp, uintmax_t n);
+void				flntp_numbers(t_flagsntype *flagstype, char **n);
+void				flntpnoll(t_flagsntype *flntp);
+char				*plminsp(char *res, t_flagsntype flntp, intmax_t n);
+char				*dotsizenoll(char *res, t_flagsntype flntp, intmax_t n);
+char				*insertoct(char *res, t_flagsntype flntp, intmax_t n);
+char				*ifoct3(char **res, t_flagsntype flntp, intmax_t n, int j);
+char				*ifoct2(char **res, t_flagsntype flntp, intmax_t n, int j);
+char				*ifoct1(char **res, t_flagsntype flntp, intmax_t n, int j);
 typedef struct		s_char
 {
 	unsigned int	c;

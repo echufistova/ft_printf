@@ -24,3 +24,16 @@ size_t		ft_strlen(const char *str)
 	}
 	return (i);
 }
+
+size_t	ft_strlen_w(wchar_t *w_str)
+{
+	size_t i;
+
+	i = 0;
+	if (w_str != NULL)
+	{
+		while (w_str[i])
+			i++;
+	}
+	return (i);
+}
