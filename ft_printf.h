@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 16:59:21 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 18:04:44 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 21:32:50 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct		s_printf
 	t_flagsntype	flntp;
 	char			*res;
 	char			*res1;
-	int 			len;
+	int				len;
 	va_list			ap;
 }					t_printf;
 int					ft_printf(const char *restrict format, ...);

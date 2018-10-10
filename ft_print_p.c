@@ -6,33 +6,34 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:54:23 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/05 18:04:14 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/09 21:25:43 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void nolliminus(char **res, t_flagsntype flntp)
+char	*nolliminus(char *res, t_flagsntype flntp)
 {
 	int i;
 
 	i = 0;
 	while (i++ < flntp.number)
-		*res = ft_add_char(res, '0');
+		res = ft_add_char(&res, '0');
+	return (res);
 }
 
 char	*if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 {
-	int	i;
-	int	b;
-	char *tmp;
+	int		i;
+	int		b;
+	char	*tmp;
 
 	i = 0;
 	tmp = insertoct(res, flntp, n);
 	res = ft_strjoin_free_one(&tmp, s);
 	if (flntp.noll == 1 && flntp.minus == 0)
-		nolliminus(&res, flntp);
+		res = nolliminus(res, flntp);
 	else if (flntp.minus == 1 && flntp.number != 0)
 	{
 		if (flntp.number > 0)
@@ -53,10 +54,9 @@ char	*if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 {
 	int		i;
-	char 	*tmp;
+	char *res1;
 
 	i = 0;
-	tmp = res;
 	if (flntp.number <= 0)
 		res = ft_strjoin(insertoct(res, flntp, n), s);
 	while (i++ < flntp.number2 - (flntp.sizenoll > (int)ft_strlen(s)
@@ -70,8 +70,10 @@ char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 			res = ft_add_char(&res, '0');
 	}
 	else
-		res = ft_strjoin(insertoct(res, flntp, n), s);
-	free(tmp);
+	{
+		res1 = insertoct(res, flntp, n);
+		res = ft_strjoin_free_one(&res1, s);
+	}
 	return (res);
 }
 
@@ -97,7 +99,7 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	unsigned long	n;
 	char			*s;
 	int				i;
-	char *tmp;
+	char			*tmp;
 
 	i = 0;
 	n = (unsigned long)va_arg(ap, void *);
@@ -108,13 +110,15 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	{
 		tmp = res;
 		res = (flntp.number > flntp.sizenoll) ?
-		ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s):
-		ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)), flntp, ft_strlen(s)), s);
+		ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)),
+					flntp, ft_strlen(s)), s) :
+		ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)),
+					flntp, ft_strlen(s)), s);
 		free(tmp);
 	}
 	else
 		res = if2p(res, flntp, n, s);
 	if (n != 0)
-		free(s);
+		ft_strdel(&s);
 	return (res);
 }
