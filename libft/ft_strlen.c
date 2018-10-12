@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/24 17:24:21 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/10 19:10:37 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/12 13:05:49 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,37 +27,30 @@ size_t		ft_strlen(const char *str)
 
 size_t		ft_strlen_w(wchar_t *w_str)
 {
-	int i;
-	size_t len;
+	int		i;
+	size_t	len;
 
 	i = 0;
 	len = 0;
 	if (w_str)
 	{
 		while (w_str[i] != '\0')
-		{	
-			if (w_str[i] <= 127)
-  				len += 1;
- 			else if (w_str[i] <= 2047)
-  				len += 2;
- 			else if (w_str[i] <= 65535)
-  				len += 3;
- 			else
-  				len += 4;
+		{
+			len += char_length(w_str[i]);
 			i++;
 		}
 	}
 	return (len);
 }
 
-int char_length(unsigned int c)
+int			char_length(unsigned int c)
 {
 	if (c <= 127)
-  		return (1);
- 	else if (c <= 2047)
-  		return (2);
- 	else if (c <= 65535)
-  		return (3);
- 	else
-  		return (4);
+		return (1);
+	else if (c <= 2047)
+		return (2);
+	else if (c <= 65535)
+		return (3);
+	else
+		return (4);
 }

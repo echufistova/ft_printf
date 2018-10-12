@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 17:54:23 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/10 17:28:10 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/12 13:06:16 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 	int		i;
 	char	*res1;
 
-	//printf("here");
 	i = 0;
 	if (flntp.number <= 0)
 		res = ft_strjoin(insertoct(res, flntp, n), s);
@@ -102,7 +101,6 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	char			*s;
 	int				i;
 	char			*tmp;
-	//charb *tmp2;
 
 	i = 0;
 	n = (unsigned long)va_arg(ap, void *);
@@ -117,7 +115,6 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 		ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)),
 					flntp, ft_strlen(s)), s) :
 		ft_strjoin_free_one(&tmp, s);
-		//ft_strdel(&tmp);
 	}
 	else
 		res = if2p(res, flntp, n, s);

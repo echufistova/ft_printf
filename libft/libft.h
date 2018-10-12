@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/28 17:28:27 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 17:40:35 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/12 13:06:46 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void				*ft_memmove(void *dest, const void *source, size_t len);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlen_w(wchar_t *w_str);
-int 				char_length(unsigned int c);
+int					char_length(unsigned int c);
 int					ft_intlength(intmax_t n);
 int					ft_intlength_uns(uintmax_t n);
 char				*ft_strcpy(char *dest, const char *src);
