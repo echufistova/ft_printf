@@ -49,3 +49,15 @@ size_t		ft_strlen_w(wchar_t *w_str)
 	}
 	return (len);
 }
+
+int char_length(unsigned int c)
+{
+	if (c <= 127)
+  		return (1);
+ 	else if (c <= 2047)
+  		return (2);
+ 	else if (c <= 65535)
+  		return (3);
+ 	else
+  		return (4);
+}

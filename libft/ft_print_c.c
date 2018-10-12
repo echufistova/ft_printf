@@ -37,7 +37,7 @@ char	*elseif(char *res, t_flagsntype flntp, int *len, t_char l)
 			(*len) += ft_strlen(res);
 			ft_bzero(res, ft_strlen(res));
 			ft_printnull(res, flntp, l.c, l.w);
-			(*len)++;
+			(*len) += char_length(l.w);
 		}
 		while (++i < flntp.number)
 			res = ft_add_char(&res, ' ');
@@ -71,7 +71,9 @@ char	*ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
 	}
 	if (!flntp.minus)
 		ft_printnull(res, flntp, l.c, l.w);
-	(flntp.minus == 0) ? (*len)++ : (*len);
+	if (flntp.minus == 0)
+		*len = (flntp.type == 'c' && flntp.hljz.l == 0)
+	? (*len) + 1 : (*len) + char_length(l.w);
 	return (res);
 }
 
