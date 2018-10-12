@@ -6,11 +6,10 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:40:40 by ychufist          #+#    #+#             */
-/*   Updated: 2018/09/27 17:38:45 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:19:22 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 void	ft_printnull(char *res, t_flagsntype flntp, unsigned int c, wchar_t w)
@@ -74,4 +73,19 @@ char	*ft_print_c(va_list ap, t_flagsntype flntp, char *res, int *len)
 		ft_printnull(res, flntp, l.c, l.w);
 	(flntp.minus == 0) ? (*len)++ : (*len);
 	return (res);
+}
+
+void	nachalo(const char *format, t_printf *t)
+{
+	t->j = t->i;
+	while (format[t->i] != '\0' && format[t->i] != '%')
+		t->i++;
+}
+
+int		konec(char **res, int len)
+{
+	len = (int)(ft_strlen(*res) + len);
+	ft_putstr(*res);
+	ft_strdel(res);
+	return (len);
 }

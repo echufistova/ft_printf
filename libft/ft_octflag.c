@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 char	*elseoctif(char **res, t_flagsntype *flntp, int i, int j)
 {

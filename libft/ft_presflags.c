@@ -6,11 +6,10 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/24 20:33:22 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 21:14:17 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:41:43 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 char	*elseif1(char *res, t_flagsntype *flntp, intmax_t n, int j)

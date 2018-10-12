@@ -6,12 +6,10 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/08 19:09:40 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 21:33:27 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:10:54 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 char	*what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
@@ -37,14 +35,6 @@ char	*what_to_print(char *res, t_flagsntype flntp, va_list ap, int *len)
 	else if (flntp.type == 'S' || flntp.hljz.l == 1)
 		res = ft_print_bigs(ap, flntp, res, len);
 	return (res);
-}
-
-int		konec(char **res, int len)
-{
-	len = (int)(ft_strlen(*res) + len);
-	ft_putstr(*res);
-	ft_strdel(res);
-	return (len);
 }
 
 char	*else1(const char *format, t_printf *t)
@@ -83,13 +73,6 @@ int		if1printf(const char *format, t_printf *t)
 			ft_bzero(t->res, ft_strlen(t->res));
 	}
 	return (2);
-}
-
-void	nachalo(const char *format, t_printf *t)
-{
-	t->j = t->i;
-	while (format[t->i] != '\0' && format[t->i] != '%')
-		t->i++;
 }
 
 int		ft_printf(const char *restrict format, ...)

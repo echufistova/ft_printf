@@ -6,13 +6,13 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/09 16:59:21 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/10 17:51:13 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:15:58 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "libft/libft.h"
+# include "libft.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
@@ -110,6 +110,8 @@ typedef struct		s_printf
 	int				len;
 	va_list			ap;
 }					t_printf;
-int					ft_printf(const char *restrict format, ...);
+int					konec(char **res, int len);
+void				nachalo(const char *format, t_printf *t);
+int					ft_printf(const char *format, ...);
 
 #endif

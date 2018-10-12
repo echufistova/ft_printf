@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
 char	*flntpminus(char *res, t_flagsntype *flntp, char *str, int *i)
@@ -76,7 +75,6 @@ char	*ft_print_s(va_list ap, t_flagsntype flntp, char *res)
 {
 	char	*str;
 	int		i;
-	int		j;
 
 	str = ft_strdup(va_arg(ap, char*));
 	i = 0;

@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
 char	*nolliminus(char *res, t_flagsntype flntp)
 {
@@ -31,7 +30,8 @@ char	*if1p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 
 	i = 0;
 	tmp = insertoct(res, flntp, n);
-	res = ft_strjoin_free_one(&tmp, s);
+	res = ft_strjoin(tmp, s);
+	ft_strdel(&tmp);
 	if (flntp.noll == 1 && flntp.minus == 0)
 		res = nolliminus(res, flntp);
 	else if (flntp.minus == 1 && flntp.number != 0)
@@ -56,6 +56,7 @@ char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 	int		i;
 	char	*res1;
 
+	//printf("here");
 	i = 0;
 	if (flntp.number <= 0)
 		res = ft_strjoin(insertoct(res, flntp, n), s);
@@ -72,7 +73,8 @@ char	*if2p(char *res, t_flagsntype flntp, unsigned long n, char *s)
 	else
 	{
 		res1 = insertoct(res, flntp, n);
-		res = ft_strjoin_free_one(&res1, s);
+		res = ft_strjoin(res1, s);
+		ft_strdel(&res1);
 	}
 	return (res);
 }
@@ -100,6 +102,7 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 	char			*s;
 	int				i;
 	char			*tmp;
+	//charb *tmp2;
 
 	i = 0;
 	n = (unsigned long)va_arg(ap, void *);
@@ -108,13 +111,13 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 		res = if1p(res, flntp, n, s);
 	else if (flntp.oct == 0 && n != 0)
 	{
-		tmp = res;
+		tmp = flag_space(insertoct(res, flntp, ft_strlen(s)),
+					flntp, ft_strlen(s));
 		res = (flntp.number > flntp.sizenoll) ?
 		ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)),
 					flntp, ft_strlen(s)), s) :
-		ft_strjoin(flag_space(insertoct(res, flntp, ft_strlen(s)),
-					flntp, ft_strlen(s)), s);
-		free(tmp);
+		ft_strjoin_free_one(&tmp, s);
+		//ft_strdel(&tmp);
 	}
 	else
 		res = if2p(res, flntp, n, s);

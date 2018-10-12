@@ -6,7 +6,7 @@
 /*   By: ychufist <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 14:39:58 by ychufist          #+#    #+#             */
-/*   Updated: 2018/10/09 17:22:27 by ychufist         ###   ########.fr       */
+/*   Updated: 2018/10/10 19:12:25 by ychufist         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,12 @@ void	ft_putchar(unsigned int c)
 	write(1, &c, 1);
 }
 
-void	ft_putchar_w(wchar_t c)
+void	ft_putchar_w(unsigned int i)
 {
 	unsigned char	uni[4];
-	unsigned int	i;
 
-	i = (unsigned int)c;
 	if (i < 128)
-		write(1, &c, 1);
+		write(1, &i, 1);
 	else if (i < 2048)
 	{
 		uni[1] = 128 | (i & 63);

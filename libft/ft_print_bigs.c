@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 #include "ft_printf.h"
 
 int		flntpminusdot(char **res, t_flagsntype flntp, wchar_t *w_str, int *len)
