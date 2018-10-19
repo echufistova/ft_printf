@@ -109,7 +109,8 @@ char	*ft_print_p(va_list ap, t_flagsntype flntp, char *res)
 		res = if1p(res, flntp, n, s);
 	else if (flntp.oct == 0 && n != 0)
 	{
-		tmp = flag_space(insertoct(res, flntp, ft_strlen(s)),
+		if (flntp.number < flntp.sizenoll)
+			tmp = flag_space(insertoct(res, flntp, ft_strlen(s)),
 					flntp, ft_strlen(s));
 		res = (flntp.number > flntp.sizenoll) ?
 		ft_strjoin(insertoct(flag_space(res, flntp, ft_strlen(s)),

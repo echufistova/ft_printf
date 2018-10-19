@@ -33,7 +33,7 @@ char	*flntpdot(char *res, t_flagsntype *flntp, char *str, int *i)
 {
 	if (ft_strlen(str) == 0)
 		flntp->sizenoll = 0;
-	if (flntp->sizenoll > 0 || ft_strlen(str) == 0)
+	if (flntp->sizenoll >= 0 || ft_strlen(str) == 0)
 	{
 		while ((*i)++ < flntp->number - (flntp->sizenoll < (int)ft_strlen(str) ?
 					flntp->sizenoll : (int)ft_strlen(str)))
@@ -48,7 +48,7 @@ char	*flntpdot(char *res, t_flagsntype *flntp, char *str, int *i)
 	*i = 0;
 	if (flntp->minus == 0)
 	{
-		while (*i < flntp->sizenoll)
+		while (*i < flntp->sizenoll && str[*i])
 			res = ft_add_char(&res, str[(*i)++]);
 	}
 	return (res);
