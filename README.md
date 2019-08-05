@@ -9,7 +9,8 @@ As in C programming language, my ft_printf() function is used to print the “ch
 - %s for string variable;
 - %S for unicode strings;
 - %x for hexadecimal variable written in lowercase, %X for hexadecimal variable written in uppercase;
-- %o for octal.
+- %o (%O) for octal.
+
 It is also possible to use different length of argument: h, l; flags: +, -, #, space, 0; width and precision.
 
 To use this library first of all you need to compile it. 
